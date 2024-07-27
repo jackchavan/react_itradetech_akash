@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://source.unsplash.com/1600x900/?finance,stock') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:calc(100vh - 67px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .login-box {
+    width: 100%;
+    max-width: 440px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-box h1 {
+    margin-bottom: 2rem;
+    color: #007bff;
+    text-align: center;
+  }
+  
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-box label {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .login-box input {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .login-box button {
+    padding: 0.75rem;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-box button:hover {
+    background-color: #218838;
+  }
+  
+  .login-box a {
+    display: block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .login-box a:hover {
+    text-decoration: underline;
+  }
+  

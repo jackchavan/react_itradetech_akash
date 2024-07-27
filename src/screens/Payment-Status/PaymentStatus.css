@@ -1,0 +1,47 @@
+:root {
+    --success-color: #28a745;
+    --failure-color: #dc3545;
+    --background-color: #2c3e50;
+    --text-color: #fff;
+    --button-background: #007bff;
+    --button-hover: #0056b3;
+  }
+  
+  .payment-response-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+  }
+  
+  .success-message {
+    color: var(--success-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .failure-message {
+    color: var(--failure-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .response-button {
+    background-color: var(--button-background);
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .response-button:hover {
+    background-color: var(--button-hover);
+  }
+  

@@ -1,0 +1,15 @@
+.loading-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.pos-center {
+  position: fixed;
+  top: calc(50% - 40px);
+  left: calc(50% - 100px);
+}
