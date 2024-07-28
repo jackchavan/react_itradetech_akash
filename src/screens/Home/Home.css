@@ -1,8 +1,7 @@
-/* Home.css */
+/* Home.css
 
 body {
   font-family: "Arial", sans-serif;
- /* background-color: #2c3e50; Light background */
   margin: 0;
   padding: 0;
 }
@@ -13,7 +12,7 @@ body {
   min-height: 100vh;
   text-align: center;
   background: #2c3e50;
-  color: white; /* White text */
+  color: white; 
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
@@ -34,18 +33,18 @@ body {
   font-size: 2.5em;
   margin: 0;
   font-weight: bold;
-  color: #ffcc00; /* Yellow text for company name */
+  color: #ffcc00; 
 }
 
 h1 {
   font-size: 3em;
   margin-bottom: 20px;
-  color: #ffffff; /* White text for main heading */
+  color: #ffffff; 
 }
 
 p {
   font-size: 1.2em;
-  color: #ffffff; /* White text for paragraph */
+  color: #ffffff;
 }
 
 .courses-wrapper {
@@ -61,8 +60,8 @@ p {
 }
 
 .course {
-  background-color: #ffffff; /* White background for course squares */
-  color: #2196f3; /* Blue text */
+  background-color: #ffffff; 
+  color: #2196f3; 
   flex: 0 0 300px;
   margin: 0 10px;
   padding: 20px;
@@ -83,7 +82,7 @@ p {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #ff6f61; /* Red navigation button */
+  background-color: #ff6f61; 
   border: none;
   color: white;
   padding: 10px;
@@ -98,4 +97,26 @@ p {
 
 .nav-button.right {
   right: 10px;
+} */
+.container {
+  background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)),
+    url(../../assets/img/candlestick.png), no-repeat center center;
+  background-attachment: fixed;
+  text-align: center;
+  color: var(--white);
+  font-family: "Jost", sans-serif;
+  height: calc(100vh - 88px);
+}
+
+.display-1 {
+  font-size: calc(2rem + 5.7vw);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0 !important;
+  font-weight: 700 !important;
+}
+.h1 {
+  font-size: 2.5rem;
+  margin: 0 !important;
+  font-weight: 700 !important;
 }

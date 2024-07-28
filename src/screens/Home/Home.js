@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 import CustomModal from "../../components/Modal/Modal";
+import CustomCarousel from "../../components/Carousel/Carousel";
 const Home = () => {
   const [courses, setCourses] = useState([]);
   const [terms, setTerms] = useState("");
@@ -49,32 +50,23 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <div className="home-banner">
-        <h1 className="company-name">ITradeTech</h1>
-        <h2>Welcome to Our Trading Education Platform</h2>
-        <p>
-          Learn the art of trading with our comprehensive courses and expert
-          guidance.
-        </p>
-      </div>
-      {/* 
-      <main>
-        <div className="courses-wrapper">
-          <button className="nav-button left" onClick={handlePrevClick}>&lt;</button>
-          <div className="courses" style={{ transform: `translateX(-${currentIndex * 320}px)` }}>
-            {courses.map(course => (
-              <div className="course" key={course.id}>
-                <h2>{course.title}</h2>
-                <p>{course.description}</p>
-              </div>
-            ))}
-          </div>
-          <button className="nav-button right" onClick={handleNextClick}>&gt;</button>
+    <div>
+      <div className="container" style={{ marginBottom: "90px" }}>
+        <div className="pt-3rem">
+          <h1 className="h1">Learn From Home</h1>
+          <h1 className="display-1">Trading and Tech Courses</h1>
+          <p>
+            Learn the art of trading with our comprehensive courses and expert
+            guidance.
+          </p>
         </div>
-      </main> */}
+      </div>
+      <div className="">
 
-      <Footer getTerms={getTerms} />
+        <CustomCarousel/>
+      </div>
+
+      {/* <Footer getTerms={getTerms} /> */}
       <CustomModal isOpen={isModal} data={terms} closeModal={closeModal} />
     </div>
   );

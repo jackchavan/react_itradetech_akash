@@ -62,7 +62,7 @@ const Courses = () => {
       if (response) {
         dispatch(setOrderId(response.orderId));
         dispatch(setOrder(response))
-        window.open(response?.paymentLinks?.web, "_self");
+        window.open(response?.paymentLinks?.web, "_blank");
       }
     } catch (error) {
       console.error(error);

@@ -34,36 +34,41 @@ const Header = () => {
     dispatch(setOrder(null));
   };
   return (
-    <nav className="header">
-      <ul className="nav-links">
-        <li>
-          <Link to={HOME}>Home</Link>
-        </li>
-        <li>
-          <Link to={ABOUT}>About Us</Link>
-        </li>
-        <li>
-          <Link to={COURSES}>Courses</Link>
-        </li>
-        <li>
-          <Link to={SUBSCRIBE}>Subscribe</Link>
-        </li>
-        {!isLoggedIn && (
+    <div className="header">
+      <h1 className="headerTitle">
+        <img className="img-fluid" alt="" src="" />I Trade Tech
+      </h1>
+      <nav>
+        <ul className="nav-links">
+          <li>
+            <Link to={HOME}>Home</Link>
+          </li>
+          <li>
+            <Link to={ABOUT}>About Us</Link>
+          </li>
+          <li>
+            <Link to={COURSES}>Courses</Link>
+          </li>
+          <li>
+            <Link to={SUBSCRIBE}>Subscribe</Link>
+          </li>
+          {!isLoggedIn && (
+            <li className="auth-links">
+              <Link to={REGISTER}>Register</Link>
+              <Link to={LOGIN}>Login</Link>
+            </li>
+          )}
+        </ul>
+
+        {isLoggedIn && (
           <li className="auth-links">
-            <Link to={REGISTER}>Register</Link>
-            <Link to={LOGIN}>Login</Link>
+            <Link to={HOME} onClick={() => clearCache()}>
+              Logout
+            </Link>
           </li>
         )}
-      </ul>
-
-      {isLoggedIn && (
-        <li className="auth-links">
-          <Link to={HOME} onClick={() => clearCache()}>
-            Logout
-          </Link>
-        </li>
-      )}
-    </nav>
+      </nav>
+    </div>
   );
 };
 
