@@ -1,0 +1,40 @@
+.card {
+  border: 1px solid #d1d7dc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  background-color: var(--white);
+  cursor: pointer;
+  transition: transform 0.2s;
+  backface-visibility: hidden;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased; /* Improves font rendering on Webkit-based browsers */
+  -moz-osx-font-smoothing: grayscale;
+  box-shadow: 0 0 6px rgba(0,0,0,.16);
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.banner {
+  height: 135px;
+  width: 250px;
+}
+.course-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 16px;
+}
+.course-info {
+  padding: 10px 15px 10px 15px;
+}
+
+.course-description {
+  margin: 0;
+  font-size: 12px !important;
+  padding: 0;
+}

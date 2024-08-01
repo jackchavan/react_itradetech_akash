@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import {
   ABOUT,
+  COURSE_DETAIL,
   COURSES,
   HOME,
   LOGIN,
@@ -19,6 +20,7 @@ import Header from "../components/Header/Header";
 import PaymentStatus from "../screens/Payment-Status/PaymentStatus";
 import { useSelector } from "react-redux";
 import PageNotFound from "../screens/PageNotFound/PageNotFound";
+import Detail from "../screens/Detail/Detail";
 
 const Routing = () => {
   const { auth } = useSelector((state) => state.auth);
@@ -39,6 +41,7 @@ const Routing = () => {
                 <Route path={REGISTER} element={<Register />} />
                 <Route path={LOGIN} element={<Login />} />
                 <Route path={SUBSCRIBE} element={<Subscribe />} />
+                <Route path={COURSE_DETAIL+'/:id'} element={<Detail />} />
                 <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
@@ -58,6 +61,7 @@ const Routing = () => {
               <Route path={REGISTER} element={<Register />} />
               <Route path={LOGIN} element={<Login />} />
               <Route path={SUBSCRIBE} element={<Subscribe />} />
+              <Route path={COURSE_DETAIL} element={<Detail />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>

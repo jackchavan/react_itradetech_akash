@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CourseCard from "../CorseCard/CorseCard";
+import CourseCard from "../CourseCard/CourseCard";
+import { SyncLoader } from "react-spinners";
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -21,32 +21,43 @@ const responsive = {
     items: 1,
   },
 };
-const CustomCarousel = (props) => {
+const CustomCarousel = ({ data }) => {
+  const [sliderData, setSliderData] = useState([]);
+
+  useEffect(() => {
+    console.log("++++++", data);
+    setSliderData(data);
+  }, [data]);
   return (
     <div>
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={false}
-        responsive={responsive}
-        ssr={false} // means to render carousel on server-side.
-        infinite={true}
-        // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        // removeArrowOnDeviceType={["tablet", "mobile"]}
-        // deviceType={this.props.deviceType}
-        // dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-      >
-        {[1, 2, 3, 4, 4].map((i) => (
-          <CourseCard />
-        ))}
-      </Carousel>
-      ;
+      {sliderData.length > 0 ? (
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          showDots={false}
+          responsive={responsive}
+          ssr={false} // means to render carousel on server-side.
+          // infinite={true}
+          // autoPlay={true}
+          autoPlaySpeed={5000}
+          keyBoardControl={true}
+          customTransition="all .1"
+          transitionDuration={500}
+          // containerClass="carousel-container"
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
+          // deviceType={this.props.deviceType}
+          // dotListClass="custom-dot-list-style"
+          itemClass="pd-20"
+        >
+          {sliderData?.map((item, i) => (
+            <CourseCard data={item} key={i} />
+          ))}
+        </Carousel>
+      ) : (
+        <div className="loader-spinner">
+          <SyncLoader color="var(--primary)" margin={20} size={30} />
+        </div>
+      )}
     </div>
   );
 };

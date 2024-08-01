@@ -17,9 +17,10 @@
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #EEF5FF;
+  --danger: #4d4949;
+  --light: #eef5ff;
   --dark: #120f2d;
+  --offWhite: #ecf4ff;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -32,13 +33,53 @@
     "Liberation Mono", "Courier New", monospace;
 }
 
-.mt-3rem{
+::-webkit-scrollbar {
+  width: 8px;
+  margin: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--light);
+  /* border-radius: 4px; */
+  /* border: 0.2px solid var(--gray); */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray);
+  border-radius: 4px;
+  /* border: 0.2px solid var(--gray); */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+  border-radius: 4px;
+  /* border: 0.2px solid var(--gray); */
+}
+.mr-2 {
+  margin-right: 10px;
+}
+.mt-3rem {
   margin-top: 3rem !important;
 }
-
-.pt-3rem{
-  padding-top: 3rem !important;
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 3rem !important;
 }
 
-
-
+.pt-3rem {
+  padding-top: 3rem !important;
+}
+.pd-20 {
+  padding-right: 20px !important;
+}
+.react-multi-carousel-item {
+  max-width: 250px !important;
+  min-width: 250px !important;
+  z-index: 100 !important;
+}
+.react-multi-carousel-list {
+  height: 350px !important;
+}

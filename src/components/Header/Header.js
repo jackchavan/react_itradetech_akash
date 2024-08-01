@@ -18,8 +18,12 @@ import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 const Header = () => {
   const dispatch = useDispatch();
 
-  const { auth } = useSelector((state) => state?.auth);
+  const { auth, zIndex } = useSelector((state) => ({
+    auth: state?.auth,
+    zIndex: state.common.zIndex,
+  }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
+  const [path, setPath] = useState("");
 
   useEffect(() => {
     setIsLoggedIn(auth?.login);
@@ -33,24 +37,52 @@ const Header = () => {
     dispatch(setOrderId(null));
     dispatch(setOrder(null));
   };
+
+  const activeLink = (urlPath) => {
+    setPath(urlPath);
+  };
   return (
-    <div className="header">
+    <div className={zIndex ? "header" : "header zIndex"}>
       <h1 className="headerTitle">
         <img className="img-fluid" alt="" src="" />I Trade Tech
       </h1>
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to={HOME}>Home</Link>
+            <Link
+              onClick={() => activeLink(HOME)}
+              className={path === HOME ? "active-link" : ""}
+              to={HOME}
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={ABOUT}>About Us</Link>
+            <Link
+              onClick={() => activeLink(ABOUT)}
+              className={path === ABOUT ? "active-link" : ""}
+              to={ABOUT}
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to={COURSES}>Courses</Link>
+            <Link
+              onClick={() => activeLink(COURSES)}
+              className={path === COURSES ? "active-link" : ""}
+              to={COURSES}
+            >
+              Courses
+            </Link>
           </li>
           <li>
-            <Link to={SUBSCRIBE}>Subscribe</Link>
+            <Link
+              onClick={() => activeLink(SUBSCRIBE)}
+              className={path === SUBSCRIBE ? "active-link" : ""}
+              to={SUBSCRIBE}
+            >
+              Subscribe
+            </Link>
           </li>
           {!isLoggedIn && (
             <li className="auth-links">
