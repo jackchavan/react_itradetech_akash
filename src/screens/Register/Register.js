@@ -7,6 +7,7 @@ import {
   showToast,
   ToastSuccess,
   validateEmail,
+  validatePassword,
 } from "../../utils/CommonMethods";
 import { setLoading } from "../../store/actions/CommonActions";
 import { useDispatch } from "react-redux";
@@ -15,6 +16,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPass, setIsValidPass] = useState(null);
   const [isVerifyOtp, setIsVerifyOtp] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
@@ -68,25 +70,27 @@ const Register = () => {
   };
 
   const verifyOtp = async () => {
-    dispatch(setLoading(true));
+    if (isValidPass) {
+      dispatch(setLoading(true));
 
-    const body = {
-      mobileNumber: "",
-      email: userData.email,
-      otp: userData.otp,
-    };
-    try {
-      const response = await verifyOTP(body);
-      if (response === "OTP verified successfully.") {
+      const body = {
+        mobileNumber: "",
+        email: userData.email,
+        otp: userData.otp,
+      };
+      try {
+        const response = await verifyOTP(body);
+        if (response === "OTP verified successfully.") {
+          dispatch(setLoading(false));
+
+          registerUser();
+        }
+      } catch (error) {
         dispatch(setLoading(false));
 
-        registerUser();
+        console.error(error);
+        return false;
       }
-    } catch (error) {
-      dispatch(setLoading(false));
-
-      console.error(error);
-      return false;
     }
   };
   const generateOTP = async () => {
@@ -176,7 +180,28 @@ const Register = () => {
                 value={userData.password}
                 onChange={(e) => setData(e)}
                 required={isValidEmail}
+                onBlur={(e) => {
+                  e.preventDefault();
+                  if (userData.password.length > 0) {
+                    const isValid = validatePassword(userData.password);
+                    setIsValidPass(isValid);
+                  }
+                }}
               />
+              {isValidPass === false && (
+                <div
+                  style={{ color: "red", marginTop: "10px", fontSize: "10px" }}
+                >
+                  <div>
+                    <span>Enter valid password</span>
+                  </div>
+                  <span>
+                    Password must be at least 8 characters long and include at
+                    least one lowercase letter, one uppercase letter, one
+                    number, and one special character (!@#$%^&*).
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         )}

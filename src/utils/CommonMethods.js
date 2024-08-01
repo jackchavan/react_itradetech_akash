@@ -1,8 +1,15 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const emailRegX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegX =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
 export const validateEmail = (data) => {
   return emailRegX.test(data);
+};
+
+export const validatePassword = (password) => {
+  return passwordRegX.test(password);
 };
 
 export const ToastSuccess = "success";
