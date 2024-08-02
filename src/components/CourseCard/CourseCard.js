@@ -13,7 +13,7 @@ const CourseCard = ({ data }) => {
 
   const onClickCard = (data) => {
     console.log(key);
-    nvaigate(COURSE_DETAIL + "/1234");
+    nvaigate(COURSE_DETAIL);
   };
   return (
     <div

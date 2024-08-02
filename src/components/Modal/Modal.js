@@ -14,6 +14,7 @@ const customStyles = {
     height: "80%",
     width: "70%",
     borderRadius:"10px",
+    backgroundColor:"var(--light)"
   },
 };
 
@@ -45,7 +46,7 @@ const CustomModal = ({ data, isOpen, closeModal }) => {
         />
       </div>
 
-      <div style={{overflowY:"scroll",height:'90%'}} dangerouslySetInnerHTML={{__html:data}}></div>
+      <div className='innerHtml' dangerouslySetInnerHTML={{__html:data}}></div>
     </Modal>
   );
 };

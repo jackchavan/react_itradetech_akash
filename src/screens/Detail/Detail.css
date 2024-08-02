@@ -1,10 +1,10 @@
 .detail-continer {
   height: 100%;
   background-color: var(--light) !important;
-
 }
 .detail-box {
-  background-color: var(--dark);
+  background: linear-gradient(rgba(40, 120, 235, 1), rgba(40, 120, 235, 0.8)),
+    url(../../assets/img/chart.jpg), no-repeat center center;
   height: 280px;
   padding: 40px 40px 20px 40px;
   color: var(--light);
@@ -34,6 +34,7 @@
   position: absolute;
   top: 21%;
   right: 6%;
+  color: var(--dark) !important;
 }
 
 .img {
@@ -41,12 +42,12 @@
   width: 100%;
 }
 .sub-section {
-  padding: 0px 20px 20px 20px;
+  padding: 0px 20px 10px 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.sub-section span {
+.rupee {
   font-size: 1.5rem;
   font-weight: 900;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -57,9 +58,64 @@
   margin-top: 10px;
   background-color: var(--primary);
   align-self: center;
+  font-size: 14px;
+  font-weight: 900;
 }
 .syllabus-div {
   border: 1px solid var(--dark);
-  width: 60%;
+  width: 55%;
   padding: 20px;
+  margin: 30px;
+  color: var(--dark);
+}
+.syllabus-div h3 {
+  margin: 0px !important;
+}
+.ul-learn {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.li-learn {
+  width: 45%;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.list-item {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid var(--gray-light);
+  padding: 10px 0;
+  align-items: center;
+}
+.item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.item-name {
+  display: flex;
+  color: var(--gray-dark);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.item-value {
+  display: flex;
+  margin-left: auto;
+  color: var(--dark);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
