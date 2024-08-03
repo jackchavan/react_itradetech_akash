@@ -48,7 +48,7 @@ const Register = () => {
     };
     try {
       const response = await register(body);
-      if (response === "User register Succefully") {
+      if (response === "User registered Succefully") {
         dispatch(setLoading(false));
 
         navigate(LOGIN);

@@ -17,25 +17,28 @@ const Subscribe = () => {
     {
       title: "Level 1 Course",
       subTitle: "Basic trading concepts for beginners.",
+      price: 100.0,
     },
     {
       title: "Level 2 Course",
       subTitle: "Advanced trading strategies and techniques.",
+      price: 200.0,
     },
     {
       title: "Combined Course",
       subTitle: "Get access to both Level 1 and Level 2 courses.",
+      price: 500.0,
     },
   ];
 
-  const makePayment = async () => {
+  const makePayment = async (item) => {
     const orderId = Math.floor(Math.random() * 90000) + 10000;
 
     const body = {
       orderId: orderId.toString(),
-      customerId: "7890",
-      amount: 1.0,
-      paymentPageClientId: "1234",
+      customerId: auth?.userId.toString(),
+      amount: item?.price,
+      paymentPageClientId: auth?.userId.toString(),
       returnUrl: `http://localhost:3000/${PAYMENT_RESPONSE}`,
       customerEmail: 0,
       customer_phone: 0,
@@ -59,8 +62,8 @@ const Subscribe = () => {
       const response = await initiatePayment(body);
       if (response) {
         dispatch(setOrderId(response.orderId));
-        dispatch(setOrder(response))
-        window.open(response?.paymentLinks?.web, "_self");
+        dispatch(setOrder(response));
+        window.open(response?.paymentLinks?.web, "_blank");
       }
     } catch (error) {
       console.error(error);
@@ -70,7 +73,7 @@ const Subscribe = () => {
 
   const onClickCard = (item) => {
     if (auth?.login) {
-      makePayment();
+      makePayment(item);
       setData(item);
     } else {
       setData(item);

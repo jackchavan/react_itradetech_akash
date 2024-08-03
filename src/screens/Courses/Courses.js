@@ -16,28 +16,28 @@ const Courses = () => {
     {
       title: "Foundation Module for Financial Market",
       duration: "Live Classes | 1 week",
-      price: "1999",
+      price: 1999.0,
     },
     {
       title: "Foundation Module for Financial Market",
       duration: "Live Classes | 1 week",
-      price: "1999",
+      price: 1999.0,
     },
     {
       title: "Role of Fundamental Analysis in Market",
       duration: "Live Classes | 1 week",
-      price: "5999",
+      price: 5999.0,
     },
   ];
 
-  const makePayment = async () => {
+  const makePayment = async (item) => {
     const orderId = Math.floor(Math.random() * 90000) + 10000;
 
     const body = {
       orderId: orderId.toString(),
-      customerId: "7890",
-      amount: 1.0,
-      paymentPageClientId: "7890",
+      customerId: auth?.userId.toString(),
+      amount: item.price,
+      paymentPageClientId: auth?.userId.toString(),
       returnUrl: `http://localhost:3000/${PAYMENT_RESPONSE}`,
       customerEmail: 0,
       customer_phone: 0,
@@ -62,7 +62,7 @@ const Courses = () => {
       if (response) {
         dispatch(setOrderId(response.orderId));
         dispatch(setOrder(response))
-        window.open(response?.paymentLinks?.web, "_self");
+        window.open(response?.paymentLinks?.web, "_blank");
       }
     } catch (error) {
       console.error(error);
@@ -72,7 +72,7 @@ const Courses = () => {
 
   const onClickCard = (item) => {
     if (auth?.login) {
-      makePayment();
+      makePayment(item);
       setData(item);
     } else {
       setData(item);
