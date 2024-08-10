@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import {
   ABOUT,
   COURSE_DETAIL,
@@ -12,7 +12,6 @@ import {
 } from "../constants/PathConstants";
 import Home from "../screens/Home/Home";
 import Courses from "../screens/Courses/Courses";
-import Register from "../screens/Register/Register";
 import Login from "../screens/Login/Login";
 import Subscribe from "../screens/Subscribe/Subscribe";
 import About from "../screens/About/About";
@@ -38,10 +37,9 @@ const Routing = () => {
                 <Route exact path={HOME} element={<Home />} />
                 <Route path={ABOUT} element={<About />} />
                 <Route path={COURSES} element={<Courses />} />
-                <Route path={REGISTER} element={<Register />} />
                 <Route path={LOGIN} element={<Login />} />
                 <Route path={SUBSCRIBE} element={<Subscribe />} />
-                <Route path={COURSE_DETAIL+'/:id'} element={<Detail />} />
+                <Route path={COURSE_DETAIL + "/:id"} element={<Detail />} />
                 <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
@@ -58,7 +56,6 @@ const Routing = () => {
               <Route exact path={HOME} element={<Home />} />
               <Route path={ABOUT} element={<About />} />
               <Route path={COURSES} element={<Courses />} />
-              <Route path={REGISTER} element={<Register />} />
               <Route path={LOGIN} element={<Login />} />
               <Route path={SUBSCRIBE} element={<Subscribe />} />
               <Route path={COURSE_DETAIL} element={<Detail />} />

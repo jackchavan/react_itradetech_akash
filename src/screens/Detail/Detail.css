@@ -3,7 +3,7 @@
   background-color: var(--light) !important;
 }
 .detail-box {
-  background: linear-gradient(rgba(40, 120, 235, 1), rgba(40, 120, 235, 0.8)),
+  background: linear-gradient(rgba(3, 77, 110, 1), rgba(3, 77, 110, 0.8)),
     url(../../assets/img/chart.jpg), no-repeat center center;
   height: 280px;
   padding: 40px 40px 20px 40px;

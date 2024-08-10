@@ -2,7 +2,7 @@
   scroll-behavior: smooth;
 }
 .container {
-  background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.7)),
+  background: linear-gradient(rgba(3, 77, 110, 0.9), rgba(3, 77, 110, 0.7)),
     url(../../assets/img/candlestick.png), no-repeat center center;
   background-attachment: fixed;
   text-align: center;

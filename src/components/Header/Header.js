@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css"; // Import the CSS file
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
@@ -8,7 +8,6 @@ import {
   COURSES,
   HOME,
   LOGIN,
-  REGISTER,
   SUBSCRIBE,
 } from "../../constants/PathConstants";
 import { setCourse } from "../../store/actions/CourseActions";
@@ -17,6 +16,7 @@ import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { auth, zIndex } = useSelector((state) => ({
     auth: state?.auth,
@@ -40,6 +40,10 @@ const Header = () => {
 
   const activeLink = (urlPath) => {
     setPath(urlPath);
+  };
+
+  const navTo = () => {
+    navigate(LOGIN);
   };
   return (
     <div className={zIndex ? "header" : "header zIndex"}>
@@ -85,9 +89,17 @@ const Header = () => {
             </Link>
           </li>
           {!isLoggedIn && (
-            <li className="auth-links">
-              <Link to={REGISTER}>Register</Link>
-              <Link to={LOGIN}>Login</Link>
+            <li>
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  activeLink(LOGIN);
+                  navTo()
+                }}
+                className={path === LOGIN ? "active-link" : ""}
+              >
+                Register/Login
+              </Link>
             </li>
           )}
         </ul>

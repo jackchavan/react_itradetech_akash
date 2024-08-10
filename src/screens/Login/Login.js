@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css"; // Import the CSS file
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../services/userService";
+import {
+  login,
+  register,
+  sendOTP,
+  verifyOTP,
+} from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-import { COURSES, HOME, SUBSCRIBE } from "../../constants/PathConstants";
+import { COURSES, HOME, LOGIN, SUBSCRIBE } from "../../constants/PathConstants";
 import { setAuth } from "../../store/actions/AuthActions";
 import { setLoading } from "../../store/actions/CommonActions";
-import { showToast, ToastError, ToastSuccess } from "../../utils/CommonMethods";
+import {
+  showToast,
+  ToastError,
+  ToastSuccess,
+  validateEmail,
+  validateNumber,
+  validatePassword,
+} from "../../utils/CommonMethods";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,11 +28,25 @@ const Login = () => {
     subscribe: state.subscribe,
   }));
   const dispatch = useDispatch();
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPass, setIsValidPass] = useState(null);
 
-  const [userData, setUserData] = useState({
+  const [isVerifyOtp, setIsVerifyOtp] = useState(false);
+  const initialRegisterState = {
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-  });
+    otp: "",
+    mobileNumber: "",
+  };
+  const initialLoginState = {
+    email: "",
+    password: "",
+  };
+  const [userRegister, setUserRegister] = useState(initialRegisterState);
+  const [userLogin, setUserLogin] = useState(initialLoginState);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
     if (auth?.auth?.login) {
@@ -33,11 +59,22 @@ const Login = () => {
       }
     }
   }, [auth]);
-  const setData = (event) => {
+
+  const setLogin = (event) => {
     if (event) {
       const ev = event?.target;
-      setUserData({
-        ...userData,
+      setUserLogin({
+        ...userLogin,
+        [ev.name]: ev.value,
+      });
+    }
+  };
+
+  const setRegister = (event) => {
+    if (event) {
+      const ev = event?.target;
+      setUserRegister({
+        ...userRegister,
         [ev.name]: ev.value,
       });
     }
@@ -47,7 +84,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(setLoading(true));
     const body = {
-      ...userData,
+      ...userLogin,
       firstName: "string",
       lastName: "string",
       otp: "string",
@@ -73,46 +110,236 @@ const Login = () => {
     }
   };
 
+  const registerUser = async () => {
+    dispatch(setLoading(true));
+
+    const body = {
+      ...userRegister,
+      token: "string",
+      status: 0,
+      created_Date: new Date().toISOString(),
+      updated_Date: new Date().toISOString(),
+    };
+    try {
+      const response = await register(body);
+      if (response === "User register Succefully") {
+        dispatch(setLoading(false));
+
+        navigate(LOGIN);
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isVerifyOtp) {
+      generateOTP();
+    } else {
+      if (passwordValidation()) {
+        verifyOtp();
+      }
+    }
+  };
+
+  const passwordValidation = () => {
+    if (confirmPassword !== userRegister.password) {
+      showToast(ToastError, "Password does not match !");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const verifyOtp = async () => {
+    dispatch(setLoading(true));
+
+    const body = {
+      mobileNumber: "",
+      email: userRegister.email,
+      otp: userRegister.otp,
+    };
+    try {
+      const response = await verifyOTP(body);
+      if (response === "OTP verified successfully.") {
+        dispatch(setLoading(false));
+
+        registerUser();
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
+
+  const generateOTP = async () => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await sendOTP(userRegister.email);
+      if (response) {
+        setIsVerifyOtp(true);
+        dispatch(setLoading(false));
+
+        showToast(ToastSuccess, "OTP sent successfully to your email.");
+      }
+    } catch (error) {
+      console.error(error);
+      dispatch(setLoading(false));
+
+      return false;
+    }
+  };
+
+  const resetState = () => {
+    setUserLogin(initialLoginState);
+    setUserRegister(initialRegisterState);
+  };
+
+  const onBlurPassword = (e) => {
+    e.preventDefault();
+    if (userRegister.password.length > 0) {
+      const isValid = validatePassword(userRegister.password);
+      setIsValidPass(isValid);
+      if (!isValid) {
+        showToast(
+          ToastError,
+          `Enter a valid password: At least 8 characters with one lowercase, one uppercase, one number, and one special character (!@#$%^&*).`
+        );
+      }
+    }
+  };
+
+  const onBlurEmail = (e) => {
+    e.preventDefault();
+    const isValid = validateEmail(userRegister.email);
+    setIsValidEmail(isValid);
+    if (!isValid) {
+      showToast(ToastError, "Enter valid email !");
+    }
+  };
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1>Login</h1>
-        <form onSubmit={(e) => onLogin(e)}>
-          <div>
-            <label>Email</label>
+        <input type="checkbox" id="chk" aria-hidden="true" />
+        <div className="signup">
+          <form onSubmit={handleSubmit}>
+            <label
+              htmlFor="chk"
+              aria-hidden="true"
+              onClick={() => resetState()}
+            >
+              Register
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={userRegister.firstName}
+              onChange={(e) => setRegister(e)}
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={userRegister.lastName}
+              onChange={(e) => setRegister(e)}
+              required
+            />
+            <input
+              name="mobileNumber"
+              placeholder="Mobile"
+              type="text"
+              maxLength="10"
+              onInput={validateNumber}
+              value={userRegister.mobileNumber}
+              onChange={(e) => setRegister(e)}
+              required
+            />
             <input
               type="email"
               name="email"
+              placeholder="Email"
+              value={userRegister.email}
+              onChange={(e) => setRegister(e)}
               required
-              value={userData.email}
+              onBlur={onBlurEmail}
+            />
+            {isVerifyOtp && (
+              <>
+                <input
+                  name="otp"
+                  placeholder="OTP"
+                  type="text"
+                  maxLength="6"
+                  onInput={validateNumber}
+                  value={userRegister.otp}
+                  onChange={(e) => setRegister(e)}
+                  required={isValidEmail}
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={userRegister.password}
+                  onChange={(e) => setRegister(e)}
+                  required={isValidEmail}
+                  onBlur={onBlurPassword}
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required={isValidEmail}
+                />
+              </>
+            )}
+            <button type="submit" disabled={!isValidEmail}>
+              {isVerifyOtp ? "Register" : "Generate OTP"}
+            </button>
+          </form>
+        </div>
+        <div className="login">
+          <form onSubmit={onLogin}>
+            <label
+              htmlFor="chk"
+              aria-hidden="true"
+              onClick={() => resetState()}
+            >
+              Login
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              value={userLogin.email}
               onChange={(e) => {
-                setData(e);
+                setLogin(e);
               }}
             />
-          </div>
-          <div>
-            <label>Password</label>
             <input
               type="password"
               name="password"
-              value={userData.password}
+              placeholder="Password"
+              value={userLogin.password}
               required
               onChange={(e) => {
-                setData(e);
+                setLogin(e);
               }}
             />
-          </div>
-          <button
-            // onClick={(e) => {
-            //   e.preventDefault();
-            //   onLogin();
-            // }}
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-        <a href="/forgot-password">Forgot Password?</a>
+            <button type="submit">Login</button>
+          </form>
+        </div>
       </div>
     </div>
   );
