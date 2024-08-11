@@ -7,7 +7,6 @@
   background-attachment: fixed;
   text-align: center;
   color: var(--white);
-  font-family: "Jost", sans-serif;
   height: calc(100vh - 0px);
   justify-content: center;
   display: flex;
@@ -32,7 +31,6 @@
   background-attachment: fixed;
   text-align: center;
   color: var(--dark);
-  font-family: "Jost", sans-serif;
   height: calc(100vh - 90px);
   padding-top: 2rem;
 }

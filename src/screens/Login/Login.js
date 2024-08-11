@@ -67,16 +67,25 @@ const Login = () => {
         ...userLogin,
         [ev.name]: ev.value,
       });
+      event.target.setCustomValidity("");
     }
   };
 
+  const onInvalid = (event) => {
+    const ev = event?.target;
+    if (ev.required && ev?.value?.length === 0) {
+      event.target.setCustomValidity(`${ev.placeholder} is required.`);
+    }
+  };
   const setRegister = (event) => {
     if (event) {
       const ev = event?.target;
+
       setUserRegister({
         ...userRegister,
         [ev.name]: ev.value,
       });
+      event.target.setCustomValidity("");
     }
   };
 
@@ -220,7 +229,7 @@ const Login = () => {
     e.preventDefault();
     const isValid = validateEmail(userRegister.email);
     setIsValidEmail(isValid);
-    if (!isValid) {
+    if (userRegister.email.length > 0 && !isValid) {
       showToast(ToastError, "Enter valid email !");
     }
   };
@@ -241,6 +250,7 @@ const Login = () => {
               type="text"
               name="firstName"
               placeholder="First Name"
+              onInvalid={onInvalid}
               value={userRegister.firstName}
               onChange={(e) => setRegister(e)}
               required
@@ -249,6 +259,7 @@ const Login = () => {
               type="text"
               name="lastName"
               placeholder="Last Name"
+              onInvalid={onInvalid}
               value={userRegister.lastName}
               onChange={(e) => setRegister(e)}
               required
@@ -257,6 +268,7 @@ const Login = () => {
               name="mobileNumber"
               placeholder="Mobile"
               type="text"
+              onInvalid={onInvalid}
               maxLength="10"
               onInput={validateNumber}
               value={userRegister.mobileNumber}
@@ -267,6 +279,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="Email"
+              onInvalid={onInvalid}
               value={userRegister.email}
               onChange={(e) => setRegister(e)}
               required
@@ -278,6 +291,7 @@ const Login = () => {
                   name="otp"
                   placeholder="OTP"
                   type="text"
+                  onInvalid={onInvalid}
                   maxLength="6"
                   onInput={validateNumber}
                   value={userRegister.otp}
@@ -288,6 +302,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  onInvalid={onInvalid}
                   value={userRegister.password}
                   onChange={(e) => setRegister(e)}
                   required={isValidEmail}
@@ -297,13 +312,14 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="Confirm Password"
+                  onInvalid={onInvalid}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required={isValidEmail}
                 />
               </>
             )}
-            <button type="submit" disabled={!isValidEmail}>
+            <button type="submit">
               {isVerifyOtp ? "Register" : "Generate OTP"}
             </button>
           </form>
@@ -318,9 +334,11 @@ const Login = () => {
               Login
             </label>
             <input
+              className="email-input"
               type="email"
               name="email"
               placeholder="Email"
+              onInvalid={onInvalid}
               required
               value={userLogin.email}
               onChange={(e) => {
@@ -331,6 +349,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
+              onInvalid={onInvalid}
               value={userLogin.password}
               required
               onChange={(e) => {
@@ -338,6 +357,9 @@ const Login = () => {
               }}
             />
             <button type="submit">Login</button>
+            <label className="forgot-pass">
+              <a>Forgot password ?</a>
+            </label>
           </form>
         </div>
       </div>

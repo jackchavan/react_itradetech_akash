@@ -23,7 +23,7 @@ const Header = () => {
     zIndex: state.common.zIndex,
   }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
-  const [path, setPath] = useState("");
+  const [path, setPath] = useState("/");
 
   useEffect(() => {
     setIsLoggedIn(auth?.login);
@@ -94,11 +94,11 @@ const Header = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   activeLink(LOGIN);
-                  navTo()
+                  navTo();
                 }}
                 className={path === LOGIN ? "active-link" : ""}
               >
-                Register/Login
+                Login / Register
               </Link>
             </li>
           )}
