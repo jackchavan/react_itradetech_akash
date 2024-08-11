@@ -6,6 +6,7 @@ import {
   refundPolicy,
   termsAndCondition,
 } from "../../constants/Policies";
+import Logo from "../../assets/img/logo.svg";
 const Footer = ({ getTerms }) => {
   const footerData = [
     {
@@ -43,9 +44,13 @@ const Footer = ({ getTerms }) => {
     <div className="box">
       <div className="row">
         <div className="info">
-          <h1>
-            <a>I TRADE TECH</a>
-          </h1>
+          <div className="row footerTitle">
+            <img src={Logo} />
+            <h1>
+              <a>I TRADE TECH</a>
+            </h1>
+          </div>
+
           <p>
             Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at
             et diam est, tempor rebum ipsum sit ea tempor stet et consetetur

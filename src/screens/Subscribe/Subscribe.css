@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: #007bff;
   --secondary-color: #f39c12;
   --text-color: #fff;
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   color: var(--text-color);
-  /*font-size: 1.5rem;*/
+  /*font-size: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 10px;
 }
@@ -79,4 +79,4 @@
 
 .subscribe-button:hover {
   background-color: var(--secondary-color);
-}
+} */

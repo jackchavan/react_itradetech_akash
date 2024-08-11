@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PaymentStatus.css"; // We'll use a common CSS file for both responses
-import { COURSES, SUBSCRIBE } from "../../constants/PathConstants";
+import { COURSE_AND_SUBSCRIBE } from "../../constants/PathConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../store/actions/CommonActions";
 import { getPaymentStatus } from "../../services/paymentService";
@@ -62,7 +62,7 @@ const PaymentStatus = () => {
           <button
             className="response-button"
             onClick={() =>
-              (window.location.href = course ? COURSES : SUBSCRIBE)
+              (window.location.href = COURSE_AND_SUBSCRIBE ? COURSE_AND_SUBSCRIBE : COURSE_AND_SUBSCRIBE)
             }
           >
             Back to {course ? "Courses" : "Subscribe"}
@@ -78,7 +78,7 @@ const PaymentStatus = () => {
           <button
             className="response-button"
             onClick={() =>
-              (window.location.href = course ? COURSES : SUBSCRIBE)
+              (window.location.href = COURSE_AND_SUBSCRIBE ? COURSE_AND_SUBSCRIBE : COURSE_AND_SUBSCRIBE)
             }
           >
             Back to {course ? "Courses" : "Subscribe"}

@@ -11,6 +11,7 @@
   background-size: contain;
 }
 .login-box {
+  margin-top: 5%;
   width: 400px;
   height: 500px;
   overflow: hidden;
@@ -39,7 +40,7 @@ label {
   transition: 0.5s ease-in-out;
 }
 
-input {
+.login-box input {
   width: 60%;
   height: 10px;
   background-color: var(--white);
@@ -51,8 +52,6 @@ input {
   outline: none;
   border-radius: 5px;
   border: 1px var(--gray-light) solid;
-  box-shadow: 0 0 2px var(--dark);
-
 }
 
 input:-webkit-autofill,
@@ -71,7 +70,6 @@ input:-webkit-autofill:active {
   background: var(--primary);
   font-size: 1em;
   font-weight: bold;
-  margin-top: 15px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -87,7 +85,7 @@ button:hover {
   height: 500px;
   background: var(--primary);
   border-radius: 50% / 10%;
-  transform: translateY(-80px);
+  transform: translateY(-70px);
   transition: 0.8s ease-in-out;
 }
 

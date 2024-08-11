@@ -5,21 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
 import {
   ABOUT,
-  COURSES,
+  COURSE_AND_SUBSCRIBE,
   HOME,
   LOGIN,
-  SUBSCRIBE,
 } from "../../constants/PathConstants";
 import { setCourse } from "../../store/actions/CourseActions";
-import { setSubscribe } from "../../store/actions/SubscribeActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
+import ContactHeader from "../ContactHeader/ContactHeader";
+import Logo from "../../assets/img/logo.svg";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { auth, zIndex } = useSelector((state) => ({
-    auth: state?.auth,
+    auth: state?.auth.auth,
     zIndex: state.common.zIndex,
   }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
@@ -33,7 +33,6 @@ const Header = () => {
     localStorage.clear();
     dispatch(setAuth(null));
     dispatch(setCourse(null));
-    dispatch(setSubscribe(null));
     dispatch(setOrderId(null));
     dispatch(setOrder(null));
   };
@@ -46,72 +45,68 @@ const Header = () => {
     navigate(LOGIN);
   };
   return (
-    <div className={zIndex ? "header" : "header zIndex"}>
-      <h1 className="headerTitle">
-        <img className="img-fluid" alt="" src="" />I Trade Tech
-      </h1>
-      <nav>
-        <ul className="nav-links">
-          <li>
-            <Link
-              onClick={() => activeLink(HOME)}
-              className={path === HOME ? "active-link" : ""}
-              to={HOME}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => activeLink(ABOUT)}
-              className={path === ABOUT ? "active-link" : ""}
-              to={ABOUT}
-            >
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => activeLink(COURSES)}
-              className={path === COURSES ? "active-link" : ""}
-              to={COURSES}
-            >
-              Courses
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => activeLink(SUBSCRIBE)}
-              className={path === SUBSCRIBE ? "active-link" : ""}
-              to={SUBSCRIBE}
-            >
-              Subscribe
-            </Link>
-          </li>
-          {!isLoggedIn && (
+    <div className={zIndex ? "mainHeader" : "mainHeader zIndex"}>
+      <ContactHeader />
+      <div className="header">
+        <div className="headerTitle">
+          <img className="img-fluid" alt="" src={Logo} />
+          <h1>I Trade Tech</h1>
+        </div>
+        <nav>
+          <ul className="nav-links">
             <li>
               <Link
-                onClick={(e) => {
-                  e.preventDefault();
-                  activeLink(LOGIN);
-                  navTo();
-                }}
-                className={path === LOGIN ? "active-link" : ""}
+                onClick={() => activeLink(HOME)}
+                className={path === HOME ? "active-link" : ""}
+                to={HOME}
               >
-                Login / Register
+                Home
               </Link>
             </li>
-          )}
-        </ul>
-
-        {isLoggedIn && (
-          <li className="auth-links">
-            <Link to={HOME} onClick={() => clearCache()}>
-              Logout
-            </Link>
-          </li>
-        )}
-      </nav>
+            <li>
+              <Link
+                onClick={() => activeLink(ABOUT)}
+                className={path === ABOUT ? "active-link" : ""}
+                to={ABOUT}
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={() => activeLink(COURSE_AND_SUBSCRIBE)}
+                className={path === COURSE_AND_SUBSCRIBE ? "active-link" : ""}
+                to={COURSE_AND_SUBSCRIBE}
+              >
+                Courses
+              </Link>
+            </li>
+          </ul>
+          <ul className="nav-links">
+            {!isLoggedIn && (
+              <li>
+                <Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    activeLink(LOGIN);
+                    navTo();
+                  }}
+                  className={path === LOGIN ? "active-link" : ""}
+                >
+                  Login / Register
+                </Link>
+              </li>
+            )}
+            {isLoggedIn && (
+              <li>
+                <Link to={HOME} onClick={() => clearCache()}>
+                  Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

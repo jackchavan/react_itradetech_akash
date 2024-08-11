@@ -1,12 +1,9 @@
 @import "../../App.css";
 
-.header {
+.mainHeader {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-  background-color: var(--light);
   position: fixed;
   top: 0;
   width: 100%;
@@ -14,14 +11,38 @@
   z-index: 1001;
 }
 
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--light);
+  height: 50px;
+}
+
+.img-fluid {
+  height: 50px;
+}
 .zIndex {
   z-index: 0 !important;
 }
 .headerTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headerTitle h1 {
   color: var(--primary);
   font-size: 30px;
   font-weight: 700;
   margin: 0;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10%;
 }
 
 .nav-links {

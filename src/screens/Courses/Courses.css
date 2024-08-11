@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: #007bff;
   --secondary-color: #f39c12;
   --text-color: #fff;
@@ -43,7 +43,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   color: var(--text-color);
   display: flex;
-  /*flex-direction: column;*/
+  /*flex-direction: column;
   overflow: hidden;
 }
 
@@ -95,4 +95,4 @@
 
 .enroll-button:hover {
   background-color: var(--secondary-color);
-}
+} */

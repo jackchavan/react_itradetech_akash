@@ -8,7 +8,7 @@ import {
   verifyOTP,
 } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-import { COURSES, HOME, LOGIN, SUBSCRIBE } from "../../constants/PathConstants";
+import { HOME, LOGIN,COURSE_AND_SUBSCRIBE } from "../../constants/PathConstants";
 import { setAuth } from "../../store/actions/AuthActions";
 import { setLoading } from "../../store/actions/CommonActions";
 import {
@@ -51,9 +51,9 @@ const Login = () => {
   useEffect(() => {
     if (auth?.auth?.login) {
       if (course?.course) {
-        navigate(COURSES);
+        navigate(COURSE_AND_SUBSCRIBE);
       } else if (subscribe?.subscribe) {
-        navigate(SUBSCRIBE);
+        navigate(COURSE_AND_SUBSCRIBE);
       } else {
         navigate(HOME);
       }

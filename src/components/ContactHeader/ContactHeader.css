@@ -1,0 +1,10 @@
+.contact-info {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--dark);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+}
