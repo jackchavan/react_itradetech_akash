@@ -12,7 +12,7 @@ import {
 import { setCourse } from "../../store/actions/CourseActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import ContactHeader from "../ContactHeader/ContactHeader";
-import Logo from "../../assets/img/logo.svg";
+import Logo from "../../assets/img/logo.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,6 @@ const Header = () => {
       <div className="header">
         <div className="headerTitle">
           <img className="img-fluid" alt="" src={Logo} />
-          <h1>I Trade Tech</h1>
         </div>
         <nav>
           <ul className="nav-links">
@@ -81,8 +80,6 @@ const Header = () => {
                 Courses
               </Link>
             </li>
-          </ul>
-          <ul className="nav-links">
             {!isLoggedIn && (
               <li>
                 <Link

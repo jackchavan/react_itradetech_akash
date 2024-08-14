@@ -9,6 +9,7 @@ import Img3 from "../../assets/img/course2.jpg";
 import Img4 from "../../assets/img/course3.jpg";
 import { setZindex } from "../../store/actions/CommonActions";
 import { useDispatch } from "react-redux";
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -66,11 +67,15 @@ const Home = () => {
     <div className="mainContainer">
       <div className="container">
         <div className="pt-3rem">
-          <h1 className="h1">Learn From Home</h1>
-          <h1 className="display-1">Trading and Tech Courses</h1>
-          <p>
-            Learn the art of trading with our comprehensive courses and expert
-            guidance.
+          <h1 className="h1">Master the Art of Trading with Expert Guidance</h1>
+          <h2>Welcome to</h2>
+          <h1 className="display-1">I TRADE TECH ACADEMY </h1>
+          <p className="info-div">
+            At I TRADE TECH ACADEMY, we empower aspiring traders and seasoned
+            professionals alike with the knowledge, tools, and confidence to
+            succeed in the financial markets. Whether you're looking to start
+            your trading journey or refine your strategies, our Academy offers
+            comprehensive training programs tailored to your needs.
           </p>
         </div>
       </div>
@@ -82,9 +87,12 @@ const Home = () => {
         </div>
       </div>
 
+      <WhyChooseUs />
+
       <div className="footer-container">
         <Footer getTerms={getTerms} />
       </div>
+
       <CustomModal isOpen={isModal} data={terms} closeModal={closeModal} />
     </div>
   );

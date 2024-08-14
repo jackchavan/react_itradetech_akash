@@ -3,7 +3,7 @@
 @font-face {
   font-family: "sora";
   src: local("sora"),
-    url(./assets/fonts/Sora/Sora-Regular.ttf) format("truetype");
+    url(./assets/fonts/VarelaRound-Regular.ttf) format("truetype");
 }
 
 body {

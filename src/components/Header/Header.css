@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--light);
+  background-color: var(--white);
   height: 50px;
 }
 

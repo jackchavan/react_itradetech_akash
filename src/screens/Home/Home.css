@@ -2,7 +2,7 @@
   scroll-behavior: smooth;
 }
 .container {
-  background: linear-gradient(rgba(3, 77, 110, 0.9), rgba(3, 77, 110, 0.7)),
+  background: linear-gradient(rgba(0, 88, 164, 0.9), rgba(0, 88, 110, 0.7)),
     url(../../assets/img/candlestick.png), no-repeat center center;
   background-attachment: fixed;
   text-align: center;
@@ -14,7 +14,7 @@
 }
 
 .display-1 {
-  font-size: calc(2rem + 5.7vw);
+  font-size: calc(2rem + 4vw);
   font-weight: 300;
   line-height: 1.2;
   margin: 0 !important;
@@ -22,7 +22,7 @@
 }
 .h1 {
   font-size: 2.5rem;
-  margin: 0 !important;
+  margin: 0 20px !important;
   font-weight: 700 !important;
 }
 
@@ -39,7 +39,12 @@
 }
 
 .footer-container {
-  height: calc(100vh - 110px);
   background: var(--dark);
   padding: 2rem;
+}
+
+.info-div{
+  font-size: 16px;
+  font-weight: 700;
+  padding: 40px;
 }

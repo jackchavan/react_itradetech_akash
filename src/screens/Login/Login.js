@@ -149,7 +149,7 @@ const Login = () => {
     if (!isVerifyOtp) {
       generateOTP();
     } else {
-      if (passwordValidation()) {
+      if (!isValidPass && passwordValidation()) {
         verifyOtp();
       }
     }

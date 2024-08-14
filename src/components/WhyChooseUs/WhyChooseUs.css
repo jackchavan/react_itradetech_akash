@@ -1,0 +1,38 @@
+.why-container {
+  padding: 5rem;
+  color: var(--dark);
+  background-color: var(--white);
+}
+
+.secondary {
+  background-color: var(--secondary);
+}
+
+.btn-icon {
+  width: 77px;
+  height: 77px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.obj-fit {
+  object-fit: cover;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.why-desc{
+  margin-top: 0%;
+  margin-bottom: 1rem;
+}
+.why-title{
+  margin-top: 0%;
+  margin-bottom: 1rem;
+}

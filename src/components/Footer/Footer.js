@@ -52,15 +52,17 @@ const Footer = ({ getTerms }) => {
           </div>
 
           <p>
-            Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at
-            et diam est, tempor rebum ipsum sit ea tempor stet et consetetur
-            dolores. Justo stet diam ipsum lorem vero clita diam
+            At I TRADE TECH ACADEMY, we empower aspiring traders and seasoned
+            professionals alike with the knowledge, tools, and confidence to
+            succeed in the financial markets. Whether you're looking to start
+            your trading journey or refine your strategies, our Academy offers
+            comprehensive training programs tailored to your needs.
           </p>
         </div>
         <div className="info"></div>
       </div>
       <div className="row">
-        <div className="col-md-4 mb-5">
+        <div className="col-md-4 mb-2">
           <h3 className="text-white mb-4">Get In Touch</h3>
           <p>
             <i className="fa fa-map-marker mr-2"></i>A/103, Sheetal standard
@@ -114,19 +116,19 @@ const Footer = ({ getTerms }) => {
         </div>
       </div>
       <div className="footer">
-        <div className="row" style={{ justifyContent: "space-between" }}>
-          <div className="col-md-6 text-center text-md-left mb-3 mb-md-0">
+        <div className="row mt-1" style={{ justifyContent: "space-between" }}>
+          <div className="col-md-6 text-center text-md-left mb-md-0">
             <p className="m-0">
-              Copyright ©{" "}
+              Copyright ©{"  "}
               <a className="text-white" href="#">
-                I Trade Tech{" "}
+                I Trade Tech
               </a>
               . All Rights Reserved.
             </p>
           </div>
           <div className="col-md-6 text-center text-md-right">
             <p className="m-0">
-              Designed by{" "}
+              Designed by{"  "}
               <a className="text-white" href="#">
                 I Trade Tech
               </a>
