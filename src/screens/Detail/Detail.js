@@ -52,7 +52,7 @@ const Detail = () => {
   const card = () => {
     return (
       <div className="card-deatil">
-        <img className="img" src={Img} />
+        <img className="img-detail" src={Img} />
         <div className="sub-section">
           <span className="rupee">&#8377; {"1200"}</span>
           <div className="card-details">

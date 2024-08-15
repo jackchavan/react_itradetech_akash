@@ -4,7 +4,7 @@
   display: flex;
   justify-content: flex-end;
   
-  background: linear-gradient(rgba(3, 77, 110, 0.1), rgba(3, 77, 110, 0.1)),
+  background: linear-gradient(rgba(0, 88, 164, 0.1), rgba(0, 88, 164, 0.1)),
     url(../../assets/img/bg-login.png), center center;
   background-attachment: fixed;
   background-size: contain;
