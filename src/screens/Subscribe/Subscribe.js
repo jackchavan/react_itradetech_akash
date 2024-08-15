@@ -15,16 +15,19 @@ const Subscribe = () => {
 
   const subscribeData = [
     {
+      code: 1,
       title: "Level 1 Course",
       subTitle: "Basic trading concepts for beginners.",
       price: 100.0,
     },
     {
+      code: 2,
       title: "Level 2 Course",
       subTitle: "Advanced trading strategies and techniques.",
       price: 200.0,
     },
     {
+      code: 3,
       title: "Combined Course",
       subTitle: "Get access to both Level 1 and Level 2 courses.",
       price: 500.0,
@@ -57,6 +60,7 @@ const Subscribe = () => {
       udf8: "string",
       udf9: "string",
       udf10: "string",
+      CourseCode: item?.code
     };
     try {
       const response = await initiatePayment(body);
