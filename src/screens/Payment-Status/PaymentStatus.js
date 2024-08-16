@@ -16,7 +16,7 @@ const PaymentStatus = () => {
     course: state.course.course,
     subscribe: state.subscribe.subscribe,
   }));
-  const [status, setStatus] = useState(true);
+  const [status, setStatus] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null);
 
   const getTransactionStatus = async () => {
@@ -27,11 +27,12 @@ const PaymentStatus = () => {
         setStatus(true);
       } else if (response.status === "AUTHORIZATION_FAILED") {
         setStatus(false);
+      } else if (response.status === "NEW") {
+        setStatus("cancel");
       }
       dispatch(setLoading(false));
       dispatch(setOrderId(null));
     } catch (error) {
-      console.error(error);
       dispatch(setLoading(false));
       navigate(-1);
       return false;
@@ -75,6 +76,21 @@ const PaymentStatus = () => {
             We're sorry, but your transaction could not be completed. Please try
             again.
           </p>
+          <button
+            className="response-button"
+            onClick={() =>
+              (window.location.href = course ? COURSES : SUBSCRIBE)
+            }
+          >
+            Back to {course ? "Courses" : "Subscribe"}
+          </button>
+        </div>
+      ) : status === "cancel" ? (
+        <div>
+          <h1 className="success-message">Transaction cancelled !</h1>
+          <p>Your transaction has been cancelled.</p>
+          <p>order Id : {paymentStatus?.order_id}</p>
+
           <button
             className="response-button"
             onClick={() =>
