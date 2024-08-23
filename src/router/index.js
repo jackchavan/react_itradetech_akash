@@ -24,45 +24,35 @@ const Routing = () => {
     <div>
       {auth?.login ? (
         <React.Fragment>
-          <div className="min-w-[300px] sticky top-0 z-50 bg-white">
-            <Header />
-          </div>
+          <Header />
 
-          <div>
-            <div className="px-5 sm:px-10 min-w-[300px] ">
-              <Routes>
-                <Route exact path={HOME} element={<Home />} />
-                <Route path={ABOUT} element={<About />} />
-                <Route
-                  path={COURSE_AND_SUBSCRIBE}
-                  element={<CourseAndSubscribeContainer />}
-                />
-                <Route path={LOGIN} element={<Login />} />
-                <Route path={COURSE_DETAIL} element={<Detail />} />
-                <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
-            </div>
-          </div>
+          <Routes>
+            <Route exact path={HOME} element={<Home />} />
+            <Route path={ABOUT} element={<About />} />
+            <Route
+              path={COURSE_AND_SUBSCRIBE}
+              element={<CourseAndSubscribeContainer />}
+            />
+            <Route path={LOGIN} element={<Login />} />
+            <Route path={COURSE_DETAIL} element={<Detail />} />
+            <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <div className="min-w-[300px] sticky top-0 z-50 bg-white">
-            <Header />
-          </div>
-          <div className=" min-w-[300px] px-5 sm:px-10">
-            <Routes>
-              <Route exact path={HOME} element={<Home />} />
-              <Route path={ABOUT} element={<About />} />
-              <Route
-                path={COURSE_AND_SUBSCRIBE}
-                element={<CourseAndSubscribeContainer />}
-              />
-              <Route path={LOGIN} element={<Login />} />
-              <Route path={COURSE_DETAIL} element={<Detail />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </div>
+          <Header />
+          <Routes>
+            <Route exact path={HOME} element={<Home />} />
+            <Route path={ABOUT} element={<About />} />
+            <Route
+              path={COURSE_AND_SUBSCRIBE}
+              element={<CourseAndSubscribeContainer />}
+            />
+            <Route path={LOGIN} element={<Login />} />
+            <Route path={COURSE_DETAIL} element={<Detail />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         </React.Fragment>
       )}
     </div>

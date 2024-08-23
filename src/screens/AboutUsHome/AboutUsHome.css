@@ -1,0 +1,40 @@
+.about-home {
+  background-color: var(--offWhite);
+  display: flex;
+  flex-direction: column;
+  margin-top: -50px;
+
+}
+.aboutDevider{
+  width: 89.5%;
+  align-self: center;
+}
+.aboutHome-continer{
+  padding: 10px;
+  text-align: center;
+}
+.about-home-title {
+  margin: 0;
+  padding: 0;
+  font-family: 'shadow-light' !important;
+  font-size: 80px;
+  background: linear-gradient(180deg, rgb(230, 143,22), rgb(206,111,29));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-subtitle {
+  margin: 0;
+  margin-top: -40px;
+  padding: 0;
+  font-size: 40px;
+  font-family: 'leela-bold' !important;
+  color: var(--primary);
+}
+
+.aboutHome-continer p{
+  text-wrap: balance;
+  color: var(--dark);
+}

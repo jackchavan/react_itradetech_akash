@@ -14,7 +14,7 @@ const customStyles = {
     height: "80%",
     width: "70%",
     borderRadius:"10px",
-    backgroundColor:"var(--light)"
+    backgroundColor:"var(--white)"
   },
 };
 

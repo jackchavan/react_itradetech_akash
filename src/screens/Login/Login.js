@@ -234,6 +234,9 @@ const Login = () => {
     }
   };
   return (
+    <div className="login-div">
+
+   
     <div className="login-container">
       <div className="login-box">
         <input type="checkbox" id="chk" aria-hidden="true" />
@@ -356,13 +359,14 @@ const Login = () => {
                 setLogin(e);
               }}
             />
-            <button type="submit">Login</button>
+            <button type="submit">LOGIN</button>
             <label className="forgot-pass">
               <a>Forgot password ?</a>
             </label>
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

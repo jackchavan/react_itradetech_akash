@@ -7,4 +7,8 @@
   color: var(--white);
   font-size: 12px;
   font-weight: 600;
+  flex-wrap: wrap;
+  p{
+    margin: 5px;
+  }
 }

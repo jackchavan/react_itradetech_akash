@@ -1,9 +1,25 @@
 @import "font-awesome/css/font-awesome.min.css";
 
 @font-face {
-  font-family: "sora";
-  src: local("sora"),
+  font-family: "varela";
+  src: local("varela"),
     url(./assets/fonts/VarelaRound-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "leela-regular";
+  src: local("leela-regular"),
+    url(./assets/fonts/LEELAWAD.TTF) format("truetype");
+}
+@font-face {
+  font-family: "leela-bold";
+  src: local("leela-bold"), url(./assets/fonts/LEELAWDB.TTF) format("truetype");
+}
+
+@font-face {
+  font-family: "shadow-light";
+  src: local("shadow-light"),
+    url(./assets/fonts/ShadowsIntoLight-Regular.ttf) format("truetype");
 }
 
 body {
@@ -15,6 +31,6 @@ body {
   line-height: 1.5;
   color: #6b6a75;
   text-align: left;
-  background-color: #eef5ff;
-  font-family: sora;
+  font-family: "leela-regular";
 }
+
