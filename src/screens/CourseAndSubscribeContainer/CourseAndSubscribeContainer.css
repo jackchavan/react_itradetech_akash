@@ -1,6 +1,7 @@
 .div-container {
-  margin-top: 90px;
+  margin-top: 66px;
   padding: 20px;
+  background-color: var(--primary);
 }
 .search-container{
   display: flex;

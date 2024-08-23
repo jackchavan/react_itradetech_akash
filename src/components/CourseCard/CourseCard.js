@@ -9,12 +9,9 @@ const CourseCard = ({ data }) => {
 
   const nvaigate = useNavigate();
 
-  const p =
-    "Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps";
-
   const onClickCard = (data) => {
     console.log(key);
-    nvaigate(COURSE_DETAIL);
+    nvaigate(`${COURSE_DETAIL}/${data.id}`);
   };
   return (
     <div key={key} className="card">
@@ -25,7 +22,7 @@ const CourseCard = ({ data }) => {
       <div className="course-info">
         <span className="course-title">{data?.title ?? ""}</span>
         <p className="course-subTitle">
-          {data?.duration ?? p.substring(0, 30).concat("...")}
+          {data?.description}
         </p>
       </div>
 

@@ -24,30 +24,35 @@ const Home = () => {
   useEffect(() => {
     setCourses([
       {
+        id: 3,
         title: "Beginner's",
         duration: "Live Classes | 1 week",
         price: "1999",
         img: Img1,
       },
       {
+        id: 3,
         title: "Advance",
         duration: "Live Classes | 1 week",
         price: "1999",
         img: Img2,
       },
       {
+        id: 3,
         title: "Professional",
         duration: "Live Classes | 1 week",
         price: "5999",
         img: Img3,
       },
       {
+        id: 3,
         title: "Live",
         duration: "Live Classes | 1 week",
         price: "1999",
         img: Img4,
       },
       {
+        id: 3,
         title: "Foundation Module",
         duration: "Live Classes | 1 week",
         price: "1999",

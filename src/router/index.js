@@ -34,7 +34,7 @@ const Routing = () => {
               element={<CourseAndSubscribeContainer />}
             />
             <Route path={LOGIN} element={<Login />} />
-            <Route path={COURSE_DETAIL} element={<Detail />} />
+            <Route path={COURSE_DETAIL+"/:id"} element={<Detail />} />
             <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
@@ -50,7 +50,7 @@ const Routing = () => {
               element={<CourseAndSubscribeContainer />}
             />
             <Route path={LOGIN} element={<Login />} />
-            <Route path={COURSE_DETAIL} element={<Detail />} />
+            <Route path={COURSE_DETAIL+"/:id"} element={<Detail />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </React.Fragment>

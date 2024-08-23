@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CourseAndSubscribeContainer.css";
 import CourseCard from "../../components/CourseCard/CourseCard";
 import Img1 from "../../assets/img/test.jpg";
 import Img2 from "../../assets/img/course1.jpg";
 import Img3 from "../../assets/img/course2.jpg";
 import Img4 from "../../assets/img/course3.jpg";
+import { getAllCourses } from "../../services/courseService";
+import { useDispatch } from "react-redux";
+import { setLoading } from "../../store/actions/CommonActions";
 
 const CourseAndSubscribeContainer = () => {
   const courseData = [
@@ -99,9 +102,29 @@ const CourseAndSubscribeContainer = () => {
       img: Img2,
     },
   ];
+  const dispatch = useDispatch();
+  const [courses, setCourses] = useState([]);
 
-  const [courses, setCourses] = useState(courseData);
+  useEffect(() => {
+    getCourses();
+  }, []);
 
+  const getCourses = async () => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await getAllCourses();
+      if (response) {
+        setCourses(response)
+        dispatch(setLoading(false));
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
   const onSearch = (e) => {
     const searchTerm = e.target.value;
 

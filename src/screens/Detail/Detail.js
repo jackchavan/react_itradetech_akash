@@ -2,23 +2,28 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Detail.css";
 import Img from "../../assets/img/course2.jpg";
+import { useDispatch } from "react-redux";
+import { getCourseDetail } from "../../services/courseService";
+import { setLoading } from "../../store/actions/CommonActions";
+
 const Detail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [list, setList] = useState([
     "Build 16 web development projects for your portfolio",
     "ready to apply for junior developer jobs. Learn the latest technologies",
     "including Javascript, React, Node and even Web3 development",
     "Build 16 web development projects for your portfolio",
   ]);
-  useEffect(() => {
-    console.log(id);
-  }, []);
+
+  const [courseDetail, setCourseDetail] = useState({})
+
 
   const detilsData = [
     {
       icon: "fa fa-clock-o",
       label: "Duration",
-      value: "205 minutes",
+      value: `${courseDetail?.duration} minutes`,
     },
     {
       icon: "fa fa-book",
@@ -27,8 +32,8 @@ const Detail = () => {
     },
     {
       icon: "fa fa-play-circle-o",
-      label: "Video",
-      value: "205 minutes",
+      label: "Mode",
+      value: `${courseDetail?.mode}`,
     },
     {
       icon: "fa fa-tachometer",
@@ -37,6 +42,26 @@ const Detail = () => {
     },
   ];
 
+  useEffect(() => {
+    getDetail(id);
+  }, []);
+
+  const getDetail = async (id) => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await getCourseDetail(id);
+      if (response) {
+        setCourseDetail(response)
+        dispatch(setLoading(false));
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
   const cardDetails = () => {
     return detilsData.map((item, i) => (
       <div className="list-item">
@@ -54,10 +79,8 @@ const Detail = () => {
       <div className="card-deatil">
         <img className="img-detail" src={Img} />
         <div className="sub-section">
-          <span className="rupee">&#8377; {"1200"}</span>
-          <div className="card-details">
-            {cardDetails()}
-          </div>
+          <span className="rupee">&#8377; {courseDetail?.cost}</span>
+          <div className="card-details">{cardDetails()}</div>
           <button className="btn-enroll-now">Enroll Now</button>
         </div>
       </div>
@@ -65,17 +88,16 @@ const Detail = () => {
   };
 
   const learnList = () => {
-    return list.map((item, i) => <li className="li-learn">{item}</li>);
+    return list.map((item, i) => <li key={i} className="li-learn">{item}</li>);
   };
 
   return (
     <div className="detail-continer">
       <div className="detail-box">
         <div className="desc-div">
-          <span className="title">Title</span>
+          <span className="title">{courseDetail?.title}</span>
           <span className="description">
-            10 Hours of React just added. Become a Developer With ONE course -
-            HTML, CSS, JavaScript, React, Node, MongoDB and More!
+            {courseDetail.description}
           </span>
         </div>
       </div>
