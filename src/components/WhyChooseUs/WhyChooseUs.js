@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
   const listItem = (item, i) => {
     return (
       <div className={item.class} key={i}>
-        <img src={item.icon} className={`btn-icon mr-4`} />
+        <img src={item.icon} className={`btn-icon mr-4`} alt="icon" />
         <div className="mt-n1">
           <h3 className="why-title fw-600">{item.title}</h3>
           <p className="why-desc">{item.description}</p>
@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
 
   return (
     <div className="why-div">
-      <img className="why-devider" src={DeviderGray} />
+      <img className="why-devider" src={DeviderGray} alt="devider"/>
       <h1>Reasons</h1>
       <div className="mb-4">
         <h2 className="display-4 text-uppercase">TO CHOOSE US</h2>
@@ -75,7 +75,7 @@ const WhyChooseUs = () => {
         <div className="why-list">
           {data.map((item, index) => listItem(item, index))}
         </div>
-        <img className="obj-fit" src={whyImg} />
+        <img className="obj-fit" src={whyImg} alt="img"/>
       </div>
       {/* <div className="why-container">
         <div className="why-row">

@@ -16,9 +16,9 @@ const CourseCard = ({ data }) => {
   return (
     <div key={key} className="card">
       <div className="course-img">
-        <img className="banner" src={data?.img ? data?.img : Img} />
+        <img alt="banner" className="banner" src={data?.img ? data?.img : Img} />
       </div>
-      <img className="candel-icon" src={Candel} />
+      <img alt="icon" className="candel-icon" src={Candel} />
       <div className="course-info">
         <span className="course-title">{data?.title ?? ""}</span>
         <p className="course-subTitle">

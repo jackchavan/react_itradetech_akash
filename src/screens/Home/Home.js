@@ -7,13 +7,11 @@ import Img1 from "../../assets/img/test.jpg";
 import Img2 from "../../assets/img/course1.jpg";
 import Img3 from "../../assets/img/course2.jpg";
 import Img4 from "../../assets/img/course3.jpg";
-import DividerBlue from "../../assets/img/deviderBlue.png";
-import DividerOrange from "../../assets/img/deviderOrange.png";
-import HomeBanner from "../../assets/img/home-banner.svg";
 import { setZindex } from "../../store/actions/CommonActions";
 import { useDispatch } from "react-redux";
 import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 import AboutUsHome from "../AboutUsHome/AboutUsHome";
+import FeedBack from "../FeedBack/FeedBack";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -82,12 +80,13 @@ const Home = () => {
         <h1 className="mb-3">COURSES</h1>
 
         <div className="carousel-container-div">
-          <CustomCarousel data={courses} />
+          <CustomCarousel data={courses} type={"course"} />
         </div>
       </div>
 
       <WhyChooseUs />
 
+      <FeedBack/>
       <Footer getTerms={getTerms} />
 
       <CustomModal isOpen={isModal} data={terms} closeModal={closeModal} />

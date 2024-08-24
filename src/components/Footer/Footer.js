@@ -46,7 +46,7 @@ const Footer = ({ getTerms }) => {
         <div className="row">
           <div className="">
             <div className="footerTitle">
-              <img src={Logo} />
+              <img alt="logo" src={Logo} />
             </div>
           </div>
           <div className="info ml-">

@@ -5,7 +5,7 @@ import AboutDevider from "../../assets/img/deviderGrey.png";
 const AboutUsHome = () => {
   return (
     <div className="about-home">
-      <img className="aboutDevider" src={AboutDevider} />
+      <img className="aboutDevider" src={AboutDevider} alt="devider"/>
 
       <div className="aboutHome-continer">
         <h3 className="about-home-title">About</h3>

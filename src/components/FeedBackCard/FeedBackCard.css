@@ -1,0 +1,24 @@
+.feedback-card {
+  color: white;
+  text-align: center;
+}
+.feedback-img {
+  height: 210px;
+  width: 210px;
+  border: 10px solid rgba(0, 0, 0, 0.1);
+  outline-color: azure;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.feedback-img img {
+  height: 190px;
+  width: 190px;
+  border: 10px solid var(--warning);
+  outline-color: azure;
+  border-radius: 50%;
+}
+
+.feedback-card p {
+  font-family: "shadow-light" !important;
+}

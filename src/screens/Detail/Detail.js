@@ -77,7 +77,7 @@ const Detail = () => {
   const card = () => {
     return (
       <div className="card-deatil">
-        <img className="img-detail" src={Img} />
+        <img className="img-detail" src={Img} alt="img"/>
         <div className="sub-section">
           <span className="rupee">&#8377; {courseDetail?.cost}</span>
           <div className="card-details">{cardDetails()}</div>

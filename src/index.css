@@ -32,5 +32,6 @@ body {
   color: #6b6a75;
   text-align: left;
   font-family: "leela-regular";
+  background-color: var(--primary);
 }
 

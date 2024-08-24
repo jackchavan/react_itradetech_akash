@@ -3,6 +3,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CourseCard from "../CourseCard/CourseCard";
 import { SyncLoader } from "react-spinners";
+import FeedBackCard from "../FeedBackCard/FeedBackCard";
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -21,11 +23,10 @@ const responsive = {
     items: 1,
   },
 };
-const CustomCarousel = ({ data }) => {
+const CustomCarousel = ({ data, type }) => {
   const [sliderData, setSliderData] = useState([]);
 
   useEffect(() => {
-    console.log("++++++", data);
     setSliderData(data);
   }, [data]);
   return (
@@ -49,9 +50,11 @@ const CustomCarousel = ({ data }) => {
           // dotListClass="custom-dot-list-style"
           itemClass="pd-20"
         >
-          {sliderData?.map((item, i) => (
-            <CourseCard data={item} key={i} />
-          ))}
+          {type === "course" &&
+            sliderData?.map((item, i) => <CourseCard data={item} key={i} />)}
+
+          {type === "feedback" &&
+            sliderData?.map((item, i) => <FeedBackCard data={item} key={i} />)}
         </Carousel>
       ) : (
         <div className="loader-spinner">

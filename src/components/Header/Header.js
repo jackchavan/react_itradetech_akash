@@ -49,7 +49,7 @@ const Header = () => {
       <ContactHeader />
       <div className="header">
         <div className="headerTitle">
-          <img className="img-fluid" alt="" src={Logo} />
+          <img className="img-fluid" alt="logo" src={Logo} />
         </div>
         <nav>
           <ul className="nav-links">
