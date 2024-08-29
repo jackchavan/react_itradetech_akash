@@ -2,28 +2,43 @@ import React from "react";
 import "./CourseCard.css";
 import Img from "../../assets/img/test.jpg";
 import { useNavigate } from "react-router-dom";
-import { COURSE_DETAIL } from "../../constants/PathConstants";
 import Candel from "../../assets/img/candel.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setCourse } from "../../store/actions/CourseActions";
+import { COURSE_DETAIL, LOGIN } from "../../constants/PathConstants";
+import { getUniqueId } from "../../utils/CommonMethods";
 const CourseCard = ({ data }) => {
-  const key = Math.floor(Math.random() * 90000) + 10000;
+  const { auth } = useSelector((state) => state.auth);
 
-  const nvaigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onClickCard = (data) => {
-    console.log(key);
-    nvaigate(`${COURSE_DETAIL}/${data.id}`);
+  const setData = (item) => {
+    dispatch(setCourse(item));
   };
+  const onClickCard = (item) => {
+    if (auth?.login) {
+      setData(item);
+      navigate(`${COURSE_DETAIL}/${item.id}`);
+    } else {
+      setData(item);
+      navigate(LOGIN);
+    }
+  };
+
   return (
-    <div key={key} className="card">
+    <div key={getUniqueId()} className="card">
       <div className="course-img">
-        <img alt="banner" className="banner" src={data?.img ? data?.img : Img} />
+        <img
+          alt="banner"
+          className="banner"
+          src={data?.img ? data?.img : Img}
+        />
       </div>
       <img alt="icon" className="candel-icon" src={Candel} />
       <div className="course-info">
         <span className="course-title">{data?.title ?? ""}</span>
-        <p className="course-subTitle">
-          {data?.description}
-        </p>
+        <p className="course-subTitle">{data?.description}</p>
       </div>
 
       <button

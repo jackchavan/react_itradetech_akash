@@ -1,3 +1,7 @@
+body{
+  background-color: var(--white);
+}
+
 .detail-continer {
   height: 100vh;
   background-color: var(--white) !important;

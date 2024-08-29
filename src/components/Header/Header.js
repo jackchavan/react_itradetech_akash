@@ -13,6 +13,8 @@ import { setCourse } from "../../store/actions/CourseActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import ContactHeader from "../ContactHeader/ContactHeader";
 import Logo from "../../assets/img/logo.png";
+import styled from "styled-components";
+import Bar from '../../assets/img/bar-icon.png'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,6 +26,11 @@ const Header = () => {
   }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
   const [path, setPath] = useState("/");
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
+
+  const handleToggleOpen = () => {
+    setIsToggleOpen(!isToggleOpen);
+  };
 
   useEffect(() => {
     setIsLoggedIn(auth?.login);
@@ -47,13 +54,13 @@ const Header = () => {
   return (
     <div className={zIndex ? "mainHeader" : "mainHeader zIndex"}>
       <ContactHeader />
-      <div className="header">
-        <div className="headerTitle">
+      <StyledHeader>
+        <div className="nav_logo">
           <img className="img-fluid" alt="logo" src={Logo} />
         </div>
         <nav>
-          <ul className="nav-links">
-            <li>
+          <NavManu className="nav-links" isToggleOpen={isToggleOpen}>
+            <li className="nav-menu-list">
               <Link
                 onClick={() => activeLink(HOME)}
                 className={path === HOME ? "active-link" : ""}
@@ -62,7 +69,7 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li>
+            <li className="nav-menu-list">
               <Link
                 onClick={() => activeLink(ABOUT)}
                 className={path === ABOUT ? "active-link" : ""}
@@ -71,7 +78,7 @@ const Header = () => {
                 About Us
               </Link>
             </li>
-            <li>
+            <li className="nav-menu-list">
               <Link
                 onClick={() => activeLink(COURSE_AND_SUBSCRIBE)}
                 className={path === COURSE_AND_SUBSCRIBE ? "active-link" : ""}
@@ -81,7 +88,7 @@ const Header = () => {
               </Link>
             </li>
             {!isLoggedIn && (
-              <li>
+              <li className="nav-menu-list">
                 <Link
                   onClick={(e) => {
                     e.preventDefault();
@@ -95,17 +102,75 @@ const Header = () => {
               </li>
             )}
             {isLoggedIn && (
-              <li>
+              <li className="nav-menu-list">
                 <Link to={HOME} onClick={() => clearCache()}>
                   Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
                 </Link>
               </li>
             )}
-          </ul>
+          </NavManu>
         </nav>
-      </div>
+        <img src={Bar} className="menuToggleBtn" onClick={handleToggleOpen} />
+
+      </StyledHeader>
     </div>
   );
 };
 
+const StyledHeader = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  .nav_logo {
+    padding: 0 12px;
+    .nav-logo-link {
+      text-decoration: none;
+      font-size: 24px;
+      color: #fab005;
+      font-weight: bold;
+    }
+  }
+  .menuToggleBtn {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    cursor: pointer;
+    height:40px;
+    width:40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    .menuToggleBtn {
+      display: block;
+    }
+  }
+`;
+const NavManu = styled.ul`
+  list-style: none;
+  display: flex;
+
+  li {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .nav-menu-list {
+    text-decoration: none;
+    display: block;
+    padding: 10px 10px;
+  }
+  @media screen and (max-width: 768px) {
+    display: ${(props) => (props.isToggleOpen ? "block" : "none")};
+    flex-direction: column;
+    transition: display 1s ease;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+  }
+`;
 export default Header;

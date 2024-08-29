@@ -3,7 +3,7 @@
   background: linear-gradient(rgba(0, 88, 164, 1), rgba(0, 88, 164, 0.8));
 }
 
-h4 {
+.feedback-container h4 {
   margin: 0;
   padding: 0;
   font-family: "shadow-light" !important;
@@ -15,7 +15,7 @@ h4 {
   text-align: center;
   color: transparent;
 }
-h2 {
+.feedback-container h2 {
   margin: 0;
   padding: 0;
   color: var(--white);

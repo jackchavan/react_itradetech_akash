@@ -1,6 +1,9 @@
 .feedback-card {
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .feedback-img {
   height: 210px;
@@ -20,5 +23,21 @@
 }
 
 .feedback-card p {
-  font-family: "shadow-light" !important;
+  font-family: "leela-regular" !important;
+  margin: 0;
+}
+.feedback-card h1 {
+  margin: 0;
+  padding: 0;
+}
+.comma {
+  height: 50px;
+  width: 50px;
+  margin-top: -40px;
+}
+
+.i-comma {
+  height: 24px;
+  width: 24px;
+  margin: 10px;
 }

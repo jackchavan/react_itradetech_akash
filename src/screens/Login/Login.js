@@ -8,7 +8,7 @@ import {
   verifyOTP,
 } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-import { HOME, LOGIN,COURSE_AND_SUBSCRIBE } from "../../constants/PathConstants";
+import { HOME, LOGIN, COURSE_DETAIL } from "../../constants/PathConstants";
 import { setAuth } from "../../store/actions/AuthActions";
 import { setLoading } from "../../store/actions/CommonActions";
 import {
@@ -51,9 +51,7 @@ const Login = () => {
   useEffect(() => {
     if (auth?.auth?.login) {
       if (course?.course) {
-        navigate(COURSE_AND_SUBSCRIBE);
-      } else if (subscribe?.subscribe) {
-        navigate(COURSE_AND_SUBSCRIBE);
+        navigate(`${COURSE_DETAIL}/${course?.course.id}`);
       } else {
         navigate(HOME);
       }
@@ -131,7 +129,7 @@ const Login = () => {
     };
     try {
       const response = await register(body);
-      if (response === "User register Succefully") {
+      if (response === "User registered Succefully") {
         dispatch(setLoading(false));
 
         navigate(LOGIN);

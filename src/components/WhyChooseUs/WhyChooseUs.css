@@ -44,6 +44,8 @@
 .why-desc {
   margin-top: 0%;
   margin-bottom: 1rem;
+  font-weight: 700;
+  color: var(--dark);
 }
 .why-title {
   margin-top: 0%;

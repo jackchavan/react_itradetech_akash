@@ -16,6 +16,10 @@ export const validateNumber = (e) => {
   return (e.target.value = e.target.value.replace(/[^0-9]/g, ""));
 };
 
+export const getUniqueId =()=>{
+  return Math.floor(Math.random() * 90000) + 10000;
+}
+
 export const ToastSuccess = "success";
 export const ToastWarn = "warning";
 export const ToastError = "error";
