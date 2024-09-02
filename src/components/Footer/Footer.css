@@ -125,3 +125,16 @@
   font-size: 14px;
   font-weight: 700;
 }
+
+.x-div a{
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  background-color: var(--white);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+.x{
+  height: 20px;
+}

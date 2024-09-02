@@ -7,6 +7,10 @@ import {
   termsAndCondition,
 } from "../../constants/Policies";
 import Logo from "../../assets/img/footer-logo.png";
+import X from "../../assets/img/x.svg";
+import F from "../../assets/img/facebook.svg";
+import I from "../../assets/img/insta.svg";
+import L from "../../assets/img/linkedIn.svg";
 const Footer = ({ getTerms }) => {
   const footerData = [
     {
@@ -18,6 +22,13 @@ const Footer = ({ getTerms }) => {
       ],
     },
   ];
+
+  const links = {
+    fb: "https://www.facebook.com/profile.php?id=61560966338042&mibextid=ZbWKwL",
+    lin: "https://www.linkedin.com/company/itt-itradetech/",
+    x: "https://x.com/itt_itradetech?t=yAKKNiz3UMBbfT12-5-X7Q&s=09",
+    insta: "https://www.instagram.com/itt_itradetech?igsh=MWxpcXB2MzNkcTVncg==",
+  };
 
   const listItem = (data) => {
     return data.map((item, i) =>
@@ -75,31 +86,31 @@ const Footer = ({ getTerms }) => {
             <p>
               <i className="fa fa-envelope mr-2"></i>support@itradetech.info
             </p>
-            {/* <div className="d-flex justify-content-start mt-4">
-              <a className="text-white mr-4" href="#">
-                <i className="fab fa-2x fa-twitter"></i>
+            <div className="d-flex justify-content-center mt-4 x-div">
+              <h3 className="mr-0 mr-4">Follow us</h3>
+
+              <a className="text-white mr-4" href={links.fb}>
+                <img className="x" src={F} alt="x" />
               </a>
-              <a className="text-white mr-4" href="#">
-                <i className="fab fa-2x fa-facebook-f"></i>
+              <a className="text-white mr-4" href={links.insta}>
+                <img className="x" src={I} alt="x" />
               </a>
-              <a className="text-white mr-4" href="#">
-                <i className="fab fa-2x fa-linkedin-in"></i>
+              <a className="text-white mr-4" href={links.x}>
+                <img className="x" src={X} alt="x" />
               </a>
-              <a className="text-white" href="#">
-                <i className="fab fa-2x fa-instagram"></i>
+              <a className="text-white" href={links.lin}>
+                <img className="x" src={L} alt="x" />
               </a>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4 mb-2">
-          <div className="col-md-4">
-            <h3 className="text-white mb-4">Quick Links</h3>
-            {listItem(footerData)}
+            <div className="col-md-4">
+              <h3 className="text-white mb-4">Quick Links</h3>
+              {listItem(footerData)}
+            </div>
           </div>
-          </div>
-        
-         
         </div>
         <div className="footer text-white">
           <div className="row mt-1" style={{ justifyContent: "space-between" }}>

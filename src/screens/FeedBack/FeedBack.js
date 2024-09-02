@@ -1,21 +1,35 @@
-import CustomCarousel from "../../components/Carousel/Carousel";
-import "./FeedBack.css";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import CustomCarousel from "../../components/Carousel/Carousel";
+import { getTestimonials } from "../../services/userService";
+import { setLoading, setZindex } from "../../store/actions/CommonActions";
+
+import "./FeedBack.css";
 
 const FeedBack = () => {
+  const dispatch = useDispatch();
   const [feedback, setFeedback] = useState([]);
 
   useEffect(() => {
-    setFeedback([
-      {
-        id: "1",
-        comment:
-          "The insights and strategies I gained from I Trade Tech Academy have been invaluable. I went from a novice to consistently profitable in just a few months.",
-        name: "Mr. XYZ",
-        rating: "4.6",
-      },
-    ]);
+    getFeedbacks();
   }, []);
+
+  const getFeedbacks = async () => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await getTestimonials();
+      if (response) {
+        setFeedback(response);
+        dispatch(setLoading(false));
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
 
   return (
     <div className="feedback-container">

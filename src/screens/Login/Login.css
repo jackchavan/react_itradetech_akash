@@ -1,4 +1,4 @@
-.login-div{
+.login-div {
   background-color: #101a24;
 }
 .login-container {
@@ -32,7 +32,7 @@
   height: 100%;
 }
 
-.signup button{
+.signup button {
   background-color: var(--orange) !important;
 }
 
@@ -90,7 +90,7 @@ button:hover {
 .login {
   height: 500px;
   background: linear-gradient(rgba(0, 88, 164), rgba(0, 129, 200));
-  border-radius: 50% 50% 25% 25% / 20% 20% 0% 0%;;
+  border-radius: 50% 50% 25% 25% / 20% 20% 0% 0%;
   transform: translateY(-70px);
   transition: 0.8s ease-in-out;
 }
@@ -106,16 +106,19 @@ button:hover {
   transform: scale(0.6);
 }
 
-.email-input{
+.email-input {
   margin-top: 20%;
 }
-.forgot-pass{
+.forgot-pass {
   font-size: 12px;
   font-weight: 500;
-
 }
 #chk:checked ~ .login {
-  transform: translateY(-470px);
+  transform: translateY(-460px);
+}
+
+#chk:checked ~ .signup input {
+  visibility: hidden;
 }
 
 #chk:checked ~ .login label {
@@ -123,5 +126,5 @@ button:hover {
 }
 
 #chk:checked ~ .signup label {
-  transform: scale(0.6);
+  transform: scale(0.5);
 }

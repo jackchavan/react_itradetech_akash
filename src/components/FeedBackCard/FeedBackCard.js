@@ -15,14 +15,14 @@ const FeedBackCard = ({ data }) => {
         <img alt="img" src={Img} />
       </div>
       <img className="comma" alt="comma" src={Comma} />
-      <p>{data.comment} </p>
+      <p>{data.commentDescription} </p>
       <img className="i-comma" alt="comma" src={InvertedComma} />
 
       <h1>{data.name}</h1>
       <div>
         <ReactStars
           edit={false}
-          value={parseFloat(data.rating)}
+          value={parseFloat(data.ratings)}
           size={24}
           activeColor="var(--warning)"
           isHalf={true}
