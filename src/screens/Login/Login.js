@@ -30,7 +30,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isValidPass, setIsValidPass] = useState(null);
-
   const [isVerifyOtp, setIsVerifyOtp] = useState(false);
   const initialRegisterState = {
     firstName: "",
@@ -147,7 +146,7 @@ const Login = () => {
     if (!isVerifyOtp) {
       generateOTP();
     } else {
-      if (!isValidPass && passwordValidation()) {
+      if (isValidPass && passwordValidation()) {
         verifyOtp();
       }
     }
@@ -253,6 +252,7 @@ const Login = () => {
               placeholder="First Name"
               onInvalid={onInvalid}
               value={userRegister.firstName}
+              disabled={isVerifyOtp}
               onChange={(e) => setRegister(e)}
               required
             />
@@ -261,6 +261,7 @@ const Login = () => {
               name="lastName"
               placeholder="Last Name"
               onInvalid={onInvalid}
+              disabled={isVerifyOtp}
               value={userRegister.lastName}
               onChange={(e) => setRegister(e)}
               required
@@ -273,6 +274,7 @@ const Login = () => {
               maxLength="10"
               onInput={validateNumber}
               value={userRegister.mobileNumber}
+              disabled={isVerifyOtp}
               onChange={(e) => setRegister(e)}
               required
             />
@@ -282,6 +284,7 @@ const Login = () => {
               placeholder="Email"
               onInvalid={onInvalid}
               value={userRegister.email}
+              disabled={isVerifyOtp}
               onChange={(e) => setRegister(e)}
               required
               onBlur={onBlurEmail}
