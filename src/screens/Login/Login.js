@@ -46,7 +46,7 @@ const Login = () => {
   const [userRegister, setUserRegister] = useState(initialRegisterState);
   const [userLogin, setUserLogin] = useState(initialLoginState);
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [checked, setChecked] = useState(false);
   useEffect(() => {
     if (auth?.auth?.login) {
       if (course?.course) {
@@ -105,7 +105,7 @@ const Login = () => {
       if (response) {
         dispatch(setLoading(false));
         showToast(ToastSuccess, "Login Successful");
-
+        resetState();
         dispatch(setAuth({ login: true, ...response }));
       }
     } catch (error) {
@@ -130,13 +130,12 @@ const Login = () => {
       const response = await register(body);
       if (response === "User registered Succefully") {
         dispatch(setLoading(false));
-
-        navigate(LOGIN);
+        setChecked(true);
+        showToast(ToastSuccess, "Registration Successfull.");
+        resetState();
       }
     } catch (error) {
       dispatch(setLoading(false));
-
-      console.error(error);
       return false;
     }
   };
@@ -190,13 +189,21 @@ const Login = () => {
     try {
       const response = await sendOTP(userRegister.email);
       if (response) {
-        setIsVerifyOtp(true);
-        dispatch(setLoading(false));
-
-        showToast(ToastSuccess, "OTP sent successfully to your email.");
+        if (response === "EmailId Already exists.") {
+          dispatch(setLoading(false));
+        } else {
+          setIsVerifyOtp(true);
+          dispatch(setLoading(false));
+          showToast(ToastSuccess, "OTP sent successfully to your email.");
+        }
       }
     } catch (error) {
       console.error(error);
+      showToast(
+        ToastError,
+        "Someting went wrong!, Please try again after some time."
+      );
+
       dispatch(setLoading(false));
 
       return false;
@@ -206,6 +213,7 @@ const Login = () => {
   const resetState = () => {
     setUserLogin(initialLoginState);
     setUserRegister(initialRegisterState);
+    setConfirmPassword('');
   };
 
   const onBlurPassword = (e) => {
@@ -230,144 +238,143 @@ const Login = () => {
       showToast(ToastError, "Enter valid email !");
     }
   };
+
+  const setPage = () => {
+    setChecked(!checked);
+  };
   return (
     <div className="login-div">
-
-   
-    <div className="login-container">
-      <div className="login-box">
-        <input type="checkbox" id="chk" aria-hidden="true" />
-        <div className="signup">
-          <form onSubmit={handleSubmit}>
-            <label
-              htmlFor="chk"
-              aria-hidden="true"
-              onClick={() => resetState()}
-            >
-              Register
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              onInvalid={onInvalid}
-              value={userRegister.firstName}
-              disabled={isVerifyOtp}
-              onChange={(e) => setRegister(e)}
-              required
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              onInvalid={onInvalid}
-              disabled={isVerifyOtp}
-              value={userRegister.lastName}
-              onChange={(e) => setRegister(e)}
-              required
-            />
-            <input
-              name="mobileNumber"
-              placeholder="Mobile"
-              type="text"
-              onInvalid={onInvalid}
-              maxLength="10"
-              onInput={validateNumber}
-              value={userRegister.mobileNumber}
-              disabled={isVerifyOtp}
-              onChange={(e) => setRegister(e)}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onInvalid={onInvalid}
-              value={userRegister.email}
-              disabled={isVerifyOtp}
-              onChange={(e) => setRegister(e)}
-              required
-              onBlur={onBlurEmail}
-            />
-            {isVerifyOtp && (
-              <>
-                <input
-                  name="otp"
-                  placeholder="OTP"
-                  type="text"
-                  onInvalid={onInvalid}
-                  maxLength="6"
-                  onInput={validateNumber}
-                  value={userRegister.otp}
-                  onChange={(e) => setRegister(e)}
-                  required={isValidEmail}
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onInvalid={onInvalid}
-                  value={userRegister.password}
-                  onChange={(e) => setRegister(e)}
-                  required={isValidEmail}
-                  onBlur={onBlurPassword}
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Confirm Password"
-                  onInvalid={onInvalid}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required={isValidEmail}
-                />
-              </>
-            )}
-            <button type="submit">
-              {isVerifyOtp ? "Register" : "Generate OTP"}
-            </button>
-          </form>
-        </div>
-        <div className="login">
-          <form onSubmit={onLogin}>
-            <label
-              htmlFor="chk"
-              aria-hidden="true"
-              onClick={() => resetState()}
-            >
-              Login
-            </label>
-            <input
-              className="email-input"
-              type="email"
-              name="email"
-              placeholder="Email"
-              onInvalid={onInvalid}
-              required
-              value={userLogin.email}
-              onChange={(e) => {
-                setLogin(e);
-              }}
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onInvalid={onInvalid}
-              value={userLogin.password}
-              required
-              onChange={(e) => {
-                setLogin(e);
-              }}
-            />
-            <button type="submit">LOGIN</button>
-            <label className="forgot-pass">
-              <a>Forgot password ?</a>
-            </label>
-          </form>
+      <div className="login-container">
+        <div className="login-box">
+          <input
+            type="checkbox"
+            id="chk"
+            aria-hidden="true"
+            checked={checked}
+          />
+          <div className="signup">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="chk" aria-hidden="true" onClick={setPage}>
+                Register
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                onInvalid={onInvalid}
+                value={userRegister.firstName}
+                disabled={isVerifyOtp}
+                onChange={(e) => setRegister(e)}
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                onInvalid={onInvalid}
+                disabled={isVerifyOtp}
+                value={userRegister.lastName}
+                onChange={(e) => setRegister(e)}
+                required
+              />
+              <input
+                name="mobileNumber"
+                placeholder="Mobile"
+                type="text"
+                onInvalid={onInvalid}
+                maxLength="10"
+                onInput={validateNumber}
+                value={userRegister.mobileNumber}
+                disabled={isVerifyOtp}
+                onChange={(e) => setRegister(e)}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onInvalid={onInvalid}
+                value={userRegister.email}
+                disabled={isVerifyOtp}
+                onChange={(e) => setRegister(e)}
+                required
+                onBlur={onBlurEmail}
+              />
+              {isVerifyOtp && (
+                <>
+                  <input
+                    name="otp"
+                    placeholder="OTP"
+                    type="text"
+                    onInvalid={onInvalid}
+                    maxLength="6"
+                    onInput={validateNumber}
+                    value={userRegister.otp}
+                    onChange={(e) => setRegister(e)}
+                    required={isValidEmail}
+                  />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onInvalid={onInvalid}
+                    value={userRegister.password}
+                    onChange={(e) => setRegister(e)}
+                    required={isValidEmail}
+                    onBlur={onBlurPassword}
+                  />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Confirm Password"
+                    onInvalid={onInvalid}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required={isValidEmail}
+                  />
+                </>
+              )}
+              <button type="submit">
+                {isVerifyOtp ? "Register" : "Generate OTP"}
+              </button>
+            </form>
+          </div>
+          <div className="login">
+            <form onSubmit={onLogin}>
+              <label htmlFor="chk" aria-hidden="true" onClick={setPage}>
+                Login
+              </label>
+              <input
+                className="email-input"
+                type="email"
+                name="email"
+                placeholder="Email"
+                onInvalid={onInvalid}
+                required
+                value={userLogin.email}
+                onChange={(e) => {
+                  setLogin(e);
+                }}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onInvalid={onInvalid}
+                value={userLogin.password}
+                required
+                onChange={(e) => {
+                  setLogin(e);
+                }}
+              />
+              <button type="submit">LOGIN</button>
+              <label className="forgot-pass">
+                <a>Forgot password ?</a>
+              </label>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

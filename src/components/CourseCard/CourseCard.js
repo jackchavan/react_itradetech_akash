@@ -5,11 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Candel from "../../assets/img/candel.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setCourse } from "../../store/actions/CourseActions";
-import { COURSE_DETAIL, LOGIN } from "../../constants/PathConstants";
+import { COURSE_DETAIL } from "../../constants/PathConstants";
 import { getUniqueId } from "../../utils/CommonMethods";
 const CourseCard = ({ data }) => {
-  const { auth } = useSelector((state) => state.auth);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -17,13 +15,8 @@ const CourseCard = ({ data }) => {
     dispatch(setCourse(item));
   };
   const onClickCard = (item) => {
-    if (auth?.login) {
-      setData(item);
-      navigate(`${COURSE_DETAIL}/${item.id}`);
-    } else {
-      setData(item);
-      navigate(LOGIN);
-    }
+    setData(item);
+    navigate(`${COURSE_DETAIL}/${item.id}`);
   };
 
   return (

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
 import Img from "../../assets/img/course2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseDetail } from "../../services/courseService";
 import { setLoading } from "../../store/actions/CommonActions";
-import { PAYMENT_RESPONSE } from "../../constants/PathConstants";
+import { LOGIN, PAYMENT_RESPONSE } from "../../constants/PathConstants";
 import { initiatePayment } from "../../services/paymentService";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import { getUniqueId } from "../../utils/CommonMethods";
@@ -14,7 +14,7 @@ import { setCourse } from "../../store/actions/CourseActions";
 const Detail = () => {
   const { id } = useParams();
   const { auth } = useSelector((state) => state.auth);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [list, setList] = useState([
     "Build 16 web development projects for your portfolio",
@@ -29,7 +29,7 @@ const Detail = () => {
     {
       icon: "fa fa-clock-o",
       label: "Duration",
-      value: `${courseDetail?.duration} minutes`,
+      value: `${courseDetail?.duration ?? ""} minutes`,
     },
     {
       icon: "fa fa-book",
@@ -39,7 +39,7 @@ const Detail = () => {
     {
       icon: "fa fa-play-circle-o",
       label: "Mode",
-      value: `${courseDetail?.mode}`,
+      value: `${courseDetail?.mode ?? ""}`,
     },
     {
       icon: "fa fa-tachometer",
@@ -67,6 +67,14 @@ const Detail = () => {
 
       console.error(error);
       return false;
+    }
+  };
+
+  const onEnroll = () => {
+    if (auth?.login) {
+      makePayment();
+    } else {
+      navigate(LOGIN);
     }
   };
 
@@ -126,9 +134,9 @@ const Detail = () => {
       <div className="card-deatil">
         <img className="img-detail" src={Img} alt="img" />
         <div className="sub-section">
-          <span className="rupee">&#8377; {courseDetail?.cost}</span>
+          <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
           <div className="card-details">{cardDetails()}</div>
-          <button className="btn-enroll-now" onClick={makePayment}>
+          <button className="btn-enroll-now" onClick={onEnroll}>
             Enroll Now
           </button>
         </div>
