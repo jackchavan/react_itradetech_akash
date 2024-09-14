@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
-import Img from "../../assets/img/course2.jpg";
+import BullletPoint from "../../assets/img/bulletPoint.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseDetail } from "../../services/courseService";
 import { setLoading } from "../../store/actions/CommonActions";
@@ -117,6 +117,22 @@ const Detail = () => {
       return false;
     }
   };
+
+  const TextStyling = ({ text }) => {
+    if (typeof text !== "string") {
+      console.error("Expected a string");
+      return null; // or handle the error appropriately
+    }
+    const [firstWord, ...remainingWords] = text?.split(" ");
+    const remainingText = remainingWords?.join(" ");
+
+    return (
+      <div className="text-container">
+        <span className="first-word">{firstWord}</span>
+        <span className="remaining-text">{remainingText}</span>
+      </div>
+    );
+  };
   const cardDetails = () => {
     return detilsData.map((item, i) => (
       <div className="list-item">
@@ -132,13 +148,15 @@ const Detail = () => {
   const card = () => {
     return (
       <div className="card-deatil">
-        <img className="img-detail" src={Img} alt="img" />
-        <div className="sub-section">
-          <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
-          <div className="card-details">{cardDetails()}</div>
-          <button className="btn-enroll-now" onClick={onEnroll}>
-            Enroll Now
-          </button>
+        <div className="card-details-wrapper">
+          {/* <img className="img-detail" src={Img} alt="img" /> */}
+          <div className="sub-section">
+            <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
+            <div className="card-details">{cardDetails()}</div>
+            <button className="btn-enroll-now" onClick={onEnroll}>
+              Enroll Now
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -146,7 +164,8 @@ const Detail = () => {
 
   const ListItem = ({ data }) => {
     return data?.map((item, i) => (
-      <li key={i} className="li-learn">
+      <li key={i}>
+        <img src={BullletPoint} />
         <div dangerouslySetInnerHTML={{ __html: item }} />
         {item.child && (
           <ul>
@@ -161,14 +180,15 @@ const Detail = () => {
     <div className="detail-continer">
       <div className="detail-box">
         <div className="desc-div">
-          <span className="title">{courseDetail?.title}</span>
-          <span className="description">{courseDetail.description}</span>
+          <TextStyling text={"Technical Analysis - LEVEL 1"} />
         </div>
       </div>
       {card()}
       <div className="syllabus-div">
-        <h3>What you'll learn</h3>
-        <div>
+        <div className="syllabus-title">
+          <TextStyling text={"Things YOU LEARN"} />
+        </div>
+        <div className="li-learn">
           <ul className="ul-learn">
             <ListItem data={list} />
           </ul>

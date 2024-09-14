@@ -15,6 +15,7 @@ import {
   showToast,
   ToastError,
   ToastSuccess,
+  ToastWarn,
   validateEmail,
   validateNumber,
   validatePassword,
@@ -190,12 +191,12 @@ const Login = () => {
       const response = await sendOTP(userRegister.email);
       if (response) {
         if (response === "EmailId Already exists.") {
-          dispatch(setLoading(false));
+          showToast(ToastWarn, "Email already exists.");
         } else {
           setIsVerifyOtp(true);
-          dispatch(setLoading(false));
           showToast(ToastSuccess, "OTP sent successfully to your email.");
         }
+        dispatch(setLoading(false));
       }
     } catch (error) {
       console.error(error);
