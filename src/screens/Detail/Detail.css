@@ -98,8 +98,8 @@ body {
     gap: 20px;
     font-size: 20px;
     margin-bottom: 10px;
-    img{
-      height: 40px;
+    img {
+      height: 30px;
     }
   }
 }
@@ -158,6 +158,11 @@ body {
   align-items: baseline;
 }
 
+.text-container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .first-word {
   margin: 0;
   padding: 0;

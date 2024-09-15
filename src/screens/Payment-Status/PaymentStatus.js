@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PaymentStatus.css"; // We'll use a common CSS file for both responses
-import { COURSE_AND_SUBSCRIBE } from "../../constants/PathConstants";
+import { COURSE } from "../../constants/PathConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../store/actions/CommonActions";
 import { getPaymentStatus } from "../../services/paymentService";
@@ -46,7 +46,7 @@ const PaymentStatus = () => {
   }, []);
 
   const navToCourses = () => {
-    window.location.href = COURSE_AND_SUBSCRIBE;
+    window.location.href = COURSE;
   };
 
   return (

@@ -118,16 +118,16 @@ const Detail = () => {
     }
   };
 
-  const TextStyling = ({ text }) => {
-    if (typeof text !== "string") {
+  const TextStyling = (props) => {
+    if (typeof props.text !== "string") {
       console.error("Expected a string");
       return null; // or handle the error appropriately
     }
-    const [firstWord, ...remainingWords] = text?.split(" ");
+    const [firstWord, ...remainingWords] = props.text?.split(" ");
     const remainingText = remainingWords?.join(" ");
 
     return (
-      <div className="text-container">
+      <div className={props.class}>
         <span className="first-word">{firstWord}</span>
         <span className="remaining-text">{remainingText}</span>
       </div>
@@ -180,13 +180,13 @@ const Detail = () => {
     <div className="detail-continer">
       <div className="detail-box">
         <div className="desc-div">
-          <TextStyling text={"Technical Analysis - LEVEL 1"} />
+          <TextStyling text={courseDetail?.title} class={"text-container"}/>
         </div>
       </div>
       {card()}
       <div className="syllabus-div">
         <div className="syllabus-title">
-          <TextStyling text={"Things YOU LEARN"} />
+          <TextStyling text={"Things YOU LEARN"} class={"text-container-center"}/>
         </div>
         <div className="li-learn">
           <ul className="ul-learn">

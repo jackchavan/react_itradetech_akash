@@ -3,7 +3,7 @@ import "./CourseCard.css";
 import Img from "../../assets/img/test.jpg";
 import { useNavigate } from "react-router-dom";
 import Candel from "../../assets/img/candel.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCourse } from "../../store/actions/CourseActions";
 import { COURSE_DETAIL } from "../../constants/PathConstants";
 import { getUniqueId } from "../../utils/CommonMethods";

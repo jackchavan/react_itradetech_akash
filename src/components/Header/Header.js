@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
 import {
   ABOUT,
-  COURSE_AND_SUBSCRIBE,
+  CONTACT_US,
+  COURSE,
   HOME,
   LOGIN,
 } from "../../constants/PathConstants";
@@ -14,7 +15,7 @@ import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import ContactHeader from "../ContactHeader/ContactHeader";
 import Logo from "../../assets/img/logo.png";
 import styled from "styled-components";
-import Bar from '../../assets/img/bar-icon.png'
+import Bar from "../../assets/img/bar-icon.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -69,6 +70,16 @@ const Header = () => {
                 Home
               </Link>
             </li>
+
+            <li className="nav-menu-list">
+              <Link
+                onClick={() => activeLink(COURSE)}
+                className={path === COURSE ? "active-link" : ""}
+                to={COURSE}
+              >
+                Courses
+              </Link>
+            </li>
             <li className="nav-menu-list">
               <Link
                 onClick={() => activeLink(ABOUT)}
@@ -80,11 +91,11 @@ const Header = () => {
             </li>
             <li className="nav-menu-list">
               <Link
-                onClick={() => activeLink(COURSE_AND_SUBSCRIBE)}
-                className={path === COURSE_AND_SUBSCRIBE ? "active-link" : ""}
-                to={COURSE_AND_SUBSCRIBE}
+                onClick={() => activeLink(CONTACT_US)}
+                className={path === CONTACT_US ? "active-link" : ""}
+                to={CONTACT_US}
               >
-                Courses
+                Contact Us
               </Link>
             </li>
             {!isLoggedIn && (
@@ -111,7 +122,6 @@ const Header = () => {
           </NavManu>
         </nav>
         <img src={Bar} className="menuToggleBtn" onClick={handleToggleOpen} />
-
       </StyledHeader>
     </div>
   );
@@ -138,8 +148,8 @@ const StyledHeader = styled.header`
     right: 20px;
     top: 30px;
     cursor: pointer;
-    height:40px;
-    width:40px;
+    height: 40px;
+    width: 40px;
   }
 
   @media screen and (max-width: 768px) {
