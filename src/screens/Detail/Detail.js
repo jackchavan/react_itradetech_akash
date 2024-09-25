@@ -127,7 +127,7 @@ const Detail = () => {
     const remainingText = remainingWords?.join(" ");
 
     return (
-      <div className={props.class}>
+      <div className={props?.class} style={props?.style}>
         <span className="first-word">{firstWord}</span>
         <span className="remaining-text">{remainingText}</span>
       </div>
@@ -180,7 +180,7 @@ const Detail = () => {
     <div className="detail-continer">
       <div className="detail-box">
         <div className="desc-div">
-          <TextStyling text={courseDetail?.title} class={"text-container"}/>
+          <TextStyling text={courseDetail?.title} class={"text-container"} style={{marginLeft:"10%"}}/>
         </div>
       </div>
       {card()}
