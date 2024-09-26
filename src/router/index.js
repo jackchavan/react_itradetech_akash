@@ -26,8 +26,6 @@ const Routing = () => {
     <div>
       {auth?.login ? (
         <React.Fragment>
-          <Header />
-
           <Routes>
             <Route exact path={HOME} element={<Home />} />
             <Route path={ABOUT} element={<AboutUs />} />
@@ -41,7 +39,6 @@ const Routing = () => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Header />
           <Routes>
             <Route exact path={HOME} element={<Home />} />
             <Route path={ABOUT} element={<AboutUs />} />

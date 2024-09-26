@@ -1,104 +1,43 @@
-.mainContainer {
-  scroll-behavior: smooth;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-}
-.container {
-  width: 100%;
-  height: 100vh;
-  background-size: contain; /* Ensures the image covers the entire element */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat;
-  background-image: url(../../assets/img/home-banner.png);
-}
 
-.homeDevider {
-  width: 90% !important;
-}
-
-.display-1 {
-  font-size: calc(2rem + 4vw);
-  font-weight: 300;
-  line-height: 1.2;
-  margin: 0 !important;
-  font-weight: 700 !important;
-}
-.h1 {
-  font-size: 2.5rem;
-  margin: 0 20px !important;
-  font-weight: 700 !important;
-}
-
-.course-container {
-  margin: -5px 0px -5px 0px;
-  background: url(../../assets/img/bg-homeCourses.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%;
-  text-align: center;
-  color: var(--white);
-  height: calc(100vh - -70px);
-}
-.course-container h3 {
+.course {
   margin: 0;
   padding: 0;
   font-family: "shadow-light" !important;
-  font-size: 80px;
   background: linear-gradient(180deg, rgb(230, 143, 22), rgb(206, 111, 29));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  font-size: 5rem;
+
 }
 
-.course-container h1 {
+.course-sub-title {
   margin: 0;
-  margin-top: -40px;
   padding: 0;
-  font-size: 40px;
   font-weight: 900;
   font-family: "leela-bold" !important;
-  margin-bottom: 3rem;
+  color: var(--white);
+  font-size: 2rem;
 }
 .carousel-container-div {
-  padding: 0px 30px 0 30px;
-}
-
-.info-div {
-  font-size: 16px;
-  font-weight: 700;
-  padding: 40px;
+  padding: 3rem 3rem 0 3rem;
 }
 
 @media (max-width: 768px) {
-  .mainContainer {
-    margin-top: 2rem;
+  .course{
+    font-size: 2.5rem;
   }
-  .container {
-    height: calc(100vh - 610px);
-  }
-
-  .course-container {
-    height: calc(100vh - 605px);
-    h1 {
-      margin-bottom: 0rem;
-      font-size: 40px;
-    }
-    h3 {
-      font-size: 60px;
-    }
+  .carousel-container-div {
+    padding: 1rem 1rem 0 1rem;
   }
 }
 
 @media (max-width: 375px) {
-  .mainContainer {
-    margin-top: 20%;
+  .course{
+    font-size: 0.8rem;
   }
-  .container {
-    height: auto;
-    padding-top: 120px;
-    padding-bottom: 100px;
+  .carousel-container-div {
+    padding: 0rem 0rem 0rem 0rem;
   }
-}
+} 

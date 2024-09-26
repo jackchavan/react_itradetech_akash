@@ -32,6 +32,28 @@
     }
     h2 {
       font-size: 40px;
+      margin-top: -20px;
+    }
+  }
+
+  .feedback-card {
+    p {
+      padding: 0px 40px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .feedback-container {
+    h2 {
+      font-size: 40px;
+      margin-top: -20px;
+    }
+  }
+
+  .feedback-card {
+    p {
+      padding: 0px 40px;
     }
   }
 }

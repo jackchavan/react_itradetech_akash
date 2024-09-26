@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import "./Header.css"; // Import the CSS file
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
@@ -12,10 +12,9 @@ import {
 } from "../../constants/PathConstants";
 import { setCourse } from "../../store/actions/CourseActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
-import ContactHeader from "../ContactHeader/ContactHeader";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Logo from "../../assets/img/logo.png";
-import styled from "styled-components";
-import Bar from "../../assets/img/bar-icon.png";
+import ContactHeader from "../ContactHeader/ContactHeader";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ const Header = () => {
     zIndex: state.common.zIndex,
   }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
-  const [path, setPath] = useState("/");
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleToggleOpen = () => {
@@ -45,142 +43,104 @@ const Header = () => {
     dispatch(setOrder(null));
   };
 
-  const activeLink = (urlPath) => {
-    setPath(urlPath);
-  };
-
   const navTo = () => {
     navigate(LOGIN);
   };
   return (
-    <div className={zIndex ? "mainHeader" : "mainHeader zIndex"}>
+    <header className="sticky-header">
       <ContactHeader />
-      <StyledHeader>
-        <div className="nav_logo">
-          <img className="img-fluid" alt="logo" src={Logo} />
-        </div>
-        <nav>
-          <NavManu className="nav-links" isToggleOpen={isToggleOpen}>
-            <li className="nav-menu-list">
-              <Link
-                onClick={() => activeLink(HOME)}
-                className={path === HOME ? "active-link" : ""}
+      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <NavLink className="navbar-brand" to="/">
+          <img
+            className="d-inline-block align-top"
+            width="150"
+            height="50"
+            alt="logo"
+            src={Logo}
+          />
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                exact
                 to={HOME}
+                activeClassName="active"
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
-
-            <li className="nav-menu-list">
-              <Link
-                onClick={() => activeLink(COURSE)}
-                className={path === COURSE ? "active-link" : ""}
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
                 to={COURSE}
+                activeClassName="active"
               >
                 Courses
-              </Link>
+              </NavLink>
             </li>
-            <li className="nav-menu-list">
-              <Link
-                onClick={() => activeLink(ABOUT)}
-                className={path === ABOUT ? "active-link" : ""}
-                to={ABOUT}
-              >
+            <li className="nav-item">
+              <NavLink className="nav-link" to={ABOUT} activeClassName="active">
                 About Us
-              </Link>
+              </NavLink>
             </li>
-            <li className="nav-menu-list">
-              <Link
-                onClick={() => activeLink(CONTACT_US)}
-                className={path === CONTACT_US ? "active-link" : ""}
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
                 to={CONTACT_US}
+                activeClassName="active"
               >
                 Contact Us
-              </Link>
+              </NavLink>
             </li>
+
             {!isLoggedIn && (
-              <li className="nav-menu-list">
-                <Link
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to={LOGIN}
                   onClick={(e) => {
                     e.preventDefault();
-                    activeLink(LOGIN);
                     navTo();
                   }}
-                  className={path === LOGIN ? "active-link" : ""}
                 >
                   Login / Register
-                </Link>
+                </NavLink>
               </li>
             )}
             {isLoggedIn && (
-              <li className="nav-menu-list">
-                <Link to={HOME} onClick={() => clearCache()}>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  // activeClassName={isLoggedIn ? "nav-link":"active"}
+                  // to={HOME}
+                  onClick={() => clearCache()}
+                >
                   Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
-                </Link>
+                </NavLink>
               </li>
             )}
-          </NavManu>
-        </nav>
-        <img src={Bar} className="menuToggleBtn" onClick={handleToggleOpen} />
-      </StyledHeader>
-    </div>
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 
-const StyledHeader = styled.header`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--white);
-  .nav_logo {
-    padding: 0 12px;
-    .nav-logo-link {
-      text-decoration: none;
-      font-size: 24px;
-      color: #fab005;
-      font-weight: bold;
-    }
-  }
-  .menuToggleBtn {
-    display: none;
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-  }
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    .menuToggleBtn {
-      display: block;
-    }
-  }
-`;
-const NavManu = styled.ul`
-  list-style: none;
-  display: flex;
-
-  li {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .nav-menu-list {
-    text-decoration: none;
-    display: block;
-    padding: 10px 10px;
-  }
-  @media screen and (max-width: 768px) {
-    display: ${(props) => (props.isToggleOpen ? "block" : "none")};
-    flex-direction: column;
-    transition: display 1s ease;
-    align-items: center;
-    width: 100%;
-    margin-top: 5px;
-  }
-`;
 export default Header;

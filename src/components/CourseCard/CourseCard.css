@@ -13,6 +13,8 @@
   width: 100%;
   max-width: 300px;
   margin: 10px;
+  background-color: transparent;
+  border: none;
 }
 
 .course-img {
@@ -40,7 +42,7 @@
 }
 .course-subTitle {
   margin: 0;
-  font-size: 18px !important;
+  font-size: 1rem;
   padding: 0;
   color: var(--white);
   font-weight: 900;
@@ -59,7 +61,8 @@
 }
 
 .know-more {
-  padding: 10px 20px;
+  margin-top: 10px;
+  padding: 0.5rem 1rem;
   color: var(--white);
   border-radius: 20px;
   border: 1px solid var(--white);
@@ -106,6 +109,36 @@
     margin-top: -25px;
   }
   .know-more {
-    padding: 8px 16px;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .course-img {
+    height: 54px;
+    width: 54px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+  }
+  .banner {
+    height: 50px;
+    width: 50px;
+    border: 2px solid var(--warning);
+  }
+  .candel-icon {
+    height: 15px;
+    width: 15px;
+  }
+  .know-more {
+    padding: 5px 8px;
+    font-size: 8px;
+  }
+  .course-title {
+    font-size: 10px;
+  }
+  .course-info {
+    height: 40px;
+  }
+  .course-subTitle {
+    font-size: 8px;
   }
 }

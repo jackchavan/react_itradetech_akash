@@ -30,8 +30,8 @@ const CourseCard = ({ data }) => {
       </div>
       <img alt="icon" className="candel-icon" src={Candel} />
       <div className="course-info">
-        <span className="course-title">{data?.title?.slice(0, 25) + '...' ?? ""}</span>
-        <p className="course-subTitle">{data?.description}</p>
+        <label className="course-title">{data?.title?.slice(0, 25) + '...' ?? ""}</label>
+        <label className="course-subTitle">{data?.description}</label>
       </div>
 
       <button

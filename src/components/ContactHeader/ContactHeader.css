@@ -1,3 +1,5 @@
+@import '../../App.css';
+
 .contact-info {
   display: flex;
   align-items: center;
