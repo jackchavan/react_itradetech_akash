@@ -52,14 +52,13 @@
   width: inherit;
 }
 
-.candel-icon{
+.candel-icon {
   height: 50px;
   width: 50px;
   margin-top: -40px;
 }
 
-
-.know-more{
+.know-more {
   padding: 10px 20px;
   color: var(--white);
   border-radius: 20px;
@@ -68,7 +67,7 @@
   outline: none;
   font-weight: 600;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background-color: var(--warning);
     border-color: var(--warning);
     font-weight: 600;
@@ -79,24 +78,34 @@
 @media (max-width: 768px) {
   .card {
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
     margin: 10px;
   }
   .course-img {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
   }
   .banner {
-    height: 130px;
-    width: 130px;
+    height: 90px;
+    width: 90px;
+    border: 5px solid var(--warning);
   }
   .course-title {
-    font-size: 20px;
+    font-size: 16px;
   }
   .course-subTitle {
     font-size: 14px;
   }
   .course-info {
-    height: 100px;
+    height: 60px;
+  }
+  .candel-icon {
+    height: 30px;
+    width: 30px;
+    margin-top: -25px;
+  }
+  .know-more {
+    padding: 8px 16px;
   }
 }

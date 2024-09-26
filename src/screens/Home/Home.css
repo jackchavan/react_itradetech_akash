@@ -13,7 +13,6 @@
   background-image: url(../../assets/img/home-banner.png);
 }
 
-
 .homeDevider {
   width: 90% !important;
 }
@@ -61,6 +60,7 @@
   font-size: 40px;
   font-weight: 900;
   font-family: "leela-bold" !important;
+  margin-bottom: 3rem;
 }
 .carousel-container-div {
   padding: 0px 30px 0 30px;
@@ -74,7 +74,21 @@
 
 @media (max-width: 768px) {
   .mainContainer {
-    margin-top: -5%;
+    margin-top: 2rem;
+  }
+  .container {
+    height: calc(100vh - 610px);
+  }
+
+  .course-container {
+    height: calc(100vh - 605px);
+    h1 {
+      margin-bottom: 0rem;
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 60px;
+    }
   }
 }
 

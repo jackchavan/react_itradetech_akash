@@ -63,7 +63,7 @@ const Home = () => {
       <AboutUsHome />
       <div className="course-container">
         <h3>Our</h3>
-        <h1 className="mb-3">COURSES</h1>
+        <h1>COURSES</h1>
 
         <div className="carousel-container-div">
           <CustomCarousel data={coursesData} type={"course"} />

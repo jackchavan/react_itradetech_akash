@@ -54,24 +54,28 @@ const Footer = ({ getTerms }) => {
   return (
     <div className="footer-container">
       <div className="box">
-        <div className="row">
+        <div className="row flx-wrp img-pad">
           <div className="">
             <div className="footerTitle">
               <img alt="logo" src={Logo} />
             </div>
           </div>
-          <div className="info ml-">
+          <div className="info">
             <div className="border-logo"></div>
           </div>
         </div>
 
-        <div className="row">
-          <p className="footer-info m-0 i-desc">
+        <div className="row" style={{ gap: "50px" }}>
+          <p className="footer-info m-0 i-desc" style={{ alignSelf: "auto" }}>
             At I TRADE TECH ACADEMY, we empower aspiring traders and seasoned
             professionals alike with the knowledge, tools, and confidence to
             succeed in the financial markets. Whether you're looking to start
             your trading journey or refine your strategies, our Academy offers
             comprehensive training programs tailored to your needs.
+            <div className="col-md-4">
+              <h3 className="text-white mb-4">Quick Links</h3>
+              {listItem(footerData)}
+            </div>
           </p>
           <div className="col-md-4 footer-info">
             <h3 className="text-white m-0 mb-4 ">Get In Touch</h3>
@@ -104,14 +108,14 @@ const Footer = ({ getTerms }) => {
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-4 mb-2">
             <div className="col-md-4">
               <h3 className="text-white mb-4">Quick Links</h3>
               {listItem(footerData)}
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="footer text-white">
           <div className="row mt-1" style={{ justifyContent: "space-between" }}>
             <div className="col-md-6 text-center text-md-left mb-md-0">

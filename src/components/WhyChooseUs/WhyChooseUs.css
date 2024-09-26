@@ -54,7 +54,7 @@
   color: var(--primary);
 }
 .why-list {
-  flex: 1;  
+  flex: 1;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -86,4 +86,32 @@
   font-family: "leela-bold" !important;
   color: var(--primary);
   text-align: center;
+}
+@media (max-width: 768px) {
+  .btn-icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+  }
+  .why-desc {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .why-title {
+    font-size: 10px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .obj-fit {
+    height: 25rem;
+  }
+  .why-div {
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 30px;
+      margin-top: -20px;
+    }
+  }
 }

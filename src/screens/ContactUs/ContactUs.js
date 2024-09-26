@@ -6,14 +6,18 @@ import {
   validateEmail,
   validateNumber,
 } from "../../utils/CommonMethods";
+import { conatctUs } from "../../services/contactUsService";
+import { setLoading } from "../../store/actions/CommonActions";
+import { useDispatch } from "react-redux";
 
 const ContactUs = () => {
+  const dispatch = useDispatch();
   const initialState = {
-    name: "",
+    contactname: "",
     email: "",
-    phone: "",
+    mobilenumber: "",
     city: "",
-    comment: "",
+    subject: "",
   };
   const [details, setDetails] = useState(initialState);
 
@@ -44,9 +48,20 @@ const ContactUs = () => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(details);
+
+    dispatch(setLoading(true));
+
+    try {
+      const response = await conatctUs(details);
+      if (response === "User registered Succefully") {
+        dispatch(setLoading(false));
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+      return false;
+    }
   };
   return (
     <div className="contact-us-wrapper">
@@ -61,23 +76,22 @@ const ContactUs = () => {
           <form onSubmit={onSubmit}>
             <div className="row">
               <input
-                name="name"
+                name="contactname"
                 placeholder="Your Name"
                 required
-                value={details.name}
+                value={details.contactname}
                 onInvalid={onInvalid}
                 onChange={(e) => onChangeInput(e)}
               />
               <input
-                name="phone"
+                name="mobilenumber"
                 placeholder="Mobile"
                 required
                 maxLength="10"
-                value={details.phone}
+                value={details.mobilenumber}
                 onInvalid={onInvalid}
                 onInput={validateNumber}
                 onChange={(e) => onChangeInput(e)}
-
               />
             </div>
             <div className="row">
@@ -100,10 +114,10 @@ const ContactUs = () => {
               />
             </div>
             <textarea
-              name="comment"
+              name="subject"
               placeholder="Type your message..."
               required
-              value={details.comment}
+              value={details.subject}
               onInvalid={onInvalid}
               onChange={(e) => onChangeInput(e)}
             />

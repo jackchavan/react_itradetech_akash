@@ -153,9 +153,9 @@ const Detail = () => {
           <div className="sub-section">
             <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
             <div className="card-details">{cardDetails()}</div>
-            <button className="btn-enroll-now" onClick={onEnroll}>
+            {/* <button className="btn-enroll-now" onClick={onEnroll}>
               Enroll Now
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -180,13 +180,20 @@ const Detail = () => {
     <div className="detail-continer">
       <div className="detail-box">
         <div className="desc-div">
-          <TextStyling text={courseDetail?.title} class={"text-container"} style={{marginLeft:"10%"}}/>
+          <TextStyling
+            text={courseDetail?.title}
+            class={"text-container"}
+            style={{ marginLeft: "10%" }}
+          />
         </div>
       </div>
       {card()}
       <div className="syllabus-div">
         <div className="syllabus-title">
-          <TextStyling text={"Things YOU LEARN"} class={"text-container-center"}/>
+          <TextStyling
+            text={"Things YOU LEARN"}
+            class={"text-container-center"}
+          />
         </div>
         <div className="li-learn">
           <ul className="ul-learn">
