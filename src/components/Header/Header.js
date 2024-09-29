@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, NavLink } from "react-router-dom";
-import "./Header.css"; // Import the CSS file
+import { useNavigate, NavLink } from "react-router-dom";
+import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
 import {
@@ -20,15 +20,18 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { auth, zIndex } = useSelector((state) => ({
+  const { auth } = useSelector((state) => ({
     auth: state?.auth.auth,
-    zIndex: state.common.zIndex,
   }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleToggleOpen = () => {
-    setIsToggleOpen(!isToggleOpen);
+    setIsToggleOpen((prev) => !prev);
+  };
+
+  const handleLinkClick = () => {
+    setIsToggleOpen(false);
   };
 
   useEffect(() => {
@@ -45,7 +48,9 @@ const Header = () => {
 
   const navTo = () => {
     navigate(LOGIN);
+    setIsToggleOpen(false);
   };
+
   return (
     <header className="sticky-header">
       <ContactHeader />
@@ -62,16 +67,17 @@ const Header = () => {
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
+          onClick={handleToggleOpen}
           aria-controls="navbarNav"
-          aria-expanded="false"
+          aria-expanded={isToggleOpen}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className="collapse navbar-collapse justify-content-end px-5"
+          className={`collapse navbar-collapse justify-content-end px-5 ${
+            isToggleOpen ? "show" : ""
+          }`}
           id="navbarNav"
         >
           <ul className="navbar-nav">
@@ -80,7 +86,7 @@ const Header = () => {
                 className="nav-link"
                 exact
                 to={HOME}
-                activeClassName="active"
+                onClick={handleLinkClick}
               >
                 Home
               </NavLink>
@@ -89,13 +95,17 @@ const Header = () => {
               <NavLink
                 className="nav-link"
                 to={COURSE}
-                activeClassName="active"
+                onClick={handleLinkClick}
               >
                 Courses
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={ABOUT} activeClassName="active">
+              <NavLink
+                className="nav-link"
+                to={ABOUT}
+                onClick={handleLinkClick}
+              >
                 About Us
               </NavLink>
             </li>
@@ -103,7 +113,7 @@ const Header = () => {
               <NavLink
                 className="nav-link"
                 to={CONTACT_US}
-                activeClassName="active"
+                onClick={handleLinkClick}
               >
                 Contact Us
               </NavLink>
@@ -113,7 +123,6 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName="active"
                   to={LOGIN}
                   onClick={(e) => {
                     e.preventDefault();
@@ -128,9 +137,11 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  activeClassName={isLoggedIn ? "nav-link" : "active"}
                   to={HOME}
-                  onClick={() => clearCache()}
+                  onClick={() => {
+                    clearCache();
+                    handleLinkClick();
+                  }}
                 >
                   Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
                 </NavLink>

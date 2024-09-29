@@ -1,28 +1,21 @@
-.login-div {
-  background-color: #101a24;
-}
 .login-container {
-  margin: 0;
-  padding: 0rem 6rem 0rem 2rem;
-  display: flex;
-  justify-content: flex-end;
-  background: url(../../assets/img/bg-login.png), center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  height: calc(100vh - 0px);
+  height: 100vh;
 }
 .login-box {
-  margin-top: 6.5rem;
-  width: 400px;
-  height: 500px;
+  width: 30vw;
+  height: 85vh;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 5px 20px 50px var(--dark);
   background: var(--gray-light);
+  left: 60vw;
+  top: 8vh;
 }
 
 #chk {
+  display: none;
+}
+#forget-chk {
   display: none;
 }
 
@@ -36,9 +29,8 @@
   background-color: var(--orange) !important;
 }
 
-label {
+.login-div label {
   color: var(--dark);
-  font-size: 2.3em;
   margin: 10px auto;
   justify-content: center;
   display: flex;
@@ -49,7 +41,7 @@ label {
 
 .login-box input {
   width: 60%;
-  height: 10px;
+  height: 6vh;
   background-color: var(--white);
   justify-content: center;
   display: flex;
@@ -127,4 +119,52 @@ button:hover {
 
 #chk:checked ~ .signup label {
   transform: scale(0.5);
+}
+
+.forget-pass {
+  height: 100vh;
+  background: linear-gradient(180deg, rgb(230, 143, 22), rgb(206, 111, 29));
+  transform: translateY(-70px);
+  transition: transform 0.8s ease-in-out;
+  padding-top: 2vh;
+  label {
+    color: var(--white);
+  }
+  a {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+#forget-chk:checked ~ .forget-pass {
+  transform: translateY(-170vh);
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    left: 45vw;
+    width: 50vw;
+  }
+  .login {
+    border-radius: 50% 50% 25% 25% / 12% 12% 0% 0%;
+  }
+  #chk:checked ~ .login {
+    transform: translateY(-445px);
+  }
+  #forget-chk:checked ~ .forget-pass {
+    transform: translateY(-180vh);
+  }
+}
+
+@media (max-width: 375px) {
+  .login-box {
+    left: 2vw;
+    width: 94vw;
+  }
+  .login {
+    transform: translateY(-55px);
+  }
+  #forget-chk:checked ~ .forget-pass {
+    transform: translateY(-180vh);
+  }
 }

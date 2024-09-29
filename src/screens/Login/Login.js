@@ -20,6 +20,7 @@ import {
   validateNumber,
   validatePassword,
 } from "../../utils/CommonMethods";
+import BgLogin from "../../assets/img/bg-login.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -214,7 +215,7 @@ const Login = () => {
   const resetState = () => {
     setUserLogin(initialLoginState);
     setUserRegister(initialRegisterState);
-    setConfirmPassword('');
+    setConfirmPassword("");
   };
 
   const onBlurPassword = (e) => {
@@ -243,9 +244,196 @@ const Login = () => {
   const setPage = () => {
     setChecked(!checked);
   };
+
+  const signUp = () => {
+    return (
+      <div className="signup">
+        <form onSubmit={handleSubmit}>
+          <label
+            className="display-6"
+            htmlFor="chk"
+            aria-hidden="true"
+            onClick={setPage}
+          >
+            Register
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            onInvalid={onInvalid}
+            value={userRegister.firstName}
+            disabled={isVerifyOtp}
+            onChange={(e) => setRegister(e)}
+            required
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            onInvalid={onInvalid}
+            disabled={isVerifyOtp}
+            value={userRegister.lastName}
+            onChange={(e) => setRegister(e)}
+            required
+          />
+          <input
+            name="mobileNumber"
+            placeholder="Mobile"
+            type="text"
+            onInvalid={onInvalid}
+            maxLength="10"
+            onInput={validateNumber}
+            value={userRegister.mobileNumber}
+            disabled={isVerifyOtp}
+            onChange={(e) => setRegister(e)}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onInvalid={onInvalid}
+            value={userRegister.email}
+            disabled={isVerifyOtp}
+            onChange={(e) => setRegister(e)}
+            required
+            onBlur={onBlurEmail}
+          />
+          {isVerifyOtp && (
+            <>
+              <input
+                name="otp"
+                placeholder="OTP"
+                type="text"
+                onInvalid={onInvalid}
+                maxLength="6"
+                onInput={validateNumber}
+                value={userRegister.otp}
+                onChange={(e) => setRegister(e)}
+                required={isValidEmail}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onInvalid={onInvalid}
+                value={userRegister.password}
+                onChange={(e) => setRegister(e)}
+                required={isValidEmail}
+                onBlur={onBlurPassword}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Confirm Password"
+                onInvalid={onInvalid}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required={isValidEmail}
+              />
+            </>
+          )}
+          <button type="submit" className="display-7">
+            {isVerifyOtp ? "Register" : "Generate OTP"}
+          </button>
+        </form>
+      </div>
+    );
+  };
+
+  const login = () => {
+    return (
+      <div className="login">
+        <form onSubmit={onLogin}>
+          <label
+            className="display-6"
+            htmlFor="chk"
+            aria-hidden="true"
+            onClick={setPage}
+          >
+            Login
+          </label>
+          <input
+            className="email-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            onInvalid={onInvalid}
+            required
+            value={userLogin.email}
+            onChange={(e) => {
+              setLogin(e);
+            }}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onInvalid={onInvalid}
+            value={userLogin.password}
+            required
+            onChange={(e) => {
+              setLogin(e);
+            }}
+          />
+          <button type="submit">LOGIN</button>
+          <label
+            className="forgot-pass"
+            htmlFor="forget-chk"
+            aria-hidden="true"
+          >
+            <a>Forgot password ?</a>
+          </label>
+        </form>
+      </div>
+    );
+  };
+
+  const forgetPassword = () => {
+    return (
+      <div className="forget-pass">
+        <form onSubmit={onLogin}>
+          <label className="display-6">Forget Password</label>
+          <input
+            className="email-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            onInvalid={onInvalid}
+            required
+            value={userLogin.email}
+            onChange={(e) => {
+              setLogin(e);
+            }}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onInvalid={onInvalid}
+            value={userLogin.password}
+            required
+            onChange={(e) => {
+              setLogin(e);
+            }}
+          />
+          <button type="submit">Submit</button>
+          <label
+            className="forgot-pass"
+            htmlFor="forget-chk"
+            aria-hidden="true"
+          >
+            <a>Login ?</a>
+          </label>
+        </form>
+      </div>
+    );
+  };
   return (
     <div className="login-div">
-      <div className="login-container">
+      <div className="login-container ratio pt-0 d-flex justify-content-center">
+        <img src={BgLogin} alt="login" className="" />
         <div className="login-box">
           <input
             type="checkbox"
@@ -253,127 +441,11 @@ const Login = () => {
             aria-hidden="true"
             checked={checked}
           />
-          <div className="signup">
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="chk" aria-hidden="true" onClick={setPage}>
-                Register
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                onInvalid={onInvalid}
-                value={userRegister.firstName}
-                disabled={isVerifyOtp}
-                onChange={(e) => setRegister(e)}
-                required
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                onInvalid={onInvalid}
-                disabled={isVerifyOtp}
-                value={userRegister.lastName}
-                onChange={(e) => setRegister(e)}
-                required
-              />
-              <input
-                name="mobileNumber"
-                placeholder="Mobile"
-                type="text"
-                onInvalid={onInvalid}
-                maxLength="10"
-                onInput={validateNumber}
-                value={userRegister.mobileNumber}
-                disabled={isVerifyOtp}
-                onChange={(e) => setRegister(e)}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onInvalid={onInvalid}
-                value={userRegister.email}
-                disabled={isVerifyOtp}
-                onChange={(e) => setRegister(e)}
-                required
-                onBlur={onBlurEmail}
-              />
-              {isVerifyOtp && (
-                <>
-                  <input
-                    name="otp"
-                    placeholder="OTP"
-                    type="text"
-                    onInvalid={onInvalid}
-                    maxLength="6"
-                    onInput={validateNumber}
-                    value={userRegister.otp}
-                    onChange={(e) => setRegister(e)}
-                    required={isValidEmail}
-                  />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onInvalid={onInvalid}
-                    value={userRegister.password}
-                    onChange={(e) => setRegister(e)}
-                    required={isValidEmail}
-                    onBlur={onBlurPassword}
-                  />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Confirm Password"
-                    onInvalid={onInvalid}
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required={isValidEmail}
-                  />
-                </>
-              )}
-              <button type="submit">
-                {isVerifyOtp ? "Register" : "Generate OTP"}
-              </button>
-            </form>
-          </div>
-          <div className="login">
-            <form onSubmit={onLogin}>
-              <label htmlFor="chk" aria-hidden="true" onClick={setPage}>
-                Login
-              </label>
-              <input
-                className="email-input"
-                type="email"
-                name="email"
-                placeholder="Email"
-                onInvalid={onInvalid}
-                required
-                value={userLogin.email}
-                onChange={(e) => {
-                  setLogin(e);
-                }}
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onInvalid={onInvalid}
-                value={userLogin.password}
-                required
-                onChange={(e) => {
-                  setLogin(e);
-                }}
-              />
-              <button type="submit">LOGIN</button>
-              <label className="forgot-pass">
-                <a>Forgot password ?</a>
-              </label>
-            </form>
-          </div>
+          <input type="checkbox" id="forget-chk" aria-hidden="true" />
+
+          {signUp()}
+          {login()}
+          {forgetPassword()}
         </div>
       </div>
     </div>

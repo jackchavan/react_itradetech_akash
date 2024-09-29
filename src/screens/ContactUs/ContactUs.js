@@ -3,6 +3,7 @@ import "./ContactUs.css";
 import {
   showToast,
   ToastError,
+  ToastSuccess,
   validateEmail,
   validateNumber,
 } from "../../utils/CommonMethods";
@@ -55,10 +56,13 @@ const ContactUs = () => {
 
     try {
       const response = await conatctUs(details);
-      if (response === "User registered Succefully") {
+      if (response === "Contact us Succefully") {
         dispatch(setLoading(false));
+        setDetails(initialState);
+        showToast(ToastSuccess, "Information saved successfully!");
       }
     } catch (error) {
+      showToast(ToastError, "Somthing went wrong !");
       dispatch(setLoading(false));
       return false;
     }

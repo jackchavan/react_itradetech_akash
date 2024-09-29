@@ -4,7 +4,6 @@ import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import Loader from "./components/Loader/Loader";
 import Header from "./components/Header/Header";
-import ContactHeader from "./components/ContactHeader/ContactHeader";
 
 function App() {
   const { loading } = useSelector((state) => state.common);
