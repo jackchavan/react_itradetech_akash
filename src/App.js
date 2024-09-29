@@ -10,7 +10,7 @@ function App() {
   const { loading } = useSelector((state) => state.common);
 
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column vh-100 overflow-x-hidden">
       <Header />
       <div className="content-container flex-grow-1">
         <Routing />

@@ -58,15 +58,15 @@ const Courses = () => {
   };
 
   return (
-    <div className="div-container">
-      <div className="search-container">
+    <div className="container-fluid text-center p-4">
+      <div className="search mb-4">
         <input placeholder="Search" onChange={onSearch} />
       </div>
 
       <div className="courses">
         <div className="grid-container">
           {coursesData.map((item, index) => (
-            <CourseCard data={item} />
+            <CourseCard key={index} data={item} />
           ))}
         </div>
       </div>

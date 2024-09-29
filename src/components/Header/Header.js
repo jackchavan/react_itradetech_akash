@@ -71,7 +71,7 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className="collapse navbar-collapse justify-content-end"
+          className="collapse navbar-collapse justify-content-end px-5"
           id="navbarNav"
         >
           <ul className="navbar-nav">
@@ -128,8 +128,8 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  // activeClassName={isLoggedIn ? "nav-link":"active"}
-                  // to={HOME}
+                  activeClassName={isLoggedIn ? "nav-link" : "active"}
+                  to={HOME}
                   onClick={() => clearCache()}
                 >
                   Logout <i className="fa fa-sign-out" aria-hidden="true"></i>

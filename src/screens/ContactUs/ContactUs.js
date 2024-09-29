@@ -9,7 +9,7 @@ import {
 import { conatctUs } from "../../services/contactUsService";
 import { setLoading } from "../../store/actions/CommonActions";
 import { useDispatch } from "react-redux";
-
+import BgImg from "../../assets/img/bg-contact-us.png";
 const ContactUs = () => {
   const dispatch = useDispatch();
   const initialState = {
@@ -64,9 +64,11 @@ const ContactUs = () => {
     }
   };
   return (
-    <div className="contact-us-wrapper">
-      <div className="contact-us-bg"></div>
-      <div className="divider-gray" />
+    <div className="justify-content-center align-items-center">
+      <div className="">
+        <img src={BgImg} alt="bg-contact" className="bg-img-conact" />
+      </div>
+      <div className="divider-gray align-center" />
 
       <div>
         <div className="contact-grid">
@@ -74,7 +76,7 @@ const ContactUs = () => {
           <h2>SEND YOUR MESSAGE</h2>
 
           <form onSubmit={onSubmit}>
-            <div className="row">
+            <div className="d-flex flex-column flex-md-row text-center gap-lg-5">
               <input
                 name="contactname"
                 placeholder="Your Name"
@@ -94,7 +96,7 @@ const ContactUs = () => {
                 onChange={(e) => onChangeInput(e)}
               />
             </div>
-            <div className="row">
+            <div className="d-flex flex-column flex-md-row text-center gap-lg-5">
               <input
                 name="email"
                 placeholder="Email"

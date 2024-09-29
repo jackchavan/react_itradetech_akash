@@ -1,197 +1,123 @@
-.footer-container {
-  background: url(../../assets/img/bg-footer.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top;
-  height: calc(100vh - 158px); /* Use full viewport height */
-  padding: 2rem 8rem;
-}
-
-.box {
-  padding: 0 15px; /* Unified padding */
-  margin: 0 auto; /* Center the box */
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.footerTitle {
-  align-items: center;
-}
-
-.i-desc {
-  align-self: center;
-}
-
-.footerTitle img {
-  height: 80px; /* Logo height */
-}
-
-.border-logo {
-  height: 2px;
-  width: 100%;
-  background-color: var(--white);
-  margin-top: 7.6%;
-}
-
-.col-md-4 {
-  flex: 0 0 33.333%; /* Default for larger screens */
-  max-width: 33.333%; /* Ensure three columns */
-  padding: 0 15px; /* Uniform padding */
-}
-
-.info {
-  width: 75%;
-}
-
-.footerContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-left: 30px;
-}
-
-.text-white {
-  color: var(--white);
-}
-
-.text-white-50 {
-  color: rgba(255, 255, 255, 0.5) !important;
-  font-size: 14px;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.link-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0 15px;
-}
-
-.footerLink {
-  color: #ffffff;
-  margin: 0 0 20px 0;
-  font-size: 12px;
-}
-
-.footerLink:hover {
-  color: #ffcc00;
-  transition: 200ms ease-in;
-}
-
-.heading {
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.ml- {
-  margin-left: -0.2%;
-  display: flex;
-  align-items: center;
-}
-
 .footer-info {
-  flex: 1;
-  color: var(--white);
-  font-size: 14px;
-  font-weight: 700;
+  text-align: justify;
 }
 
-.x-div a {
-  height: 30px;
-  width: 30px;
-  border-radius: 5px;
-  background-color: var(--white);
-  display: grid;
+.follow a {
   align-content: center;
+  background-color: var(--white);
+  border-radius: 5px;
+  display: grid;
+  height: 30px;
   justify-items: center;
+  width: 30px;
 }
-
 .x {
   height: 20px;
+  background-color: var(--white);
 }
-.flx-wrp {
-  flex-wrap: nowrap;
+.divider-logo {
+  height: 2px;
+  background-color: var(--white);
+  width: 100%;
+  margin-top: 5.5%;
+}
+.m-footer {
+  padding: 15% 10%;
+  color: var(--white);
+  a {
+    color: var(--white);
+  }
+}
+.itt-logo {
+  height: 15%;
 }
 
-.img-pad {
-  margin: 40px 10px;
+.bottom {
+  margin-top: 8rem;
+  border-top: 1px solid var(--white);
 }
-/* Responsive Styles */
+
+.get-txt {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.gap {
+  gap: 4rem;
+}
 @media (max-width: 768px) {
-  .img-pad {
-    margin: 20px 10px;
+  .itt-logo {
+    height: 15%;
   }
-  .footer-container {
-    padding: 0.5rem;
+  .get-txt {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
-  .col-md-4 {
-    flex: 0 0 100%; /* Stack items on smaller screens */
-    max-width: 100%; /* Full width on small screens */
-    margin-bottom: 20px; /* Space between stacked items */
+  .follow a {
+    height: 15px;
+    width: 15px;
   }
-
-  .footer-info {
-    font-size: 10px; /* Adjust font size */
+  .m-footer {
+    padding: 10% 8%;
   }
-
-  .footerTitle img {
-    height: 50px; /* Smaller logo size on small screens */
+  .follow span {
+    font-size: 12px;
   }
-  .border-logo {
-    margin-top: 6%;
-    height: 1px;
+  .q-links a {
+    font-size: 10px;
   }
-  .flx-wrp {
-    flex-wrap: nowrap;
+  .q-links {
+    margin-top: -4rem;
+  }
+  .links-a {
+    height: 1rem;
+  }
+  .x {
+    height: 14px;
+  }
+  .gap {
+    gap: 2rem;
+  }
+  .bottom {
+    margin-top: 3rem;
   }
 }
-
-@media (max-width: 576px) {
-  .footer-container {
-    padding: 0.5rem;
+@media (max-width: 375px) {
+  .itt-logo {
+    height: 15%;
   }
-  .footerTitle img {
-    height: 80px; /* Further reduce logo size for very small screens */
+  .get-txt {
+    font-size: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
   }
-
-  .i-desc {
-    font-size: 10px; /* Smaller description font size */
+  .follow a {
+    height: 8px;
+    width: 8px;
   }
-
-  .footer-info {
-    font-size: 10px; /* Smaller footer info font size */
-    line-height: 1.4; /* Better line height for readability */
+  .m-footer {
+    padding: 5% 5%;
   }
-
-  .x-div a {
-    height: 25px; /* Smaller icon size */
-    width: 25px; /* Adjusted icon size */
+  .follow span {
+    font-size: 8px;
   }
-
+  .q-links a {
+    font-size: 8px;
+  }
+  .q-links {
+    margin-top: -3rem;
+  }
+  .links-a {
+    height: 1rem;
+  }
   .x {
-    height: 18px; /* Adjusted icon size */
+    height: 15px;
   }
-
-  .heading {
-    font-size: 20px; /* Smaller heading for mobile */
+  .gap {
+    gap: 1rem;
+  }
+  .bottom {
+    margin-top: 1rem;
   }
 }

@@ -10,7 +10,7 @@ import { initiatePayment } from "../../services/paymentService";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import { getUniqueId } from "../../utils/CommonMethods";
 import { setCourse } from "../../store/actions/CourseActions";
-
+import BgTitle from "../../assets/img/course-detail-banner.png";
 const Detail = () => {
   const { id } = useParams();
   const { auth } = useSelector((state) => state.auth);
@@ -121,7 +121,7 @@ const Detail = () => {
   const TextStyling = (props) => {
     if (typeof props.text !== "string") {
       console.error("Expected a string");
-      return null; // or handle the error appropriately
+      return null;
     }
     const [firstWord, ...remainingWords] = props.text?.split(" ");
     const remainingText = remainingWords?.join(" ");
@@ -149,13 +149,14 @@ const Detail = () => {
     return (
       <div className="card-deatil">
         <div className="card-details-wrapper">
-          {/* <img className="img-detail" src={Img} alt="img" /> */}
           <div className="sub-section">
             <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
             <div className="card-details">{cardDetails()}</div>
-            {/* <button className="btn-enroll-now" onClick={onEnroll}>
-              Enroll Now
-            </button> */}
+            {auth?.isAdmin === 1 && (
+              <button className="btn-enroll-now" onClick={onEnroll}>
+                Enroll Now
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -164,8 +165,8 @@ const Detail = () => {
 
   const ListItem = ({ data }) => {
     return data?.map((item, i) => (
-      <li key={i}>
-        <img src={BullletPoint} />
+      <li key={i} className="d-flex gap-3 align-items-center">
+        <img className="bullet-img" src={BullletPoint} />
         <div dangerouslySetInnerHTML={{ __html: item }} />
         {item.child && (
           <ul>
@@ -177,8 +178,12 @@ const Detail = () => {
   };
 
   return (
-    <div className="detail-continer">
+    <div
+      className="text-center"
+      style={{ backgroundColor: "var(--gray-light)" }}
+    >
       <div className="detail-box">
+        <img src={BgTitle} className="img-fluid title-banner" />
         <div className="desc-div">
           <TextStyling
             text={courseDetail?.title}
@@ -187,19 +192,22 @@ const Detail = () => {
           />
         </div>
       </div>
-      {card()}
-      <div className="syllabus-div">
-        <div className="syllabus-title">
-          <TextStyling
-            text={"Things YOU LEARN"}
-            class={"text-container-center"}
-          />
+      {/* Details */}
+      <div className="d-flex flex-column flex-md-row text-center gap-lg-5 detail">
+        <div className="detail-container">
+          <div className="">
+            <TextStyling
+              text={"Things YOU LEARN"}
+              class={"text-container-center"}
+            />
+          </div>
+          <div className="li-learn">
+            <ul className="ul-learn">
+              <ListItem data={list} />
+            </ul>
+          </div>
         </div>
-        <div className="li-learn">
-          <ul className="ul-learn">
-            <ListItem data={list} />
-          </ul>
-        </div>
+        <div className="detail-card">{card()}</div>
       </div>
     </div>
   );
