@@ -16,7 +16,7 @@ export const CONTACT_US = BASE_URL + "/api/Contactus/Insertcontactus";
 const authAxios = axios.create();
 authAxios.interceptors.request.use(
   (config) => {
-    const token = ""; //getToken()
+    const token = localStorage.getItem("token") ?? "";
     if (token) {
       config.headers["x-auth-token"] = token;
       config.headers["Access-Control-Allow-Origin"] = "*";

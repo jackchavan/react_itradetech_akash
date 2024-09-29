@@ -106,6 +106,7 @@ const Login = () => {
       const response = await login(body);
       if (response) {
         dispatch(setLoading(false));
+        localStorage.setItem('token',response.token)
         showToast(ToastSuccess, "Login Successful");
         resetState();
         dispatch(setAuth({ login: true, ...response }));
@@ -342,7 +343,7 @@ const Login = () => {
     );
   };
 
-  const login = () => {
+  const LoginView = () => {
     return (
       <div className="login">
         <form onSubmit={onLogin}>
@@ -444,7 +445,7 @@ const Login = () => {
           <input type="checkbox" id="forget-chk" aria-hidden="true" />
 
           {signUp()}
-          {login()}
+          {LoginView()}
           {forgetPassword()}
         </div>
       </div>
