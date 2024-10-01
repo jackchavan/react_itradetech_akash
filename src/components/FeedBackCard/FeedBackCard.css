@@ -1,0 +1,76 @@
+.feedback-card {
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.feedback-img {
+  height: 210px;
+  width: 210px;
+  border: 10px solid rgba(0, 0, 0, 0.1);
+  outline-color: azure;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.feedback-img img {
+  height: 190px;
+  width: 190px;
+  border: 10px solid var(--warning);
+  outline-color: azure;
+  border-radius: 50%;
+}
+
+.feedback-card p {
+  font-family: "leela-regular" !important;
+  margin: 0;
+  text-align: justify;
+  padding: 0 30px;
+}
+.feedback-card h1 {
+  margin: 0;
+  padding: 0;
+}
+.comma {
+  height: 50px;
+  width: 50px;
+  margin-top: -40px;
+}
+
+.i-comma {
+  height: 24px;
+  width: 24px;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .feedback-img {
+    height: 110px;
+    width: 110px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    img {
+      height: 100px;
+      width: 100px;
+      border: 5px solid var(--warning);
+    }
+  }
+  .i-comma {
+    height: 16px;
+    width: 16px;
+  }
+  .comma {
+    height: 35px;
+    width: 35px;
+    margin-top: -25px;
+  }
+  .feedback-card {
+    p {
+      font-size: 10px;
+      height: 70px;
+    }
+    h1 {
+      font-size: 14px;
+    }
+  }
+}

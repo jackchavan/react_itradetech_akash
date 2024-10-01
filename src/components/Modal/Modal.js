@@ -1,19 +1,21 @@
-import React from "react"; 
+import React from "react";
 import Modal from "react-modal";
 import "./Modal.css";
 import Close from "../../assets/img/closeCircle.png";
 
 const customStyles = {
   content: {
-    top: "50%",
+    top: "62%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "80%",
+    height: "75%",
     width: "70%",
-    borderRadius:"10px"
+    borderRadius: "10px",
+    backgroundColor: "var(--white)",
+    zIndex: 1002,
   },
 };
 
@@ -45,7 +47,10 @@ const CustomModal = ({ data, isOpen, closeModal }) => {
         />
       </div>
 
-      <div style={{overflowY:"scroll",height:'90%'}} dangerouslySetInnerHTML={{__html:data}}></div>
+      <div
+        className="innerHtml"
+        dangerouslySetInnerHTML={{ __html: data }}
+      ></div>
     </Modal>
   );
 };

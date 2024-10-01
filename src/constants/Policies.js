@@ -1,5 +1,5 @@
 export const termsAndCondition = `
-<div>
+<div className="policies">
    <h2>Terms and Conditions of Use</h2>
    <h3>I TADE TECH IS THE PART OF THE V R SOLUTIONS.</h3>
    <h3>1. Introduction</h3>
@@ -68,7 +68,7 @@ export const termsAndCondition = `
 `;
 export const privacyPolicy = `
 
-<div>
+<div className="policies">
    <h2>Privacy Policy</h2>
    <h3>I TADE TECH IS THE PART OF THE V R SOLUTIONS.</h3>
    <text>
@@ -102,7 +102,7 @@ export const privacyPolicy = `
 `;
 export const refundPolicy = `
 
-<div>
+<div className="policies">
    <h2>Refund Policy</h2>
    <text>
       We at <strong>I TRADE TECH</strong> are committed to ensuring customer satisfaction and providing a fair refund policy for our online trading tutorials. Please read the following details carefully:

@@ -2,79 +2,88 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
 import CustomModal from "../../components/Modal/Modal";
+import CustomCarousel from "../../components/Carousel/Carousel";
+import { setLoading, setZindex } from "../../store/actions/CommonActions";
+import { useDispatch, useSelector } from "react-redux";
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
+import AboutUsHome from "../AboutUsHome/AboutUsHome";
+import FeedBack from "../FeedBack/FeedBack";
+import { getAllCourses } from "../../services/courseService";
+import { setCourses } from "../../store/actions/CourseActions";
+import BgHome from "../../assets/img/home-banner.png";
+import BgCourses from "../../assets/img/bg-homeCourses.png";
 const Home = () => {
-  const [courses, setCourses] = useState([]);
+  const dispatch = useDispatch();
+  const { courses } = useSelector((state) => ({
+    courses: state.course.courses,
+  }));
+  const [coursesData, setCoursesData] = useState([]);
   const [terms, setTerms] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isModal, setModal] = useState(false);
 
   useEffect(() => {
-    setCourses([
-      {
-        title: "Foundation Module for Financial Market",
-        duration: "Live Classes | 1 week",
-        price: "1999",
-      },
-      {
-        title: "Foundation Module for Financial Market",
-        duration: "Live Classes | 1 week",
-        price: "1999",
-      },
-      {
-        title: "Role of Fundamental Analysis in Market",
-        duration: "Live Classes | 1 week",
-        price: "5999",
-      },
-    ]);
+    getCourses();
   }, []);
+
+  useEffect(() => {
+    setCoursesData(courses);
+  }, [courses?.length]);
+
+  const getCourses = async () => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await getAllCourses();
+      if (response) {
+        dispatch(setCourses(response));
+        dispatch(setLoading(false));
+      }
+    } catch (error) {
+      dispatch(setLoading(false));
+
+      console.error(error);
+      return false;
+    }
+  };
 
   const getTerms = (data) => {
     setTerms(data);
+    dispatch(setZindex(false));
     setModal(true);
   };
 
   const closeModal = () => {
     setModal(!isModal);
-  };
-  const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : courses.length - 1
-    );
-  };
-
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex < courses.length - 1 ? prevIndex + 1 : 0
-    );
+    dispatch(setZindex(true));
   };
 
   return (
-    <div className="container">
-      <div className="home-banner">
-        <h1 className="company-name">ITradeTech</h1>
-        <h2>Welcome to Our Trading Education Platform</h2>
-        <p>
-          Learn the art of trading with our comprehensive courses and expert
-          guidance.
-        </p>
+    <div>
+      <div className="ratio ratio-16x9">
+        <img src={BgHome} alt="bg-home" />
       </div>
-      {/* 
-      <main>
-        <div className="courses-wrapper">
-          <button className="nav-button left" onClick={handlePrevClick}>&lt;</button>
-          <div className="courses" style={{ transform: `translateX(-${currentIndex * 320}px)` }}>
-            {courses.map(course => (
-              <div className="course" key={course.id}>
-                <h2>{course.title}</h2>
-                <p>{course.description}</p>
-              </div>
-            ))}
-          </div>
-          <button className="nav-button right" onClick={handleNextClick}>&gt;</button>
-        </div>
-      </main> */}
 
+      <AboutUsHome />
+
+      <div className="course-container">
+        <div className="ratio ratio-16x9">
+          <img src={BgCourses} alt="bg-home" />
+
+          <div className="col-12 col-md-8 mx-auto">
+            <h3 className="text-center course display-6">Our</h3>
+            <h3 className="text-center course-sub-title  display-6">COURSES</h3>
+            <div className="carousel-container-div">
+              <CustomCarousel data={coursesData} type={"course"} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <WhyChooseUs />
+
+      <FeedBack />
       <Footer getTerms={getTerms} />
+
       <CustomModal isOpen={isModal} data={terms} closeModal={closeModal} />
     </div>
   );

@@ -1,50 +1,29 @@
-.header {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
+@import "../../App.css";
+
+.mainHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 8px 6px -6px var(--gray);
+  z-index: 1001;
+}
+.sticky-header {
+  position: sticky; /* or use fixed for it to always be visible */
+  top: 0; /* sticks to the top */
+  z-index: 1001; /* ensures it stays above other elements */
+}
+.zIndex {
+  z-index: 0 !important;
+}
+.navbar-nav .nav-link.active {
+  color: var(--primary);
+  font-weight: 700;
 }
 
-.nav-links {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-
-.nav-links li {
-  margin-right: 1rem;
-}
-
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  text-decoration: none;
-}
-
-.nav-links li a:hover {
-  text-decoration: underline;
-}
-
-.auth-links {
-  margin-left: auto; /* Push the auth links to the right */
-  display: flex;
-}
-
-.auth-links a {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  color: white;
-  text-decoration: none;
-}
-
-.auth-links a:hover {
-  background-color: #0056b3;
+.navbar-nav .nav-link:hover {
+  color: var(--warning);
+  font-weight: 700;
 }

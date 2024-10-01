@@ -3,3 +3,9 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+.innerHtml {
+  overflow-y: scroll;
+  height: 90%;
+  color: var(--dark);
+}

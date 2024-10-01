@@ -1,0 +1,51 @@
+.video-container {
+  padding: 2rem;
+  background-color: var(--bg-pink);
+}
+
+video {
+  width: 100%;
+}
+.video-title {
+  font-weight: 700;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 10px;
+  color: var(--dark);
+  font-size: 2.5rem;
+}
+.video-list {
+  border: 0.5px solid var(--primary);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--white);
+  video {
+    height: 20vh;
+    width: 100%;
+    pointer-events: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.video-item {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: var(--dark);
+  small {
+    color: var(--gray);
+  }
+}
+@media (max-width: 768) {
+  .video-container {
+    padding: 2rem;
+  }
+}
+@media (max-width: 375px) {
+  .video-container {
+    padding: 1rem;
+  }
+}

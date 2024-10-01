@@ -1,0 +1,32 @@
+@import '../../App.css';
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  flex-wrap: wrap;
+  p {
+    margin: 5px;
+  }
+}
+.color-change {
+  font-size: 12px;
+  font-weight: 600;
+  animation: colorChange 1.5s infinite;
+}
+@keyframes colorChange {
+  0% {
+    color: white;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: white;
+  }
+}

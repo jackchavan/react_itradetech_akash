@@ -8,15 +8,18 @@ export const GENERATE_OTP = BASE_URL + "/api/OTP/generate";
 export const VERIFY_OTP = BASE_URL + "/api/OTP/verify";
 export const INITIATE_PAYMENT = BASE_URL + "/api/Payment/initiate";
 export const PAYMENT_STATUS = BASE_URL + "/api/Payment/status";
-
+export const ALL_COURSES = BASE_URL + "/api/Course/GetAllCourses";
+export const COURSE_DETAIL = BASE_URL + "/api/Course/GetCourse?courseCode=";
+export const GET_TESTIMONIALS = BASE_URL + "/api/Testimony/GetAllTestimony";
+export const CONTACT_US = BASE_URL + "/api/Contactus/Insertcontactus";
 
 const authAxios = axios.create();
 authAxios.interceptors.request.use(
   (config) => {
-    const token = ""; //getToken()
+    const token = localStorage.getItem("token") ?? "";
     if (token) {
       config.headers["x-auth-token"] = token;
-      config.headers["Access-Control-Allow-Origin"] = "*"
+      config.headers["Access-Control-Allow-Origin"] = "*";
     }
     return config;
   },

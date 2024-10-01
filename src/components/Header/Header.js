@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./Header.css"; // Import the CSS file
+import { useNavigate, NavLink } from "react-router-dom";
+import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../store/actions/AuthActions";
 import {
   ABOUT,
-  COURSES,
+  CONTACT_US,
+  COURSE,
   HOME,
   LOGIN,
-  REGISTER,
-  SUBSCRIBE,
 } from "../../constants/PathConstants";
 import { setCourse } from "../../store/actions/CourseActions";
-import { setSubscribe } from "../../store/actions/SubscribeActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from "../../assets/img/logo.png";
+import ContactHeader from "../ContactHeader/ContactHeader";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { auth } = useSelector((state) => state?.auth);
+  const { auth } = useSelector((state) => ({
+    auth: state?.auth.auth,
+  }));
   const [isLoggedIn, setIsLoggedIn] = useState(auth?.login);
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
+
+  const handleToggleOpen = () => {
+    setIsToggleOpen((prev) => !prev);
+  };
+
+  const handleLinkClick = () => {
+    setIsToggleOpen(false);
+  };
 
   useEffect(() => {
     setIsLoggedIn(auth?.login);
@@ -29,41 +42,115 @@ const Header = () => {
     localStorage.clear();
     dispatch(setAuth(null));
     dispatch(setCourse(null));
-    dispatch(setSubscribe(null));
     dispatch(setOrderId(null));
     dispatch(setOrder(null));
   };
-  return (
-    <nav className="header">
-      <ul className="nav-links">
-        <li>
-          <Link to={HOME}>Home</Link>
-        </li>
-        <li>
-          <Link to={ABOUT}>About Us</Link>
-        </li>
-        <li>
-          <Link to={COURSES}>Courses</Link>
-        </li>
-        <li>
-          <Link to={SUBSCRIBE}>Subscribe</Link>
-        </li>
-        {!isLoggedIn && (
-          <li className="auth-links">
-            <Link to={REGISTER}>Register</Link>
-            <Link to={LOGIN}>Login</Link>
-          </li>
-        )}
-      </ul>
 
-      {isLoggedIn && (
-        <li className="auth-links">
-          <Link to={HOME} onClick={() => clearCache()}>
-            Logout
-          </Link>
-        </li>
-      )}
-    </nav>
+  const navTo = () => {
+    navigate(LOGIN);
+    setIsToggleOpen(false);
+  };
+
+  return (
+    <header className="sticky-header">
+      <ContactHeader />
+      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <NavLink className="navbar-brand" to="/">
+          <img
+            className="d-inline-block align-top"
+            width="150"
+            height="50"
+            alt="logo"
+            src={Logo}
+          />
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={handleToggleOpen}
+          aria-controls="navbarNav"
+          aria-expanded={isToggleOpen}
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className={`collapse navbar-collapse justify-content-end px-5 ${
+            isToggleOpen ? "show" : ""
+          }`}
+          id="navbarNav"
+        >
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                exact
+                to={HOME}
+                onClick={handleLinkClick}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to={COURSE}
+                onClick={handleLinkClick}
+              >
+                Courses
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to={ABOUT}
+                onClick={handleLinkClick}
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to={CONTACT_US}
+                onClick={handleLinkClick}
+              >
+                Contact Us
+              </NavLink>
+            </li>
+
+            {!isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to={LOGIN}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navTo();
+                  }}
+                >
+                  Login / Register
+                </NavLink>
+              </li>
+            )}
+            {isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to={HOME}
+                  onClick={() => {
+                    clearCache();
+                    handleLinkClick();
+                  }}
+                >
+                  Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 

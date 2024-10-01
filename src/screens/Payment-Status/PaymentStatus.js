@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PaymentStatus.css"; // We'll use a common CSS file for both responses
-import { COURSES, SUBSCRIBE } from "../../constants/PathConstants";
+import { COURSE } from "../../constants/PathConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../store/actions/CommonActions";
 import { getPaymentStatus } from "../../services/paymentService";
@@ -10,11 +10,9 @@ import { useNavigate } from "react-router-dom";
 const PaymentStatus = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { course, orderId, order } = useSelector((state) => ({
+  const { orderId, order } = useSelector((state) => ({
     orderId: state.transaction.orderId,
     order: state.transaction.order,
-    course: state.course.course,
-    subscribe: state.subscribe.subscribe,
   }));
   const [status, setStatus] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -47,6 +45,10 @@ const PaymentStatus = () => {
     }
   }, []);
 
+  const navToCourses = () => {
+    window.location.href = COURSE;
+  };
+
   return (
     <div className="payment-response-container">
       {status === true ? (
@@ -60,29 +62,30 @@ const PaymentStatus = () => {
           <p>Amont Paid : {order?.sdkPayload?.payload?.amount}</p>
           <p>{paymentStatus?.message}</p>
 
-          <button
-            className="response-button"
-            onClick={() =>
-              (window.location.href = course ? COURSES : SUBSCRIBE)
-            }
-          >
-            Back to {course ? "Courses" : "Subscribe"}
+          <button className="response-button" onClick={() => navToCourses()}>
+            Back to Courses
           </button>
         </div>
       ) : status === false ? (
         <div>
-          <h1 className="failure-message">Payment Failed!</h1>
+          <h1 className="failure-message">Payment Failed !</h1>
+          <p>order Id : {paymentStatus?.order_id}</p>
           <p>
             We're sorry, but your transaction could not be completed. Please try
             again.
           </p>
-          <button
-            className="response-button"
-            onClick={() =>
-              (window.location.href = course ? COURSES : SUBSCRIBE)
-            }
-          >
-            Back to {course ? "Courses" : "Subscribe"}
+          <button className="response-button" onClick={() => navToCourses()}>
+            Back to Courses
+          </button>
+        </div>
+      ) : status === "cancel" ? (
+        <div>
+          <h1 className="success-message">Transaction cancelled !</h1>
+          <p>Your transaction has been cancelled.</p>
+          <p>order Id : {paymentStatus?.order_id}</p>
+
+          <button className="response-button" onClick={() => navToCourses()}>
+            Back to Courses
           </button>
         </div>
       ) : status === "cancel" ? (

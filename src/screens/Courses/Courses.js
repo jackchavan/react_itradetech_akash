@@ -1,113 +1,75 @@
-import React from "react";
-import "./Courses.css"; // Import the CSS file
-import Img from "../../assets/img/test.jpg";
+import React, { useEffect, useState } from "react";
+import "./Courses.css";
+import CourseCard from "../../components/CourseCard/CourseCard";
+import { getAllCourses } from "../../services/courseService";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { LOGIN, PAYMENT_RESPONSE } from "../../constants/PathConstants";
-import { setCourse } from "../../store/actions/CourseActions";
-import { initiatePayment } from "../../services/paymentService";
-import { setSubscribe } from "../../store/actions/SubscribeActions";
-import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
+import { setLoading } from "../../store/actions/CommonActions";
+import { setCourses } from "../../store/actions/CourseActions";
+
 const Courses = () => {
-  const { auth } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const courseData = [
-    {
-      title: "Foundation Module for Financial Market",
-      duration: "Live Classes | 1 week",
-      price: 1999.0,
-    },
-    {
-      title: "Foundation Module for Financial Market",
-      duration: "Live Classes | 1 week",
-      price: 1999.0,
-    },
-    {
-      title: "Role of Fundamental Analysis in Market",
-      duration: "Live Classes | 1 week",
-      price: 5999.0,
-    },
-  ];
+  const { courses } = useSelector((state) => ({
+    courses: state.course.courses,
+  }));
+  const [coursesData, setCoursesData] = useState([]);
 
-  const makePayment = async (item) => {
-    const orderId = Math.floor(Math.random() * 90000) + 10000;
+  useEffect(() => {
+    if (courses.length === 0) {
+      getCourses();
+    }
+  }, []);
 
-    const body = {
-      orderId: orderId.toString(),
-      customerId: auth?.userId.toString(),
-      amount: item.price,
-      paymentPageClientId: auth?.userId.toString(),
-      returnUrl: `http://localhost:3000/${PAYMENT_RESPONSE}`,
-      customerEmail: 0,
-      customer_phone: 0,
-      first_name: 0,
-      last_name: 0,
-      description: "string",
-      myProperty: "string",
-      currency: "string",
-      udf1: "string",
-      udf2: "string",
-      udf3: "string",
-      udf4: "string",
-      udf5: "string",
-      udf6: "string",
-      udf7: "string",
-      udf8: "string",
-      udf9: "string",
-      udf10: "string",
-    };
+  useEffect(() => {
+    setCoursesData(courses);
+  }, [courses.length]);
+
+  const getCourses = async () => {
+    dispatch(setLoading(true));
+
     try {
-      const response = await initiatePayment(body);
+      const response = await getAllCourses();
       if (response) {
-        dispatch(setOrderId(response.orderId));
-        dispatch(setOrder(response))
-        window.open(response?.paymentLinks?.web, "_blank");
+        dispatch(setCourses(response));
+        dispatch(setLoading(false));
       }
     } catch (error) {
+      dispatch(setLoading(false));
+
       console.error(error);
       return false;
     }
   };
+  const onSearch = (e) => {
+    const searchTerm = e.target.value;
 
-  const onClickCard = (item) => {
-    if (auth?.login) {
-      makePayment(item);
-      setData(item);
+    if (searchTerm) {
+      const filterData = courses.filter((item) =>
+        item.title.toLocaleLowerCase().includes(searchTerm)
+      );
+
+      if (filterData.length > 0) {
+        setCoursesData(filterData);
+      } else {
+        setCoursesData([]);
+      }
     } else {
-      setData(item);
-      navigate(LOGIN);
+      setCoursesData(courses);
     }
   };
 
-  const setData = (item) => {
-    dispatch(setCourse(item));
-    dispatch(setSubscribe(null));
-  };
-
-  const courseCard = (data) => {
-    return data.map((item, i) => (
-      <div className="course-card" key={i}>
-        <div className="course-image-container">
-          <img src={Img} alt="Course 2" className="course-image" />
-        </div>
-        <div className="course-details">
-          <h2>{item.title}</h2>
-          <p>{item.duration}</p>
-          <p>₹ {item.price}</p>
-          <button className="enroll-button" onClick={() => onClickCard(item)}>
-            Enroll Now
-          </button>
-        </div>
-      </div>
-    ));
-  };
   return (
-    <div className="courses-container">
-      <div className="courses-banner">
-        <h1>Our Courses</h1>
+    <div className="container-fluid text-center p-4">
+      <div className="search mb-4">
+        <input placeholder="Search" onChange={onSearch} />
       </div>
-      <div className="courses-content">{courseCard(courseData)}</div>
+
+      <div className="courses">
+        <div className="grid-container">
+          {coursesData.map((item, index) => (
+            <CourseCard key={index} data={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

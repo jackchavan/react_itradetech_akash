@@ -1,0 +1,15 @@
+.pageDivider {
+  border-radius: 60px 60px 60px 60px / 25px 25px 25px 25px;
+  width: 90%;
+  align-self: center;
+  overflow: hidden;
+  height: 40px;
+  background-color: transparent;
+}
+
+.color1 {
+  height:20px;
+}
+.color2 {
+  height: 20px;
+}

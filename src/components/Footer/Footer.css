@@ -1,54 +1,123 @@
-.box {
-  padding: 2%;
-  background: #34495e;
-  bottom: 10;
-  width: 95%;
-  border-radius: 10px;
-
-  @media (max-width: 1000px) {
-  }
+.footer-info {
+  text-align: justify;
 }
 
-.footerContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* max-width: 1000px; */
-  margin: 0 auto;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-left: 30px;
-}
-
-.row {
+.follow a {
+  align-content: center;
+  background-color: var(--white);
+  border-radius: 5px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-  grid-gap: 20px;
-
-  @media (max-width: 1000px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  height: 30px;
+  justify-items: center;
+  width: 30px;
+}
+.x {
+  height: 20px;
+  background-color: var(--white);
+}
+.divider-logo {
+  height: 2px;
+  background-color: var(--white);
+  width: 100%;
+  margin-top: 5.5%;
+}
+.m-footer {
+  padding: 15% 10%;
+  color: var(--white);
+  a {
+    color: var(--white);
   }
 }
-
-.footerLink {
-  color: #ffffff;
-  margin: 0 0 20px 0;
-  font-size: 12px;
-  /* text-decoration: none; */
-
-  &:hover {
-    color: #ffcc00;
-    transition: 200ms ease-in;
-  }
+.itt-logo {
+  height: 15%;
 }
 
-.heading {
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 20px;
-  font-weight: bold;
+.bottom {
+  margin-top: 8rem;
+  border-top: 1px solid var(--white);
+}
+
+.get-txt {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.gap {
+  gap: 4rem;
+}
+@media (max-width: 768px) {
+  .itt-logo {
+    height: 15%;
+  }
+  .get-txt {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .follow a {
+    height: 15px;
+    width: 15px;
+  }
+  .m-footer {
+    padding: 10% 8%;
+  }
+  .follow span {
+    font-size: 12px;
+  }
+  .q-links a {
+    font-size: 10px;
+  }
+  .q-links {
+    margin-top: -4rem;
+  }
+  .links-a {
+    height: 1rem;
+  }
+  .x {
+    height: 14px;
+  }
+  .gap {
+    gap: 2rem;
+  }
+  .bottom {
+    margin-top: 3rem;
+  }
+}
+@media (max-width: 375px) {
+  .itt-logo {
+    height: 15%;
+  }
+  .get-txt {
+    font-size: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
+  .follow a {
+    height: 8px;
+    width: 8px;
+  }
+  .m-footer {
+    padding: 5% 5%;
+  }
+  .follow span {
+    font-size: 8px;
+  }
+  .q-links a {
+    font-size: 8px;
+  }
+  .q-links {
+    margin-top: -3rem;
+  }
+  .links-a {
+    height: 1rem;
+  }
+  .x {
+    height: 15px;
+  }
+  .gap {
+    gap: 1rem;
+  }
+  .bottom {
+    margin-top: 1rem;
+  }
 }
