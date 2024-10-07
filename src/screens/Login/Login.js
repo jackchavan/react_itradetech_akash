@@ -21,6 +21,7 @@ import {
   validatePassword,
 } from "../../utils/CommonMethods";
 import BgLogin from "../../assets/img/bg-login.png";
+import ForgetPassword from "../forgetPassword/forgetPassword";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const Login = () => {
   const [userLogin, setUserLogin] = useState(initialLoginState);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
+  const [forgetChecked, setForgetChecked] = useState(false);
   useEffect(() => {
     if (auth?.auth?.login) {
       if (course?.course) {
@@ -106,9 +108,10 @@ const Login = () => {
       const response = await login(body);
       if (response) {
         dispatch(setLoading(false));
-        localStorage.setItem('token',response.token)
+        localStorage.setItem("token", response.token);
         showToast(ToastSuccess, "Login Successful");
         resetState();
+        setUserLogin(initialLoginState);
         dispatch(setAuth({ login: true, ...response }));
       }
     } catch (error) {
@@ -134,6 +137,8 @@ const Login = () => {
       if (response === "User registered Succefully") {
         dispatch(setLoading(false));
         setChecked(true);
+        setConfirmPassword("");
+        setRegister(initialRegisterState);
         showToast(ToastSuccess, "Registration Successfull.");
         resetState();
       }
@@ -383,6 +388,9 @@ const Login = () => {
             className="forgot-pass"
             htmlFor="forget-chk"
             aria-hidden="true"
+            onClick={() => {
+              setForgetChecked(true);
+            }}
           >
             <a>Forgot password ?</a>
           </label>
@@ -391,46 +399,6 @@ const Login = () => {
     );
   };
 
-  const forgetPassword = () => {
-    return (
-      <div className="forget-pass">
-        <form onSubmit={onLogin}>
-          <label className="display-6">Forget Password</label>
-          <input
-            className="email-input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onInvalid={onInvalid}
-            required
-            value={userLogin.email}
-            onChange={(e) => {
-              setLogin(e);
-            }}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onInvalid={onInvalid}
-            value={userLogin.password}
-            required
-            onChange={(e) => {
-              setLogin(e);
-            }}
-          />
-          <button type="submit">Submit</button>
-          <label
-            className="forgot-pass"
-            htmlFor="forget-chk"
-            aria-hidden="true"
-          >
-            <a>Login ?</a>
-          </label>
-        </form>
-      </div>
-    );
-  };
   return (
     <div className="login-div">
       <div className="login-container ratio pt-0 d-flex justify-content-center">
@@ -442,11 +410,16 @@ const Login = () => {
             aria-hidden="true"
             checked={checked}
           />
-          <input type="checkbox" id="forget-chk" aria-hidden="true" />
+          <input
+            checked={forgetChecked}
+            type="checkbox"
+            id="forget-chk"
+            aria-hidden="true"
+          />
 
           {signUp()}
           {LoginView()}
-          {forgetPassword()}
+          <ForgetPassword setChecked={setForgetChecked} />
         </div>
       </div>
     </div>
