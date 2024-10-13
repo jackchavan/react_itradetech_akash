@@ -1,15 +1,15 @@
 .login-container {
-  height: 100vh;
+  height: calc(100vh - 110px);
 }
 .login-box {
   width: 30vw;
-  height: 85vh;
+  height: calc(100vh - 132px);
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 5px 20px 50px var(--dark);
   background: var(--gray-light);
   left: 60vw;
-  top: 8vh;
+  top: 2vh;
 }
 
 #chk {
@@ -41,7 +41,7 @@
 
 .login-box input {
   width: 60%;
-  height: 6vh;
+  height: 5vh;
   background-color: var(--white);
   justify-content: center;
   display: flex;
@@ -106,7 +106,7 @@ button:hover {
   font-weight: 500;
 }
 #chk:checked ~ .login {
-  transform: translateY(-460px);
+  transform: translateY(-440px);
 }
 
 #chk:checked ~ .signup input {
@@ -137,7 +137,7 @@ button:hover {
 }
 
 #forget-chk:checked ~ .forget-pass {
-  transform: translateY(-170vh);
+  transform: translateY(-1015px);
 }
 
 @media (max-width: 768px) {
@@ -149,13 +149,13 @@ button:hover {
     border-radius: 50% 50% 25% 25% / 12% 12% 0% 0%;
   }
   #chk:checked ~ .login {
-    transform: translateY(-445px);
+    transform: translateY(-380px);
   }
   #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-180vh);
+    transform: translateY(-940);
   }
 }
-
+/* 
 @media (max-width: 375px) {
   .login-box {
     left: 2vw;
@@ -165,6 +165,22 @@ button:hover {
     transform: translateY(-55px);
   }
   #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-180vh);
+    transform: translateY(-940px);
+  }
+} */
+
+@media (max-width: 320px) {
+  .login-box {
+    left: 2vw;
+    width: 94vw;
+  }
+  .login {
+    transform: translateY(-55px);
+  }
+  #chk:checked ~ .login {
+    transform: translateY(-370px);
+  }
+  #forget-chk:checked ~ .forget-pass {
+    transform: translateY(-940px);
   }
 }

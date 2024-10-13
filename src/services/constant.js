@@ -20,7 +20,7 @@ authAxios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token") ?? "";
     if (token) {
-      config.headers["x-auth-token"] = token;
+      config.headers["Authorization"] = `Bearer ${token}`;
       config.headers["Access-Control-Allow-Origin"] = "*";
     }
     return config;

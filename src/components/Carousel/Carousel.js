@@ -48,7 +48,7 @@ const CustomCarousel = ({ data, type }) => {
           // removeArrowOnDeviceType={["tablet", "mobile"]}
           // deviceType={this.props.deviceType}
           // dotListClass="custom-dot-list-style"
-          itemClass="pd-20"
+          // itemClass="pd-20"
         >
           {type === "course" &&
             sliderData?.map((item, i) => <CourseCard data={item} key={i} />)}

@@ -54,8 +54,8 @@ const Header = () => {
   return (
     <header className="sticky-header">
       <ContactHeader />
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
-        <NavLink className="navbar-brand" to="/">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow p-0">
+        <NavLink className="navbar-brand p-0" to="/">
           <img
             className="d-inline-block align-top"
             width="150"

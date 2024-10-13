@@ -53,25 +53,29 @@ const Footer = ({ getTerms }) => {
   };
 
   return (
-    <div className="ratio ratio-16x9 align-bottom">
-      <img src={BgFooter} alt="bg-home" className="img-fluid" />
+    <div className="footer-div">
 
-      <div className="d-flex justify-content-start px-5 py-4">
-        <div className="d-flex justify-content-start">
-          <img alt="logo" src={Logo} className="itt-logo" />
-          <div className="divider-logo"></div>
-        </div>
+      <div className="d-flex justify-content-start logo-container">
+        <img alt="logo" src={Logo} className="itt-logo" />
+        <div className="divider-logo"></div>
       </div>
 
       <div className="m-footer">
         <div className="d-flex gap justify-content-center align-content-center">
-          <p className="footer-info m-0">
-            At I TRADE TECH ACADEMY, we empower aspiring traders and seasoned
-            professionals alike with the knowledge, tools, and confidence to
-            succeed in the financial markets. Whether you're looking to start
-            your trading journey or refine your strategies, our Academy offers
-            comprehensive training programs tailored to your needs.
-          </p>
+          <div>
+            <p className="footer-info m-0">
+              At I TRADE TECH ACADEMY, we empower aspiring traders and seasoned
+              professionals alike with the knowledge, tools, and confidence to
+              succeed in the financial markets. Whether you're looking to start
+              your trading journey or refine your strategies, our Academy offers
+              comprehensive training programs tailored to your needs.
+            </p>
+            <div className="q-links mt-5">
+              <h3 className="get-txt">Quick Links</h3>
+              {listItem(footerData)}
+            </div>
+          </div>
+
           <div className="col-md-4 footer-info">
             <h3 className="get-txt display-6">Get In Touch</h3>
             <p className="m-0">
@@ -101,10 +105,6 @@ const Footer = ({ getTerms }) => {
               </a>
             </div>
           </div>
-        </div>
-        <div className="q-links">
-          <h3 className="get-txt">Quick Links</h3>
-          {listItem(footerData)}
         </div>
         <div className="bottom d-flex justify-content-between">
           <p className="m-0">

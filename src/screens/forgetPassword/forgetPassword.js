@@ -223,7 +223,7 @@ const ForgetPassword = ({ setChecked }) => {
         <button type="submit">
           {isOtpGenerate ? "Change Password" : "Generate OTP"}
         </button>
-        <label className="forgot-pass" htmlFor="forget-chk" aria-hidden="true">
+        <label className="forgot-pass" htmlFor="forget-chk" aria-hidden="true" onClick={()=>setChecked(false)}>
           <a>Login ?</a>
         </label>
       </form>
