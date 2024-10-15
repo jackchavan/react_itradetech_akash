@@ -58,7 +58,7 @@ const Courses = () => {
   };
 
   return (
-    <div className="container-fluid text-center p-4">
+    <div className="container-fluid text-center p-4 contianer-h">
       <div className="search mb-4">
         <input placeholder="Search" onChange={onSearch} />
       </div>

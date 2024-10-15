@@ -11,7 +11,7 @@ import FeedBack from "../FeedBack/FeedBack";
 import { getAllCourses } from "../../services/courseService";
 import { setCourses } from "../../store/actions/CourseActions";
 import BgHome from "../../assets/img/home-banner.png";
-import BgCourses from "../../assets/img/bg-homeCourses.png";
+import DividerOrange from "../../assets/img/deviderOrange.png";
 const Home = () => {
   const dispatch = useDispatch();
   const { courses } = useSelector((state) => ({
@@ -66,20 +66,19 @@ const Home = () => {
       <AboutUsHome />
 
       <div className="course-container">
-        <div className="ratio ratio-16x9">
-          <img src={BgCourses} alt="bg-home" />
-
-          <div className="col-12 col-md-8 mx-auto">
-            <h3 className="text-center course display-6">Our</h3>
-            <h3 className="text-center course-sub-title  display-6">COURSES</h3>
-            <div className="carousel-container-div">
-              <CustomCarousel data={coursesData} type={"course"} />
-            </div>
+        <div>
+          <h4 className="text-center course">Our</h4>
+          <h4 className="text-center course-sub-title">COURSES</h4>
+          <div className="carousel-container-div">
+            <CustomCarousel data={coursesData} type={"course"} />
           </div>
         </div>
       </div>
+      <div className="d-flex devider-o">
+        <img src={DividerOrange} alt="bg-home" />
+      </div>
 
-       <WhyChooseUs />
+      <WhyChooseUs />
 
       <FeedBack />
       <Footer getTerms={getTerms} />

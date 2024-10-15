@@ -64,11 +64,11 @@
   align-self: center;
 }
 
-.why-div h1 {
+.title {
   margin: 0;
   padding: 0;
+  font-size: 60px;
   font-family: "shadow-light" !important;
-  font-size: 80px;
   background: linear-gradient(180deg, rgb(230, 143, 22), rgb(206, 111, 29));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -77,15 +77,15 @@
   color: transparent;
 }
 
-.why-div h2 {
+.sub-title {
   margin: 0;
-  margin-top: -40px;
   padding: 0;
   font-size: 40px;
   font-weight: 900;
   font-family: "leela-bold" !important;
   color: var(--primary);
   text-align: center;
+  margin-top: -10px;
 }
 @media (max-width: 768px) {
   .btn-icon {
@@ -105,14 +105,12 @@
   .obj-fit {
     height: 25rem;
   }
-  .why-div {
-    h1 {
-      font-size: 40px;
-    }
-    h2 {
-      font-size: 30px;
-      margin-top: -20px;
-    }
+
+  .title {
+    font-size: 40px;
+  }
+  .sub-title {
+    font-size: 30px;
   }
 }
 @media (max-width: 375px) {
@@ -124,5 +122,11 @@
   .why-row {
     padding-left: 5px;
     padding-right: 5px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .sub-title {
+    font-size: 20px;
   }
 }

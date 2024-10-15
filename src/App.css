@@ -70,3 +70,9 @@
   background-color: var(--warning);
   border-radius: 4px;
 }
+
+@media (max-width: 320px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

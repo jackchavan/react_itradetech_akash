@@ -10,8 +10,6 @@
   will-change: transform;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  max-width: 300px;
   margin: 10px;
   background-color: transparent;
   border: none;
@@ -52,6 +50,8 @@
   padding: 10px 15px 10px 15px;
   height: 120px;
   width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 .candel-icon {
@@ -80,8 +80,6 @@
 
 @media (max-width: 768px) {
   .card {
-    width: 100%;
-    max-width: 200px;
     margin: 10px;
   }
   .course-img {

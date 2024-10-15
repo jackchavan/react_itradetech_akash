@@ -20,7 +20,7 @@
   font-size: 5vw;
   font-weight: 900;
   color: var(--white);
-  margin-top: -3rem;
+  margin-top: -2rem;
 }
 .approach {
   padding: 2rem 5rem 0px 5rem;
@@ -74,6 +74,6 @@
     width: 5rem;
   }
   .remaining {
-    margin-top: -1rem;
+    margin-top: -0.5rem;
   }
 }

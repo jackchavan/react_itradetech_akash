@@ -33,8 +33,8 @@ const FeedBack = () => {
 
   return (
     <div className="feedback-container">
-      <h4>Learner's</h4>
-      <h2>FEEDBACK</h2>
+      <label className="title">Learner's</label>
+      <label className="subtitle">FEEDBACK</label>
       <div className="carousel-container-div">
         <CustomCarousel data={feedback} type={"feedback"} />
       </div>

@@ -66,17 +66,17 @@ const WhyChooseUs = () => {
   return (
     <div className="why-div">
       <img className="why-devider" src={DeviderGray} alt="devider" />
-      <h1>Reasons</h1>
-      <div className="mb-4">
-        <h2 className="display-4 text-uppercase">TO CHOOSE US</h2>
+      <div className="d-flex flex-column">
+        <label className="title">Reasons</label>
+        <label className="sub-title text-uppercase">TO CHOOSE US</label>
+        <div className="why-row">
+          <div className="why-list">
+            {data.map((item, index) => listItem(item, index))}
+          </div>
+          <img className="obj-fit" src={whyImg} alt="img" />
+        </div>
       </div>
 
-      <div className="why-row">
-        <div className="why-list">
-          {data.map((item, index) => listItem(item, index))}
-        </div>
-        <img className="obj-fit" src={whyImg} alt="img" />
-      </div>
       {/* <div className="why-container">
         <div className="why-row">
           {/* <div className="why-list">{data.map((item, index) => listItem(item, index))}</div> 

@@ -82,6 +82,7 @@ const Detail = () => {
     dispatch(setLoading(true));
 
     const body = {
+      CourseCode: courseDetail?.code,
       orderId: getUniqueId().toString(),
       customerId: auth?.userId.toString(),
       amount: courseDetail.cost,
@@ -118,16 +119,15 @@ const Detail = () => {
     }
   };
 
-  const TextStyling = (props) => {
-    if (typeof props.text !== "string") {
-      console.error("Expected a string");
+  const TextStyling = ({text, style, customClass}) => {
+    if (typeof text !== "string") {
       return null;
     }
-    const [firstWord, ...remainingWords] = props.text?.split(" ");
+    const [firstWord, ...remainingWords] = text?.split(" ");
     const remainingText = remainingWords?.join(" ");
 
     return (
-      <div className={props?.class} style={props?.style}>
+      <div className={customClass} style={style}>
         <span className="first-word">{firstWord}</span>
         <span className="remaining-text">{remainingText}</span>
       </div>
@@ -135,7 +135,7 @@ const Detail = () => {
   };
   const cardDetails = () => {
     return detilsData.map((item, i) => (
-      <div className="list-item">
+      <div className="list-item" key={i}>
         <span className="item-icon">
           <i className={item.icon}></i>
         </span>
@@ -187,18 +187,18 @@ const Detail = () => {
         <div className="desc-div">
           <TextStyling
             text={courseDetail?.title}
-            class={"text-container"}
+            customClass={"text-container"}
             style={{ marginLeft: "10%" }}
           />
         </div>
       </div>
       {/* Details */}
-      <div className="d-flex flex-column flex-md-row text-center gap-lg-5 detail">
-        <div className="detail-container">
+      <div className="row detail">
+        <div className="detail-container col-12 col-md-6">
           <div className="">
             <TextStyling
               text={"Things YOU LEARN"}
-              class={"text-container-center"}
+              customClass={"text-container-center"}
             />
           </div>
           <div className="li-learn">
@@ -207,7 +207,7 @@ const Detail = () => {
             </ul>
           </div>
         </div>
-        <div className="detail-card">{card()}</div>
+        <div className="detail-card col-12 col-md-6">{card()}</div>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 import authAxios, {
+  FORGET_PASS,
+  FORGET_PASS_GENERATE_OTP,
   GENERATE_OTP,
   GET_TESTIMONIALS,
   LOGIN,
@@ -65,3 +67,27 @@ export const getTestimonials = async () => {
     throw new Error(`Something went wrong!`);
   }
 };
+
+export const forgetPassword = async (body) => {
+  try {
+    const response = await authAxios.post(FORGET_PASS+body.password,body.email, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Something went wrong!`);
+  }
+};
+
+export const generateOtp =  async(body)=>{
+  try {
+    const response = await authAxios.post(FORGET_PASS_GENERATE_OTP,body, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Something went wrong!`);
+  }
+}

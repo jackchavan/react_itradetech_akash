@@ -1,4 +1,7 @@
-
+.course-container {
+  background-color: var(--primary);
+  background: url("../../assets/img/bg-homeCourses.png");
+}
 .course {
   margin: 0;
   padding: 0;
@@ -8,8 +11,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  font-size: 5rem;
-
+  font-size: 60px;
 }
 
 .course-sub-title {
@@ -18,26 +20,47 @@
   font-weight: 900;
   font-family: "leela-bold" !important;
   color: var(--white);
-  font-size: 2rem;
+  font-size: 40px;
 }
 .carousel-container-div {
-  padding: 3rem 3rem 0 3rem;
+  padding: 3rem;
 }
 
+.devider-o {
+  width: 100%;
+  padding: 0px 5.5vw;
+  align-items: center;
+  background-color: var(--primary);
+  img {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
-  .course{
-    font-size: 2.5rem;
+  .course {
+    font-size: 40px;
+  }
+  .course-sub-title {
+    font-size: 30px;
   }
   .carousel-container-div {
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 375px) {
-  .course{
-    font-size: 0.8rem;
+  .course {
+    font-size: 30px;
+  }
+  .course-sub-title {
+    font-size: 20px;
   }
   .carousel-container-div {
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0.5rem;
   }
-} 
+}
+
+@media (max-width: 320px) {
+  .carousel-container-div {
+    padding: 0.5rem;
+  }
+}
