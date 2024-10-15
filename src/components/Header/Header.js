@@ -94,19 +94,19 @@ const Header = () => {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                to={COURSE}
+                to={ABOUT}
                 onClick={handleLinkClick}
               >
-                Courses
+                About Us
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                to={ABOUT}
+                to={COURSE}
                 onClick={handleLinkClick}
               >
-                About Us
+                Courses
               </NavLink>
             </li>
             <li className="nav-item">

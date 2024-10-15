@@ -72,7 +72,6 @@
 .detail-card {
   padding-top: 10vh;
   margin-top: 20vh;
-  width: 500px;
 }
 
 .card-details-wrapper {
@@ -144,6 +143,7 @@
 .rupee {
   font-size: 1.5rem;
   font-weight: 900;
+  text-align: start;
 }
 @media (max-width: 768px) {
   .title-banner {
@@ -155,9 +155,12 @@
   .detail-container .remaining-text {
     margin-top: -4%;
   }
+  .detail{
+    margin-top: 15vh;
+    padding: 1rem;
+  }
   .detail-card {
     padding-top: 15vh;
-    width: 400px;
   }
 }
 @media (max-width: 375px) {
@@ -170,8 +173,12 @@
   .detail-container .remaining-text {
     margin-top: -2%;
   }
+  .detail{
+    margin-top: 5vh;
+    padding: 1rem;
+  }
   .detail-card {
-    padding-top: 10vh;
-    width: 320px;
+    padding-top: 0vh;
+    margin-top: 5vh;
   }
 }

@@ -152,7 +152,7 @@ button:hover {
     transform: translateY(-380px);
   }
   #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-940);
+    transform: translateY(-940px);
   }
 }
 /* 

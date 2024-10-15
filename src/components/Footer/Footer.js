@@ -57,7 +57,7 @@ const Footer = ({ getTerms }) => {
 
       <div className="d-flex justify-content-start logo-container">
         <img alt="logo" src={Logo} className="itt-logo" />
-        <div className="divider-logo"></div>
+        {/* <div className="divider-logo"></div> */}
       </div>
 
       <div className="m-footer">
@@ -83,7 +83,7 @@ const Footer = ({ getTerms }) => {
               battery employee building, upper govind nagar, Malad east, Mumbai
               400097
             </p>
-            <p className="m-0">
+            <p className="m-0 mt-4">
               <i className="fa fa-phone mx-2"></i>7021001780 / 8850305306
             </p>
             <p className="m-0">
