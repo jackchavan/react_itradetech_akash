@@ -11,11 +11,9 @@ function App() {
   return (
     <div className="d-flex flex-column vh-100 overflow-x-hidden">
       <Header />
-      <div className="content-container flex-grow-1">
         <Routing />
         <ToastContainer />
         {loading && <Loader />}
-      </div>
     </div>
   );
 }

@@ -1,5 +1,9 @@
 .login-container {
   height: calc(100vh - 110px);
+  img {
+    width: 100%;
+    height: calc(100vh - 85px);
+  }
 }
 .login-box {
   width: 30vw;
@@ -8,8 +12,9 @@
   border-radius: 10px;
   box-shadow: 5px 20px 50px var(--dark);
   background: var(--gray-light);
-  left: 60vw;
-  top: 2vh;
+  position: absolute;
+  top: 100px;
+  right: 15px;
 }
 
 #chk {
@@ -60,7 +65,7 @@ input:-webkit-autofill:active {
 }
 .login-box button {
   width: 60%;
-  height: 40px;
+  height: 6vh;
   margin: 10px auto;
   justify-content: center;
   display: block;
@@ -83,7 +88,7 @@ button:hover {
   height: 500px;
   background: linear-gradient(rgba(0, 88, 164), rgba(0, 129, 200));
   border-radius: 50% 50% 25% 25% / 20% 20% 0% 0%;
-  transform: translateY(-70px);
+  transform: translateY(-65px);
   transition: 0.8s ease-in-out;
 }
 
@@ -140,39 +145,14 @@ button:hover {
   transform: translateY(-1015px);
 }
 
-@media (max-width: 768px) {
+@media only screen and (min-width: 320px) and (max-width: 640px) {
   .login-box {
-    left: 45vw;
-    width: 50vw;
-  }
-  .login {
-    border-radius: 50% 50% 25% 25% / 12% 12% 0% 0%;
-  }
-  #chk:checked ~ .login {
-    transform: translateY(-380px);
-  }
-  #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-940px);
-  }
-}
-/* 
-@media (max-width: 375px) {
-  .login-box {
-    left: 2vw;
-    width: 94vw;
-  }
-  .login {
-    transform: translateY(-55px);
-  }
-  #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-940px);
-  }
-} */
-
-@media (max-width: 320px) {
-  .login-box {
-    left: 2vw;
-    width: 94vw;
+    width: 90%;
+    top: 125px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
   }
   .login {
     transform: translateY(-55px);
@@ -182,5 +162,50 @@ button:hover {
   }
   #forget-chk:checked ~ .forget-pass {
     transform: translateY(-940px);
+  }
+}
+@media only screen and (min-width: 641px) and (max-width: 767px) {
+  .login-box {
+    width: 90%;
+    top: 125px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+  }
+
+  .login {
+    border-radius: 50% 50% 25% 25% / 25% 25% 0% 0%;
+    form {
+      margin-top: 20px;
+    }
+  }
+  #chk:checked ~ .login {
+    transform: translateY(-380px);
+  }
+  #forget-chk:checked ~ .forget-pass {
+    transform: translateY(-940px);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+  .login-box {
+    top: 125px;
+    right: 15px;
+
+    margin: 0 auto;
+  }
+
+  .login {
+    border-radius: 50% 50% 25% 25% / 12% 12% 0% 0%;
+    form {
+      margin-top: 20px;
+    }
+  }
+  #chk:checked ~ .login {
+    transform: translateY(-380px);
+  }
+  #forget-chk:checked ~ .forget-pass {
+    transform: translateY(-960px);
   }
 }

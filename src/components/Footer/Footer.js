@@ -11,7 +11,6 @@ import X from "../../assets/img/x.svg";
 import F from "../../assets/img/facebook.svg";
 import I from "../../assets/img/insta.svg";
 import L from "../../assets/img/linkedIn.svg";
-import BgFooter from "../../assets/img/bg-footer.png";
 const Footer = ({ getTerms }) => {
   const footerData = [
     {
@@ -57,7 +56,6 @@ const Footer = ({ getTerms }) => {
 
       <div className="d-flex justify-content-start logo-container">
         <img alt="logo" src={Logo} className="itt-logo" />
-        {/* <div className="divider-logo"></div> */}
       </div>
 
       <div className="m-footer">

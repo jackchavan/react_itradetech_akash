@@ -30,8 +30,8 @@ const AboutUs = () => {
       <li className="list-group-item d-flex align-items-start" key={i}>
         <img src={Img} alt="Team Member" className="me-3 team-img" />
         <div>
-          <h2 className="display-6">Name</h2>
-          <h4 className="display-7">Designation</h4>
+          <h2>Name</h2>
+          <h4>Designation</h4>
           <p>
             If you aren't satisfied with the build tool and configuration
             choices, you can eject at any time. This command will remove the

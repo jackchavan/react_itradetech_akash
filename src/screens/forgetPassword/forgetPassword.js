@@ -165,7 +165,7 @@ const ForgetPassword = ({ setChecked }) => {
   return (
     <div className="forget-pass">
       <form onSubmit={onSubmit} autoComplete="off">
-        <label className="display-6">Forget Password</label>
+        <label className="f-24">Forget Password</label>
         <input
           style={{ marginTop: "10vh" }}
           className="email-input"
@@ -223,7 +223,12 @@ const ForgetPassword = ({ setChecked }) => {
         <button type="submit">
           {isOtpGenerate ? "Change Password" : "Generate OTP"}
         </button>
-        <label className="forgot-pass" htmlFor="forget-chk" aria-hidden="true" onClick={()=>setChecked(false)}>
+        <label
+          className="forgot-pass"
+          htmlFor="forget-chk"
+          aria-hidden="true"
+          onClick={() => setChecked(false)}
+        >
           <a>Login ?</a>
         </label>
       </form>
