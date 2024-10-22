@@ -94,13 +94,8 @@ const PaymentStatus = () => {
           <p>Your transaction has been cancelled.</p>
           <p>order Id : {paymentStatus?.order_id}</p>
 
-          <button
-            className="response-button"
-            onClick={() =>
-              (window.location.href = course ? COURSES : SUBSCRIBE)
-            }
-          >
-            Back to {course ? "Courses" : "Subscribe"}
+          <button className="response-button" onClick={() => navToCourses()}>
+            Back to Courses
           </button>
         </div>
       ) : (
