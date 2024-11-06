@@ -59,7 +59,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="ratio ratio-16x9">
+      <div className="ratio ratio-16x9 height-auto">
         <img src={BgHome} alt="bg-home" />
       </div>
 
