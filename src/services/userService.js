@@ -3,6 +3,7 @@ import authAxios, {
   FORGET_PASS_GENERATE_OTP,
   GENERATE_OTP,
   GET_TESTIMONIALS,
+  GET_TEAMMEMBERS,
   LOGIN,
   REGISTER,
   VERIFY_OTP,
@@ -61,6 +62,17 @@ export const verifyOTP = async (body) => {
 export const getTestimonials = async () => {
   try {
     const response = await authAxios.get(GET_TESTIMONIALS);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Something went wrong!`);
+  }
+};
+
+
+export const getTeammembers = async () => {
+  try {
+    const response = await authAxios.get(GET_TEAMMEMBERS);
     return response.data;
   } catch (error) {
     console.log(error);
