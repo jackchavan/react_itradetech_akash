@@ -13,7 +13,9 @@
   color: transparent;
   font-size: 60px;
 }
-
+.height-auto{
+  height:auto
+}
 .course-sub-title {
   margin: 0;
   padding: 0;
