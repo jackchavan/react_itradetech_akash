@@ -15,7 +15,6 @@ export const initiatePayment = async (orderData) => {
 
 export const getPaymentStatus = async (data) => {
   try {
-    debugger;
     const response = await authAxios.post(PAYMENT_STATUS, data, {
       headers: { "Content-Type": "application/json" },
     });
