@@ -11,6 +11,7 @@ export const PAYMENT_STATUS = BASE_URL + "/api/Payment/status";
 export const ALL_COURSES = BASE_URL + "/api/Course/GetAllCourses";
 export const COURSE_DETAIL = BASE_URL + "/api/Course/GetCourse?courseCode=";
 export const GET_TESTIMONIALS = BASE_URL + "/api/Testimony/GetAllTestimony";
+export const GET_TEAMMEMBERS = BASE_URL + "/api/Team/GetAllTeam";
 export const CONTACT_US = BASE_URL + "/api/Contactus/Insertcontactus";
 export const FORGET_PASS = BASE_URL + "/api/User/ForgotPassword?password=";
 export const FORGET_PASS_GENERATE_OTP = BASE_URL + "/api/OTP/forgotgenerate";
