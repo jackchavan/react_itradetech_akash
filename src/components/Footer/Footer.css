@@ -3,6 +3,7 @@
 }
 .footer-info {
   text-align: justify;
+  line-height: normal;
 }
 
 .follow a {
@@ -37,11 +38,11 @@
   padding: 30px 125px;
 }
 .itt-logo {
-  height: calc(100vh - 450px);
+  height: 100px;
 }
 
 .bottom {
-  margin-top: 8rem;
+  margin-top: 6rem;
   border-top: 1px solid var(--white);
 }
 
@@ -53,95 +54,9 @@
 .gap {
   gap: 4rem;
 }
-@media (max-width: 768px) {
+@media only screen and (min-width: 320px) and (max-width: 640px) {
   .itt-logo {
-    height: calc(100vh - 470px);
-  }
-  .divider-logo {
-    margin-top: 8.5%;
-  }
-  .get-txt {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .follow a {
-    height: 15px;
-    width: 15px;
-  }
-  .m-footer {
-    padding: 0% 8%;
-  }
-  .follow span {
-    font-size: 12px;
-  }
-  .q-links a {
-    font-size: 10px;
-  }
-  .q-links {
-    margin-top: -4rem;
-  }
-  .links-a {
-    height: 1rem;
-  }
-  .x {
-    height: 14px;
-  }
-  .gap {
-    gap: 2rem;
-  }
-  .bottom {
-    margin-top: 3rem;
-  }
-}
-@media (max-width: 375px) {
-  .itt-logo {
-    height: calc(100vh - 510px);
-  }
-  .divider-logo {
-    margin-top: 8.5%;
-  }
-  .logo-container {
-    padding: 10px 16px;
-  }
-  .get-txt {
-    font-size: 0.5rem;
-    font-weight: 700;
-    margin-bottom: 0.1rem;
-  }
-  .follow a {
-    height: 8px;
-    width: 8px;
-  }
-  .m-footer {
-    padding: 5% 5%;
-  }
-  .follow span {
-    font-size: 8px;
-  }
-  .q-links a {
-    font-size: 8px;
-  }
-  .q-links {
-    margin-top: -3rem;
-  }
-  .links-a {
-    height: 1rem;
-  }
-  .x {
-    height: 15px;
-  }
-  .gap {
-    gap: 1rem;
-  }
-  .bottom {
-    margin-top: 1rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .itt-logo {
-    height: calc(100vh - 510px);
+    height: 50px;
   }
   .divider-logo {
     margin-top: 8.5%;
@@ -181,5 +96,23 @@
   }
   .bottom {
     margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 767px) {
+  .itt-logo {
+    height: 70px;
+  }
+  .logo-container {
+    padding: 10px 10%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+  .itt-logo {
+    height: 80px;
+  }
+  .logo-container {
+    padding: 10px 10%;
   }
 }

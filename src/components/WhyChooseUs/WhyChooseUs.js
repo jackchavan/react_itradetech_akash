@@ -11,7 +11,7 @@ const WhyChooseUs = () => {
   const data = [
     {
       icon: Expert,
-      class: "d-flex mb-2",
+      class: "d-flex ",
       bgClass: "bg-secondary",
       title: "Expert-Led Courses",
       description:
@@ -19,7 +19,7 @@ const WhyChooseUs = () => {
     },
     {
       icon: Practical,
-      class: "d-flex mb-2",
+      class: "d-flex ",
       bgClass: "bg-orange",
       title: "Practical Learning Approach",
       description:
@@ -27,7 +27,7 @@ const WhyChooseUs = () => {
     },
     {
       icon: Community,
-      class: "d-flex mb-2",
+      class: "d-flex ",
       bgClass: "bg-green",
       title: "Community of Traders",
       description:
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
     },
     {
       icon: Flexible,
-      class: "d-flex mb-2",
+      class: "d-flex ",
       bgClass: "bg-warning",
       title: "Flexible Learning Options",
       description:
@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
       <div className={item.class} key={i}>
         <img src={item.icon} className="btn-icon mr-4" alt="icon" />
         <div className="mx-4">
-          <h3 className="why-title fw-600">{item.title}</h3>
+          <label className="why-title fw-600">{item.title}</label>
           <p className="why-desc">{item.description}</p>
         </div>
       </div>

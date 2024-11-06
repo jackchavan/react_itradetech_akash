@@ -43,37 +43,65 @@
     border-bottom: 2px solid var(--gray);
     text-align: justify;
     color: var(--white);
+    h2 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 20px;
+    }
   }
 }
 .team-img {
   height: 8rem;
   width: 8rem;
 }
-@media (max-width: 768px) {
+
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+  .approach {
+    padding: 0.5rem 1rem 0px 1rem;
+  }
+  .team-list {
+    margin: 0px;
+    li {
+      h2 {
+        font-size: 14px;
+      }
+      h4 {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .team-img {
+    height: 40px;
+    width: 40px;
+  }
+  .remaining {
+    margin-top: -0.5rem;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 767px) {
   .approach {
     padding: 1rem 2rem 0px 2rem;
   }
   .team-list {
     margin: 0px 4rem;
+    li {
+      h2 {
+        font-size: 18px;
+      }
+      h4 {
+        font-size: 16px;
+      }
+    }
   }
   .remaining {
     margin-top: -2rem;
   }
-}
-
-@media (max-width: 375px) {
-  .approach {
-    padding: 0.5rem 1rem 0px 1rem;
-  }
-  .team-list {
-    margin: 0px 1rem;
-  }
 
   .team-img {
-    height: 5rem;
-    width: 5rem;
-  }
-  .remaining {
-    margin-top: -0.5rem;
+    height: 50px;
+    width: 50px;
   }
 }

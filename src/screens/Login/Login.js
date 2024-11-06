@@ -8,7 +8,7 @@ import {
   verifyOTP,
 } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-import { HOME, LOGIN, COURSE_DETAIL } from "../../constants/PathConstants";
+import { HOME, COURSE_DETAIL } from "../../constants/PathConstants";
 import { setAuth } from "../../store/actions/AuthActions";
 import { setLoading } from "../../store/actions/CommonActions";
 import {
@@ -25,7 +25,7 @@ import ForgetPassword from "../forgetPassword/forgetPassword";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { course, auth, subscribe } = useSelector((state) => ({
+  const { course, auth } = useSelector((state) => ({
     course: state.course,
     auth: state.auth,
     subscribe: state.subscribe,
@@ -256,7 +256,7 @@ const Login = () => {
       <div className="signup">
         <form onSubmit={handleSubmit}>
           <label
-            className="display-6"
+            className="f-24"
             htmlFor="chk"
             aria-hidden="true"
             onClick={setPage}
@@ -353,7 +353,7 @@ const Login = () => {
       <div className="login">
         <form onSubmit={onLogin}>
           <label
-            className="display-6"
+            className="f-24"
             htmlFor="chk"
             aria-hidden="true"
             onClick={setPage}
@@ -401,7 +401,7 @@ const Login = () => {
 
   return (
     <div className="login-div">
-      <div className="login-container ratio pt-0 d-flex justify-content-center">
+      <div className="login-container ">
         <img src={BgLogin} alt="login" className="" />
         <div className="login-box">
           <input

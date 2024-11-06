@@ -119,7 +119,7 @@ const Detail = () => {
     }
   };
 
-  const TextStyling = ({text, style, customClass}) => {
+  const TextStyling = ({ text, style, customClass }) => {
     if (typeof text !== "string") {
       return null;
     }
@@ -128,8 +128,8 @@ const Detail = () => {
 
     return (
       <div className={customClass} style={style}>
-        <span className="first-word">{firstWord}</span>
-        <span className="remaining-text">{remainingText}</span>
+        <h1 className="first-word">{firstWord}</h1>
+        <h1 className="remaining-text">{remainingText}</h1>
       </div>
     );
   };
@@ -165,7 +165,7 @@ const Detail = () => {
 
   const ListItem = ({ data }) => {
     return data?.map((item, i) => (
-      <li key={i} className="d-flex gap-3 align-items-center">
+      <li key={i} className="d-flex gap-3 align-items-center txt-justify">
         <img className="bullet-img" src={BullletPoint} />
         <div dangerouslySetInnerHTML={{ __html: item }} />
         {item.child && (
@@ -188,26 +188,25 @@ const Detail = () => {
           <TextStyling
             text={courseDetail?.title}
             customClass={"text-container"}
-            style={{ marginLeft: "10%" }}
           />
         </div>
       </div>
       {/* Details */}
-      <div className="row detail">
+      <div className="col col-12 mt-4">
+        <TextStyling
+          text={"Things YOU LEARN"}
+          customClass={"col-md-6 text-container-center"}
+        />
+      </div>
+      <div className="row detail px-4 gap-5 py-2">
         <div className="detail-container col-12 col-md-6">
-          <div className="">
-            <TextStyling
-              text={"Things YOU LEARN"}
-              customClass={"text-container-center"}
-            />
-          </div>
           <div className="li-learn">
             <ul className="ul-learn">
               <ListItem data={list} />
             </ul>
           </div>
         </div>
-        <div className="detail-card col-12 col-md-6">{card()}</div>
+        <div className="detail-card col-12 col-md-5">{card()}</div>
       </div>
     </div>
   );
