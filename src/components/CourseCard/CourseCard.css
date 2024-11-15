@@ -33,9 +33,9 @@
 }
 .course-title {
   margin: 0;
-  font-weight: 700;
-  font-size: 28px;
-  font-family: "shadow-light" !important;
+  font-weight: 900;
+  font-size: 24px;
+  font-family: "leela-bold" !important;
   color: var(--warning);
 }
 .course-subTitle {
@@ -43,7 +43,7 @@
   font-size: 1rem;
   padding: 0;
   color: var(--white);
-  font-weight: 900;
+  font-weight: 700;
   font-family: "leela-bold" !important;
 }
 .course-info {
@@ -93,7 +93,7 @@
     border: 5px solid var(--warning);
   }
   .course-title {
-    font-size: 16px;
+    font-size: 14px;
   }
   .course-subTitle {
     font-size: 14px;

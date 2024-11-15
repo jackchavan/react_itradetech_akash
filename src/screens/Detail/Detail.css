@@ -99,6 +99,7 @@
 }
 .txt-justify {
   text-align: justify;
+  color: var(--dark);
 }
 .sub-section {
   padding: 0px 20px 10px 20px;
