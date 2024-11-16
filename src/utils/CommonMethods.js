@@ -22,9 +22,12 @@ export const getUniqueId = () => {
 };
 
 export const replaceSlash = (data) => {
-  const newString = data.replace(/\\/g, "").replace(/\\n/g, "");
+  if(data === null){
+    return "[]"
+  }
+  const newString = data?.replace(/\\/g, "")?.replace(/\\n/g, "");
 
-  const finalString = newString.slice(0, -2) + newString.slice(-1);
+  const finalString = newString?.slice(0, -2) + newString?.slice(-1);
 
   return finalString;
 };

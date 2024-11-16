@@ -17,7 +17,7 @@ const AboutUs = () => {
   }, []);
 
   const getTeam = async () => {
-    dispatch(setLoading(false));
+    dispatch(setLoading(true));
 
     try {
       const response = await getTeammembers();
