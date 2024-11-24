@@ -55,7 +55,7 @@ const AboutUs = () => {
           alt="Team Member"
           className="me-3 team-img"
         />
-        <div>
+        <div className="item-detail">
           <h2>{item.name}</h2>
           <h4>{item.designation}</h4>
           <p>{item.description}</p>
@@ -107,10 +107,18 @@ const AboutUs = () => {
           style={{ color: "var(--white)" }}
         />
 
-        <div className="team-list">
-          {teamData.length > 0 && (
-            <ul className="list-group">{teamList(teamData)}</ul>
-          )}
+        <div className="col col-md-12 list-row-view">
+          <div className="team-list col-md-6">
+            {teamData.length > 0 && (
+              <ul className="list-group">{teamList(teamData)}</ul>
+            )}
+          </div>
+          <div className="verticalDivider"></div>
+          <div className="team-list col-md-6">
+            {teamData.length > 0 && (
+              <ul className="list-group">{teamList(teamData)}</ul>
+            )}
+          </div>
         </div>
       </div>
     </div>

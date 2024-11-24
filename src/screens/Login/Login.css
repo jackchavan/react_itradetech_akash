@@ -114,6 +114,10 @@ button:hover {
   transform: translateY(-440px);
 }
 
+#chk:checked ~ .signup button {
+  visibility: hidden;
+}
+
 #chk:checked ~ .signup input {
   visibility: hidden;
 }
