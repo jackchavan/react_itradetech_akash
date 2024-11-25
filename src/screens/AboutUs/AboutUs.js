@@ -10,7 +10,8 @@ import { setLoading } from "../../store/actions/CommonActions";
 const AboutUs = () => {
   const dispatch = useDispatch();
 
-  const [teamData, setTeamData] = useState([]);
+  const [boardOfAdvisory, setBoardOfAdvisory] = useState([]);
+  const [boardOfDirector, setBoardOfDirector] = useState([]);
 
   useEffect(() => {
     getTeam();
@@ -22,7 +23,15 @@ const AboutUs = () => {
     try {
       const response = await getTeammembers();
       if (response) {
-        setTeamData(response);
+        const advisory = response.filter(
+          (member) => member.designation === "Board of Advisory"
+        );
+
+        const director = response.filter(
+          (member) => member.designation === "Board of Director"
+        );
+        setBoardOfAdvisory(advisory);
+        setBoardOfDirector(director);
       }
       dispatch(setLoading(false));
     } catch (error) {
@@ -109,14 +118,14 @@ const AboutUs = () => {
 
         <div className="col col-md-12 list-row-view">
           <div className="team-list col-md-6">
-            {teamData.length > 0 && (
-              <ul className="list-group">{teamList(teamData)}</ul>
+            {boardOfDirector.length > 0 && (
+              <ul className="list-group">{teamList(boardOfDirector)}</ul>
             )}
           </div>
           <div className="verticalDivider"></div>
           <div className="team-list col-md-6">
-            {teamData.length > 0 && (
-              <ul className="list-group">{teamList(teamData)}</ul>
+            {boardOfAdvisory.length > 0 && (
+              <ul className="list-group">{teamList(boardOfAdvisory)}</ul>
             )}
           </div>
         </div>
