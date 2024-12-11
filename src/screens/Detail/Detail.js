@@ -25,7 +25,8 @@ const Detail = () => {
     {
       icon: "fa fa-clock-o",
       label: "Duration",
-      value: `${courseDetail?.duration ?? ""} minutes`,
+     // value: `${courseDetail?.duration ?? ""} minutes`,
+      value: `${courseDetail?.shortdescription ?? ""}`,
     },
     // {
     //   icon: "fa fa-book",
