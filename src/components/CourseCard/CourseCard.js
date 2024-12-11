@@ -22,10 +22,10 @@ const CourseCard = ({ data }) => {
   return (
     <div key={getUniqueId()} className="card">
       <div className="course-img">
-        <img
+       <img
           alt="banner"
           className="banner"
-          src={data?.img ? data?.img : Img}
+          src={data?.courseOutline}
         />
       </div>
       <img alt="icon" className="candel-icon" src={Candel} />

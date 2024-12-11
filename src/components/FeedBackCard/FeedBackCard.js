@@ -12,13 +12,13 @@ const FeedBackCard = ({ data }) => {
   return (
     <div key={getUniqueId()} className="feedback-card">
       <div className="feedback-img">
-        <img alt="img" src={Img} />
+        <img alt="img" src={data.imageUrl} />
       </div>
       <img className="comma" alt="comma" src={Comma} />
       <p>{data.commentDescription} </p>
       <img className="i-comma" alt="comma" src={InvertedComma} />
 
-      <h1>{data.name}</h1>
+      <h1 style={{ fontSize: "1.5rem" }}>{data.name}</h1>
       <div>
         <ReactStars
           edit={false}
