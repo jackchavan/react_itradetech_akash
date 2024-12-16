@@ -53,7 +53,6 @@ const Footer = ({ getTerms }) => {
 
   return (
     <div className="footer-div">
-
       <div className="d-flex justify-content-start logo-container">
         <img alt="logo" src={Logo} className="itt-logo" />
       </div>
@@ -76,19 +75,23 @@ const Footer = ({ getTerms }) => {
 
           <div className="col-md-4 footer-info">
             <h3 className="get-txt display-6">Get In Touch</h3>
-            <p className="m-0">
-              <i className="fa fa-map-marker mx-2"></i>A/103, Sheetal standard
-              battery employee building, upper govind nagar, Malad east, Mumbai
-              400097
+            <p className="d-flex m-0">
+              <i className="fa fa-map-marker mx-2 flex-0"></i>
+              <p className="mar-0">
+                A/103, Sheetal standard battery employee building, upper govind
+                nagar, Malad east, Mumbai 400097
+              </p>
             </p>
-            <p className="m-0 mt-4">
-              <i className="fa fa-phone mx-2"></i>7021001780 / 8850305306
+            <p className="d-flex m-0 mt-1">
+              <i className="fa fa-phone mx-2 flex-0"></i>
+              <p className="mar-0">7021001780 / 8850305306</p>
             </p>
-            <p className="m-0">
-              <i className="fa fa-envelope mx-2"></i>support@itradetech.info
+            <p className="d-flex m-0 mt-1">
+              <i className="fa fa-envelope mx-2 flex-0"></i>
+              <p className="mar-0">support@itradetech.info</p>
             </p>
-            <div className="follow d-flex justify-content-center mt-4 gap-3">
-              <span className="mr-4 diaplay-4">Follow us</span>
+            <div className="follow d-flex align-item-center mt-2 gap-3">
+              <p className="diaplay-4">Follow us</p>
               <a className=" mr-4" href={links.fb}>
                 <img className="x" src={F} alt="Facebook" />
               </a>
@@ -104,7 +107,7 @@ const Footer = ({ getTerms }) => {
             </div>
           </div>
         </div>
-        <div className="bottom d-flex justify-content-between">
+        <div className="bottom d-flex justify-content-between py-2">
           <p className="m-0">
             Copyright ©{" "}
             <a className="" href="#">

@@ -60,8 +60,8 @@ const VideoSession = () => {
           <VideoPlayer />
         </div>
         <div className="col-md-4">
-          <label className="video-title">Session's</label>
-          <ul>
+          <label className="video-title justify-content-center">Session's</label>
+          <ul className="session-list">
             {videoUrl?.map((i, index) => (
               <li
                 key={index}

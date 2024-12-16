@@ -22,17 +22,18 @@
 }
 
 .btn-icon {
-  width: 77px;
-  height: 77px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .obj-fit {
   object-fit: cover;
+  width: 300px;
 }
 
 .why-img {
@@ -44,13 +45,12 @@
 
 .why-desc {
   margin-top: 0%;
-  margin-bottom: 1rem;
   font-weight: 700;
   color: var(--dark);
 }
 .why-title {
   margin-top: 0%;
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
   font-size: 20px;
   font-weight: 700;  
   color: var(--primary);
@@ -134,7 +134,7 @@
     font-size: 24px;
   }
   .obj-fit {
-    width: 90%;
+    width: 50%;
   }
   .sub-title {
     font-size: 16px;

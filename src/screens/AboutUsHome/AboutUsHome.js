@@ -11,7 +11,7 @@ const AboutUsHome = () => {
             I TRADE TECH ACADEMY
           </label>
 
-          <p className="text-justify p-2 p-md-4">
+          <p className="text-justify p-2 p-md-4 intro">
             At <strong>I TRADE TECH ACADEMY</strong>, we empower aspiring
             traders and seasoned professionals alike with the knowledge, tools,
             and confidence to succeed in the financial markets. Whether you're

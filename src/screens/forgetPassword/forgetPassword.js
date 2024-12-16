@@ -116,9 +116,11 @@ const ForgetPassword = ({ setChecked }) => {
     try {
       const response = await generateOtp(data.email);
       if (response) {
-        if (response) {
+        if (response === true) {
           setIsOtpGenerate(true);
           showToast(ToastSuccess, "OTP sent successfully to your email.");
+        }else if(response === "EmailId Not exists."){
+          showToast(ToastError, "Email id does not exit !.");
         }
         dispatch(setLoading(false));
       }
@@ -162,6 +164,12 @@ const ForgetPassword = ({ setChecked }) => {
       showToast(ToastError, "Enter valid email !");
     }
   };
+
+  const onClickLogin=()=>{
+    setChecked(false);
+    setIsOtpGenerate(false);
+    resetState();
+  }
   return (
     <div className="forget-pass">
       <form onSubmit={onSubmit} autoComplete="off">
@@ -227,7 +235,7 @@ const ForgetPassword = ({ setChecked }) => {
           className="forgot-pass"
           htmlFor="forget-chk"
           aria-hidden="true"
-          onClick={() => setChecked(false)}
+          onClick={() => onClickLogin()}
         >
           <a>Login ?</a>
         </label>

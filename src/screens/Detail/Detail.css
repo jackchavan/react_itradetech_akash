@@ -99,6 +99,7 @@
 }
 .txt-justify {
   text-align: justify;
+  color: var(--dark);
 }
 .sub-section {
   padding: 0px 20px 10px 20px;
@@ -111,6 +112,11 @@
   font-size: 1.5rem;
   font-weight: 900;
   text-align: start;
+}
+
+.ul-learn {
+  height: calc(100vh - 300px);
+  overflow: auto;
 }
 @media only screen and (min-width: 320px) and (max-width: 640px) {
   .desc-div {

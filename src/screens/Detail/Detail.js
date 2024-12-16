@@ -8,20 +8,16 @@ import { setLoading } from "../../store/actions/CommonActions";
 import { LOGIN, PAYMENT_RESPONSE } from "../../constants/PathConstants";
 import { initiatePayment } from "../../services/paymentService";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
-import { getUniqueId } from "../../utils/CommonMethods";
+import { getUniqueId, replaceSlash } from "../../utils/CommonMethods";
 import { setCourse } from "../../store/actions/CourseActions";
 import BgTitle from "../../assets/img/course-detail-banner.png";
+
 const Detail = () => {
   const { id } = useParams();
   const { auth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [list, setList] = useState([
-    "Build 16 web development projects for your portfolio",
-    "ready to apply for junior developer jobs. Learn the latest technologies",
-    "including Javascript, React, Node and even Web3 development",
-    "Build 16 web development projects for your portfolio",
-  ]);
+  const [list, setList] = useState([]);
 
   const [courseDetail, setCourseDetail] = useState({});
 
@@ -31,11 +27,11 @@ const Detail = () => {
       label: "Duration",
       value: `${courseDetail?.duration ?? ""} minutes`,
     },
-    {
-      icon: "fa fa-book",
-      label: "Lecture",
-      value: "2",
-    },
+    // {
+    //   icon: "fa fa-book",
+    //   label: "Lecture",
+    //   value: "2",
+    // },
     {
       icon: "fa fa-play-circle-o",
       label: "Mode",
@@ -60,6 +56,7 @@ const Detail = () => {
       if (response) {
         dispatch(setCourse(response));
         setCourseDetail(response);
+        preareList(response?.htmlDescription,response?.courseOutline);
         dispatch(setLoading(false));
       }
     } catch (error) {
@@ -70,6 +67,13 @@ const Detail = () => {
     }
   };
 
+  const preareList =(string,outline)=>{
+     const planeString = replaceSlash(string);
+    //  const outlineString = replaceSlash(outline)
+     const courseDecription = JSON.parse(planeString);
+    //  const courseOutline = JSON.parse(outlineString);
+     setList([...courseDecription]);
+  }
   const onEnroll = () => {
     if (auth?.login) {
       makePayment();
