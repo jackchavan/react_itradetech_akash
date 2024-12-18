@@ -1,5 +1,10 @@
 .footer-div {
-  background-color: var(--primary);
+  background: url('../../assets/img/bg-footer.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  width: 100%; 
+  height: 90vh;
 }
 .footer-info {
   text-align: justify;
@@ -59,6 +64,9 @@
   gap: 4rem;
 }
 @media only screen and (min-width: 320px) and (max-width: 640px) {
+  .footer-div {
+    height: 60vh;
+  }
   .itt-logo {
     height: 50px;
   }
@@ -106,16 +114,11 @@
   }
 }
 
-@media only screen and (min-width: 641px) and (max-width: 767px) {
-  .itt-logo {
-    height: 70px;
-  }
-  .logo-container {
-    padding: 10px 10%;
-  }
-}
 
-@media only screen and (min-width: 768px) and (max-width: 990px) {
+@media only screen and (min-width: 641px) and (max-width: 990px) {
+  .footer-div {
+    height: 100vh;
+  }
   .itt-logo {
     height: 80px;
   }

@@ -15,10 +15,12 @@ const FeedBackCard = ({ data }) => {
         <img alt="img" src={data.imageUrl} />
       </div>
       <img className="comma" alt="comma" src={Comma} />
-      <p>{data.commentDescription} </p>
+      <p data-toggle="tooltip" title={data?.commentDescription}>
+        {data?.commentDescription}
+      </p>
       <img className="i-comma" alt="comma" src={InvertedComma} />
 
-      <h1 style={{ fontSize: "1.5rem" }}>{data.name}</h1>
+      <span>{data.name}</span>
       <div>
         <ReactStars
           edit={false}
