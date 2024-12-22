@@ -8,11 +8,10 @@ import ReactStars from "react-rating-stars-component";
 import { getUniqueId } from "../../utils/CommonMethods";
 
 const FeedBackCard = ({ data }) => {
-
   return (
     <div key={getUniqueId()} className="feedback-card">
       <div className="feedback-img">
-        <img alt="img" src={data.imageUrl} />
+        <img alt="img" src={data.imageUrl ? data.imageUrl : Img} />
       </div>
       <img className="comma" alt="comma" src={Comma} />
       <p data-toggle="tooltip" title={data?.commentDescription}>
@@ -20,7 +19,9 @@ const FeedBackCard = ({ data }) => {
       </p>
       <img className="i-comma" alt="comma" src={InvertedComma} />
 
-      <span>{data.name}</span>
+      <span className="name">{data.name}</span>
+      <span className="designation">{data.designation}</span>
+
       <div>
         <ReactStars
           edit={false}

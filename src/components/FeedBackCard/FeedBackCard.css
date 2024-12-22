@@ -8,7 +8,6 @@
   -moz-box-shadow: -5px -10px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: -5px -10px 10px 0px rgba(0, 0, 0, 0.5);
   height: auto;
-
 }
 
 .feedback-img {
@@ -35,7 +34,7 @@
   padding: 0 30px;
 }
 
-.feedback-card span {
+.name {
   margin: 0;
   padding: 0;
   font-size: 1.5rem;
@@ -52,7 +51,10 @@
   width: 24px;
   margin: 10px;
 }
-
+.designation {
+  font-size: 12px;
+  font-weight: 400;
+}
 @media only screen and (min-width: 768px) and (max-width: 990px) {
   .feedback-img {
     height: 110px;
@@ -76,15 +78,15 @@
     width: 35px;
     margin-top: -25px;
   }
-
+  .name{
+    font-size: 14px;
+  }
   .feedback-card {
     p {
       font-size: 10px;
       height: 70px;
     }
 
-    span {
-      font-size: 14px;
-    }
+    
   }
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import CustomCarousel from "../../components/Carousel/Carousel";
 import { getTestimonials } from "../../services/userService";
-import { setLoading, setZindex } from "../../store/actions/CommonActions";
+import { setLoading } from "../../store/actions/CommonActions";
 
 import "./FeedBack.css";
 

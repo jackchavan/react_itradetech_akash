@@ -78,11 +78,13 @@ const AboutUs = () => {
   const teamList = (data) => {
     return data?.map((item, i) => (
       <li className="list-group-item d-flex align-items-start" key={i}>
-        <img
-          src={item.imageUrl ? item.imageUrl : Img}
-          alt="Team Member"
-          className="me-3 team-img"
-        />
+        <div className="border-img me-3">
+          <img
+            src={item.imageUrl ? item.imageUrl : Img}
+            alt="Team Member"
+            className="team-img"
+          />
+        </div>
         <div className="item-detail">
           <h2>{item.name}</h2>
           <h4>{item.designation}</h4>
@@ -130,9 +132,7 @@ const AboutUs = () => {
         />
       </div>
 
-      <div
-        className="team-wrapper"
-      >
+      <div className="team-wrapper">
         <TextStyling
           text={"Meet OUR TEAM"}
           class={"text-container-center"}
