@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(rgba(0, 88, 164, 1), rgba(0, 88, 164, 0.8));
+  position: relative;
+  overflow: hidden;
 }
 
 .title {
@@ -27,6 +29,40 @@
   margin-top: -10px;
 }
 
+.circle {
+  position: absolute;
+  border: 10px solid yellow;
+  border-radius: 50%;
+  opacity: 40%;
+}
+.circle1 {
+  width: 150px;
+  height: 150px;
+  top: -70px;
+  right: 20px;
+}
+.circle2 {
+  width: 80px;
+  height: 80px;
+  top: 35px;
+  right: 170px;
+}
+
+.circle3 {
+  width: 40px;
+  height: 40px;
+  bottom: 10px;
+  left: 10px;
+}
+.circle4 {
+  width: 80px;
+  height: 80px;
+  bottom: 40px;
+  left: 40px;
+}
+.react-multiple-carousel__arrow {
+  background: var(--warning);
+}
 @media only screen and (min-width: 768px) and (max-width: 990px) {
   .title {
     font-size: 60px;
@@ -55,5 +91,34 @@
     p {
       padding: 0px 40px;
     }
+  }
+
+  .circle {
+    border: 5px solid yellow;
+  }
+  .circle1 {
+    width: 80px;
+    height: 80px;
+    top: -50px;
+    right: 0px;
+  }
+  .circle2 {
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 60px;
+  }
+
+  .circle3 {
+    width: 30px;
+    height: 30px;
+    bottom: 8px;
+    left: 8px;
+  }
+  .circle4 {
+    width: 44px;
+    height: 44px;
+    bottom: 30px;
+    left: 30px;
   }
 }
