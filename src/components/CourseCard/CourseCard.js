@@ -25,7 +25,7 @@ const CourseCard = ({ data }) => {
         <img
           alt="banner"
           className="banner"
-          src={data?.courseOutline ? data?.courseOutline : Img}
+          src={data?.imageurl ? data?.imageurl : Img}
         />
       </div>
       <img alt="icon" className="candel-icon" src={Candel} />

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
-import BullletPoint from "../../assets/img/bulletPoint.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseDetail } from "../../services/courseService";
 import { setLoading } from "../../store/actions/CommonActions";
@@ -11,6 +10,7 @@ import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
 import { getUniqueId, replaceSlash } from "../../utils/CommonMethods";
 import { setCourse } from "../../store/actions/CourseActions";
 import BgTitle from "../../assets/img/course-detail-banner.png";
+import VerticalTabs from "../../components/VerticalTabs/VerticalTabs";
 
 const Detail = () => {
   const { id } = useParams();
@@ -21,11 +21,11 @@ const Detail = () => {
 
   const [courseDetail, setCourseDetail] = useState({});
 
-  const detilsData = [
+  const detailsData = [
     {
       icon: "fa fa-clock-o",
       label: "Duration",
-     // value: `${courseDetail?.duration ?? ""} minutes`,
+      // value: `${courseDetail?.duration ?? ""} minutes`,
       value: `${courseDetail?.shortdescription ?? ""}`,
     },
     // {
@@ -57,7 +57,7 @@ const Detail = () => {
       if (response) {
         dispatch(setCourse(response));
         setCourseDetail(response);
-        preareList(response?.htmlDescription,response?.courseOutline);
+        parseList(response?.htmlDescription);
         dispatch(setLoading(false));
       }
     } catch (error) {
@@ -68,13 +68,13 @@ const Detail = () => {
     }
   };
 
-  const preareList =(string,outline)=>{
-     const planeString = replaceSlash(string);
+  const parseList = (string) => {
+    const planeString = replaceSlash(string);
     //  const outlineString = replaceSlash(outline)
-     const courseDecription = JSON.parse(planeString);
+    const courseDescription = JSON.parse(planeString);
     //  const courseOutline = JSON.parse(outlineString);
-     setList([...courseDecription]);
-  }
+    setList([...courseDescription]);
+  };
   const onEnroll = () => {
     if (auth?.login) {
       makePayment();
@@ -139,7 +139,7 @@ const Detail = () => {
     );
   };
   const cardDetails = () => {
-    return detilsData.map((item, i) => (
+    return detailsData.map((item, i) => (
       <div className="list-item" key={i}>
         <span className="item-icon">
           <i className={item.icon}></i>
@@ -152,7 +152,7 @@ const Detail = () => {
 
   const card = () => {
     return (
-      <div className="card-deatil">
+      <div className="card-detail">
         <div className="card-details-wrapper">
           <div className="sub-section">
             <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
@@ -168,19 +168,72 @@ const Detail = () => {
     );
   };
 
+  const capitalizeString = (title) => {
+    return title.replace(/([A-Z])/g, " $1").trim();
+  };
+
   const ListItem = ({ data }) => {
-    return data?.map((item, i) => (
-      <li key={i} className="d-flex gap-3 align-items-center txt-justify">
-        <img className="bullet-img" src={BullletPoint} />
-        <div dangerouslySetInnerHTML={{ __html: item }} />
-        {item.child && (
-          <ul>
-            <ListItem key={item.child} data={item.child} />
-          </ul>
+    return (
+      <ul className="custom-list">
+        {Object.keys(data).map((key) => (
+          <ListItemWithToggle key={key} title={key} data={data[key]} />
+        ))}
+      </ul>
+    );
+  };
+
+  const ListItemWithToggle = ({ title, data }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleList = () => {
+      setIsOpen((prevState) => !prevState);
+    };
+
+    return (
+      <li className="main-li">
+        <div onClick={toggleList}>{capitalizeString(title)}</div>
+        {isOpen && (
+          <>
+            {Array.isArray(data) && data.length > 0 && (
+              <ul>
+                {data.map((item, index) => (
+                  <li key={index} className="child-li">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {typeof data === "string" && (
+              <ul>
+                <li className="child-li">{data}</li>
+              </ul>
+            )}
+          </>
         )}
       </li>
-    ));
+    );
   };
+
+
+  const thingsList = () => {
+    return (
+      <div className="li-learn">
+        <ListItem data={courseDetail?.parsedCourseOutline} />
+      </div>
+    );
+  };
+
+  const htmlDescription = () => {
+    return (
+      <p className="courseDescription">
+        {courseDetail?.htmlDescription}
+      </p>
+    );
+  };
+  const tabs = [
+    { label: "Course Description", content: htmlDescription() },
+    { label: "Course Outline", content: thingsList() },
+  ];
 
   return (
     <div
@@ -205,11 +258,7 @@ const Detail = () => {
       </div>
       <div className="row detail px-4 gap-5 py-2">
         <div className="detail-container col-12 col-md-6">
-          <div className="li-learn">
-            <ul className="ul-learn">
-              <ListItem data={list} />
-            </ul>
-          </div>
+          <VerticalTabs tabsData={tabs} />
         </div>
         <div className="detail-card col-12 col-md-5">{card()}</div>
       </div>
