@@ -17,7 +17,6 @@ const Detail = () => {
   const { auth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [list, setList] = useState([]);
 
   const [courseDetail, setCourseDetail] = useState({});
 
@@ -57,7 +56,6 @@ const Detail = () => {
       if (response) {
         dispatch(setCourse(response));
         setCourseDetail(response);
-        parseList(response?.htmlDescription);
         dispatch(setLoading(false));
       }
     } catch (error) {
@@ -68,13 +66,6 @@ const Detail = () => {
     }
   };
 
-  const parseList = (string) => {
-    const planeString = replaceSlash(string);
-    //  const outlineString = replaceSlash(outline)
-    const courseDescription = JSON.parse(planeString);
-    //  const courseOutline = JSON.parse(outlineString);
-    setList([...courseDescription]);
-  };
   const onEnroll = () => {
     if (auth?.login) {
       makePayment();
@@ -157,11 +148,11 @@ const Detail = () => {
           <div className="sub-section">
             <span className="rupee">&#8377; {courseDetail?.cost ?? ""}</span>
             <div className="card-details">{cardDetails()}</div>
-            {auth?.isAdmin === 1 && (
+            {/* {auth?.isAdmin === 1 && ( */}
               <button className="btn-enroll-now" onClick={onEnroll}>
                 Enroll Now
               </button>
-            )}
+            {/* )} */}
           </div>
         </div>
       </div>
