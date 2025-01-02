@@ -2,7 +2,7 @@ import React from "react";
 import "./CourseCard.css";
 import Img from "../../assets/img/test.jpg";
 import { useNavigate } from "react-router-dom";
-import Candel from "../../assets/img/candel.png";
+import Candle from "../../assets/img/candle.png";
 import { useDispatch } from "react-redux";
 import { setCourse } from "../../store/actions/CourseActions";
 import { COURSE_DETAIL } from "../../constants/PathConstants";
@@ -28,7 +28,7 @@ const CourseCard = ({ data }) => {
           src={data?.imageurl ? data?.imageurl : Img}
         />
       </div>
-      <img alt="icon" className="candel-icon" src={Candel} />
+      <img alt="icon" className="candle-icon" src={Candle} />
       <div className="course-info">
         <label className="course-title">{data?.title}</label>
         <label className="course-subTitle">{data?.description}</label>

@@ -63,7 +63,7 @@ const Courses = () => {
         <input placeholder="Search" onChange={onSearch} />
       </div>
 
-      <div className="courses contianer-h">
+      <div className="courses container-h">
         <div className="grid-container">
           {coursesData.map((item, index) => (
             <CourseCard key={index} data={item} />
