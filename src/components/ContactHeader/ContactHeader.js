@@ -8,7 +8,7 @@ const ContactHeader = () => {
         <i className="fa fa-phone mx-3"></i>
         {"7021001780 / 8850305306"}
       </p>
-      <p className="color-change">Website is under the Construction</p>
+      {/* <p className="color-change">Website is under the Construction</p> */}
       <p>
         <i className="fa fa-envelope mx-3"></i>
         {"support@itradetech.info"}

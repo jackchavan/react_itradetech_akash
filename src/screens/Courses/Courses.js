@@ -58,12 +58,12 @@ const Courses = () => {
   };
 
   return (
-    <div className="container-fluid text-center p-4 contianer-h">
-      <div className="search mb-4">
+    <div className="text-center container-course">
+      <div className="search">
         <input placeholder="Search" onChange={onSearch} />
       </div>
 
-      <div className="courses">
+      <div className="courses container-h">
         <div className="grid-container">
           {coursesData.map((item, index) => (
             <CourseCard key={index} data={item} />

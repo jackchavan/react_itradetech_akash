@@ -63,6 +63,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
 .login-box button {
   width: 60%;
   height: 6vh;
@@ -157,15 +158,24 @@ button:hover {
     left: 0;
     bottom: 0;
     margin: 0 auto;
+    height: calc(100vh - 250px);
+  }
+  .login-box input {
+    width: 85%;
+  }
+  .login-box button {
+    width: 85%;
+    height: 5vh;
   }
   .login {
     transform: translateY(-55px);
+    border-radius: 50% 50% 25% 25% / 14% 14% 0% 0%;
   }
   #chk:checked ~ .login {
-    transform: translateY(-370px);
+    transform: translateY(-55vh);
   }
   #forget-chk:checked ~ .forget-pass {
-    transform: translateY(-940px);
+    transform: translateY(-137vh);
   }
 }
 @media only screen and (min-width: 641px) and (max-width: 767px) {
@@ -177,7 +187,12 @@ button:hover {
     bottom: 0;
     margin: 0 auto;
   }
-
+  .login-box input {
+    width: 85%;
+  }
+  .login-box button {
+    width: 85%;
+  }
   .login {
     border-radius: 50% 50% 25% 25% / 25% 25% 0% 0%;
     form {
@@ -196,7 +211,6 @@ button:hover {
   .login-box {
     top: 125px;
     right: 15px;
-
     margin: 0 auto;
   }
 
