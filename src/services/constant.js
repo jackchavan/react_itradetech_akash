@@ -15,6 +15,7 @@ export const GET_TEAMMEMBERS = BASE_URL + "/api/Team/GetAllTeam";
 export const CONTACT_US = BASE_URL + "/api/Contactus/Insertcontactus";
 export const FORGET_PASS = BASE_URL + "/api/User/ForgotPassword?password=";
 export const FORGET_PASS_GENERATE_OTP = BASE_URL + "/api/OTP/forgotgenerate";
+export const GET_BLOGS = BASE_URL + "/api/Blogs";
 
 const authAxios = axios.create();
 authAxios.interceptors.request.use(

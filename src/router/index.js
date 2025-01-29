@@ -7,6 +7,8 @@ import {
   COURSE_DETAIL,
   HOME,
   LOGIN,
+  PATH_BLOG_DETAILS,
+  PATH_BLOGS,
   PAYMENT_RESPONSE,
   VIDEO_SESSION,
 } from "../constants/PathConstants";
@@ -20,6 +22,8 @@ import AboutUs from "../screens/AboutUs/AboutUs";
 import ContactUs from "../screens/ContactUs/ContactUs";
 import Courses from "../screens/Courses/Courses";
 import VideoSession from "../screens/VideoSession/VideoSession";
+import Blogs from "../screens/Blogs/Blogs";
+import BlogsDetails from "../screens/BlogsDetails/BlogsDetails";
 
 const Routing = () => {
   const { auth } = useSelector((state) => state.auth);
@@ -28,7 +32,7 @@ const Routing = () => {
       {auth?.login ? (
         <React.Fragment>
           <Routes>
-            <Route exact path={HOME} element={<Home />} />
+            <Route path={HOME} element={<Home />} />
             <Route path={ABOUT} element={<AboutUs />} />
             <Route path={COURSE} element={<Courses />} />
             <Route path={LOGIN} element={<Login />} />
@@ -36,18 +40,28 @@ const Routing = () => {
             <Route path={PAYMENT_RESPONSE} element={<PaymentStatus />} />
             <Route path={CONTACT_US} element={<ContactUs />} />
             <Route path={VIDEO_SESSION} element={<VideoSession />} />
+            <Route path={PATH_BLOGS} element={<Blogs />} />
+            <Route
+              path={PATH_BLOG_DETAILS + "/:id"}
+              element={<BlogsDetails />}
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <Routes>
-            <Route exact path={HOME} element={<Home />} />
+            <Route path={HOME} element={<Home />} />
             <Route path={ABOUT} element={<AboutUs />} />
             <Route path={COURSE} element={<Courses />} />
             <Route path={LOGIN} element={<Login />} />
             <Route path={COURSE_DETAIL + "/:id"} element={<Detail />} />
             <Route path={CONTACT_US} element={<ContactUs />} />
+            <Route path={PATH_BLOGS} element={<Blogs />} />
+            <Route
+              path={PATH_BLOG_DETAILS + "/:id"}
+              element={<BlogsDetails />}
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </React.Fragment>
