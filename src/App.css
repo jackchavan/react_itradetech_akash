@@ -72,9 +72,9 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 640px) {
-  ::-webkit-scrollbar {
-    display: none;
-  }
+    ::-webkit-scrollbar {
+      display: none;
+    }
 }
 
 .f-12 {

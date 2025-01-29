@@ -9,6 +9,7 @@ import {
   COURSE,
   HOME,
   LOGIN,
+  PATH_BLOGS,
 } from "../../constants/PathConstants";
 import { setCourse } from "../../store/actions/CourseActions";
 import { setOrder, setOrderId } from "../../store/actions/PaymentActions";
@@ -116,6 +117,15 @@ const Header = () => {
                 onClick={handleLinkClick}
               >
                 Contact Us
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to={PATH_BLOGS}
+                onClick={handleLinkClick}
+              >
+                Blogs
               </NavLink>
             </li>
 

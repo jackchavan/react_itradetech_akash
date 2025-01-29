@@ -1,4 +1,4 @@
-import { SET_LOADING, SET_ZINDEX } from "../../constants/ActionsTypes";
+import { SET_BLOGS, SET_LOADING, SET_ZINDEX } from "../../constants/ActionsTypes";
 
 export const setLoading = (payload) => ({
   type: SET_LOADING,
@@ -7,5 +7,10 @@ export const setLoading = (payload) => ({
 
 export const setZindex = (payload) => ({
   type: SET_ZINDEX,
+  payload: payload,
+});
+
+export const setBlogsData = (payload) => ({
+  type: SET_BLOGS,
   payload: payload,
 });

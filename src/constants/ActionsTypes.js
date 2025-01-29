@@ -6,3 +6,4 @@ export const SET_ORDER_ID = "SET_ORDER_ID";
 export const SET_ORDER = "SET_ORDER";
 export const SET_LOADING = "SET_LOADING";
 export const SET_ZINDEX = "SET_ZINDEX";
+export const SET_BLOGS = 'SET_BLOGS';

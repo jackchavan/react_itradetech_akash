@@ -50,3 +50,18 @@ export const showToast = (type, data) => {
     default:
   }
 };
+
+
+export const formatDate=(dateString) =>{
+  const date = new Date(dateString);
+
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+
+  const formattedDate = date.toLocaleDateString('en-US', options);
+  const [month, day, year] = formattedDate.split(' ');
+  return `${month}-${day.replace(',', '')}-${year}`;
+}

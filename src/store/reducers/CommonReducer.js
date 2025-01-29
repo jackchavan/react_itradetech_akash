@@ -1,9 +1,14 @@
-import { SET_LOADING, SET_ZINDEX } from "../../constants/ActionsTypes";
+import {
+  SET_BLOGS,
+  SET_LOADING,
+  SET_ZINDEX,
+} from "../../constants/ActionsTypes";
 
 // reducer.js
 const initialState = {
   loading: false,
   zIndex: true,
+  blogs: [],
 };
 
 const commonReducer = (state = initialState, action) => {
@@ -17,6 +22,11 @@ const commonReducer = (state = initialState, action) => {
       return {
         ...state,
         zIndex: action.payload,
+      };
+    case SET_BLOGS:
+      return {
+        ...state,
+        blogs: action.payload,
       };
     default:
       return state;
