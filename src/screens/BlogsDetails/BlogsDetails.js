@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import AdsComponent from "../../components/GoogleAds/GoogleAds";
 import "./BlogsDetails.css";
 import YouTubeVideoPlayer from "../../components/YouTubeVidoPlayer/YouTubeVidoPlayer";
+import BgHeader from "../../assets/img/blogHeader.png";
 const BlogsDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -43,8 +44,9 @@ const BlogsDetails = () => {
   };
 
   return (
-    <div className="container-d-fluid">
-       <div className="title-d-container">
+    <div className="container-fluid">
+       <div className="title-container">
+       <img src={BgHeader} className="img-fluid title-banner" />
           <h2>{blog?.title}</h2>
         </div>
       <div className="row">

@@ -228,7 +228,7 @@ const Blogs = () => {
       <div className="container-fluid">
         <div className="title-container">
         <img src={BgHeader} className="img-fluid title-banner" />
-          <h2>Blogs</h2>
+          <h2 >Blogs</h2>
         </div>
         <div className="row">
           <div className="col-md-8 blog-container">
