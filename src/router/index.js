@@ -42,7 +42,7 @@ const Routing = () => {
             <Route path={VIDEO_SESSION} element={<VideoSession />} />
             <Route path={PATH_BLOGS} element={<Blogs />} />
             <Route
-              path={PATH_BLOG_DETAILS + "/:id"}
+              path={PATH_BLOG_DETAILS + "/:id"+"/:title"}
               element={<BlogsDetails />}
             />
             <Route path="*" element={<PageNotFound />} />
@@ -59,7 +59,7 @@ const Routing = () => {
             <Route path={CONTACT_US} element={<ContactUs />} />
             <Route path={PATH_BLOGS} element={<Blogs />} />
             <Route
-              path={PATH_BLOG_DETAILS + "/:id"}
+              path={PATH_BLOG_DETAILS + "/:id"+"/:title"}
               element={<BlogsDetails />}
             />
             <Route path="*" element={<PageNotFound />} />

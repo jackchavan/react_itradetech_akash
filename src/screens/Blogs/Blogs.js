@@ -25,19 +25,23 @@ const Blogs = () => {
     parseInt(localStorage.getItem(LOCAL_STORAGE_FETCH_TIME)) || Date.now()
   );
 
+  // useEffect(() => {
+  //   if (Date.now() - lastFetchTime >= 60000) {
+  //     getAllBlogs();
+  //   }
+
+  //   if (blogsData?.length > 0) {
+  //     setBlogsState(blogsData);
+  //   }
+  //   const intervalId = setInterval(() => {
+  //     getAllBlogs();
+  //   }, 60000);
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
   useEffect(() => {
-    if (Date.now() - lastFetchTime >= 60000) {
-      getAllBlogs();
-    }
-
-    if (blogsData?.length > 0) {
-      setBlogsState(blogsData);
-    }
-    const intervalId = setInterval(() => {
-      getAllBlogs();
-    }, 60000);
-
-    return () => clearInterval(intervalId);
+    getAllBlogs();
   }, []);
 
   useEffect(() => {
@@ -134,7 +138,7 @@ const Blogs = () => {
   };
 
   const onClickItem = (item) => {
-    navigate(`${PATH_BLOG_DETAILS}/${item.id}`);
+    navigate(`${PATH_BLOG_DETAILS}/${item.id}/${item.title}`);
   };
 
   const RenderRunningText = () => {
@@ -227,8 +231,8 @@ const Blogs = () => {
       )}
       <div className="container-fluid">
         <div className="title-container">
-        <img src={BgHeader} className="img-fluid title-banner" />
-          <h2 >Blogs</h2>
+          <img src={BgHeader} className="img-fluid title-banner" />
+          <h2>Blogs</h2>
         </div>
         <div className="row">
           <div className="col-md-8 blog-container">

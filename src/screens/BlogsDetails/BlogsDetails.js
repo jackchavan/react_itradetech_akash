@@ -13,6 +13,7 @@ const BlogsDetails = () => {
 
   const [blog, setBlog] = useState(null);
   const [videos, setVideos] = useState([]);
+  const [blogImg, setBlogImg] = useState(null);
 
   useEffect(() => {
     getBlogDetails();
@@ -26,7 +27,10 @@ const BlogsDetails = () => {
       if (response) {
         setBlog(response);
         const video = response.media.filter((v) => v?.mediaType === "video");
+        const image = response.media.filter((v) => v?.mediaType === "image");
+
         setVideos(video);
+        setBlogImg(image[0]?.mediaUrl);
         dispatch(setLoading(false));
       }
     } catch (error) {
@@ -36,7 +40,7 @@ const BlogsDetails = () => {
       return false;
     }
   };
-  
+
   const getYouTubeVideoId = (url) => {
     const regex = /(?:youtube\.com\/.*[?&]v=|youtu\.be\/)([^&#]+)/;
     const match = url.match(regex);
@@ -45,12 +49,13 @@ const BlogsDetails = () => {
 
   return (
     <div className="container-fluid">
-       <div className="title-container">
-       <img src={BgHeader} className="img-fluid title-banner" />
-          <h2>{blog?.title}</h2>
-        </div>
+      <div className="title-container">
+        <img src={BgHeader} className="img-fluid title-banner" />
+        <h2>{blog?.title}</h2>
+      </div>
       <div className="row">
         <div className="col-md-8 blog-d-container">
+          {blogImg && <img className="img-fluid blog-img" src={blogImg} />}
           <span dangerouslySetInnerHTML={{ __html: blog?.content }} />
           {videos.map((v) => (
             <YouTubeVideoPlayer videoId={getYouTubeVideoId(v.mediaUrl)} />
