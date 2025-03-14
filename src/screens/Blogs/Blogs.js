@@ -156,11 +156,16 @@ const Blogs = () => {
 
   const blogCard = (news) => {
     let i = 0;
+    const sanitizedURL = news?.blogImg
+      .replace(/\s/g, "%20")
+      .replace(/\(/g, "%28")
+      .replace(/\)/g, "%29");
+
     return (
       <div className="blogBox" key={i + 1}>
         <div
           className="imgWrap"
-          style={{ backgroundImage: `url(${news?.blogImg})` }}
+          style={{ backgroundImage: `url(${sanitizedURL})` }}
         >
           <div className="blogHasImg">
             <h3>{news?.title}</h3>

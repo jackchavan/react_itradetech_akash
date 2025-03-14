@@ -95,9 +95,9 @@ const Footer = ({ getTerms }) => {
               <a className=" mr-4" href={links.fb}>
                 <img className="x" src={F} alt="Facebook" />
               </a>
-              <a className=" mr-4" href={links.insta}>
+              {/* <a className=" mr-4" href={links.insta}>
                 <img className="x" src={I} alt="Instagram" />
-              </a>
+              </a> */}
               <a className=" mr-4" href={links.x}>
                 <img className="x" src={X} alt="X" />
               </a>
